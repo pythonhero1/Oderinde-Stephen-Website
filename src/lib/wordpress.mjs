@@ -1,4 +1,5 @@
 import { parse } from 'parse5';
+import { fetchWordPress } from './wordpress-fetch.mjs';
 import { configureContactForms } from './contact-form.mjs';
 
 export const CONTENT_MARKER = '<!-- ASTRO_WORDPRESS_CONTENT -->';
@@ -59,7 +60,7 @@ export async function fetchCollection(base, endpoint, fetcher = fetch) {
   for (let page = 1; page <= totalPages; page++) {
     const url = new URL(`${base.replace(/\/$/, '')}/wp-json/wp/v2/${endpoint}`);
     url.search = new URLSearchParams({ per_page: '100', page: String(page), status: 'publish', _fields: 'id,link,type,slug,modified' });
-    const response = await fetcher(url, { signal: AbortSignal.timeout(120_000) });
+    const response = await fetchWordPress(url, fetcher);
     if (!response.ok) throw new Error(`WordPress ${endpoint}: HTTP ${response.status}`);
     const result = await response.json();
     if (!Array.isArray(result)) throw new Error(`Invalid WordPress collection: ${endpoint}`);

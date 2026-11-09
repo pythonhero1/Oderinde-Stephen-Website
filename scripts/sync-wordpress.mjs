@@ -1,3 +1,4 @@
+import { fetchWordPress } from '../src/lib/wordpress-fetch.mjs';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { loadEnvFile } from 'node:process';
@@ -17,12 +18,12 @@ for (const endpoint of ['pages', 'posts', 'case-study']) {
 console.log(`Discovered ${records.length} published WordPress records.`);
 const notes = [], result = [];
 for (const record of records) {
-  const api = await fetch(`${base}/wp-json/wp/v2/${record.endpoint}/${record.id}`, { signal: AbortSignal.timeout(120_000) });
+  const api = await fetchWordPress(`${base}/wp-json/wp/v2/${record.endpoint}/${record.id}`);
   if (!api.ok) throw new Error(`REST export failed for ${record.id}: ${api.status}`);
   const post = await api.json();
   if (post.status !== 'publish' || typeof post.content?.rendered !== 'string') throw new Error(`Invalid published post: ${record.id}`);
   const route = new URL(post.link).pathname.replace(/^\/|\/$/g, '');
-  const rendered = await fetch(new URL(new URL(post.link).pathname, base), { signal: AbortSignal.timeout(120_000) });
+  const rendered = await fetchWordPress(new URL(new URL(post.link).pathname, base));
   if (!rendered.ok) throw new Error(`Page view failed for ${route}: ${rendered.status}`);
   let template = await rendered.text();
   if (!template.includes('<html')) {
@@ -84,7 +85,7 @@ while (pending.size) {
   const local = sourceRoot && path.resolve(sourceRoot, relative);
   if (local && local.startsWith(sourceRoot + path.sep) && existsSync(local)) bytes = await readFile(local);
   else {
-    const response = await fetch(new URL(asset, base), { signal: AbortSignal.timeout(120_000) });
+    const response = await fetchWordPress(new URL(asset, base));
     if (!response.ok) throw new Error(`Asset unavailable ${asset}: ${response.status}`);
     bytes = Buffer.from(await response.arrayBuffer());
   }

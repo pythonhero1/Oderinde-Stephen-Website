@@ -50,3 +50,24 @@ test('configured forms use Formspree, native validation and no WordPress submiss
  assert.ok(!html.includes('module-library-script-contact-form.js'));assert.ok(!html.includes('disabled'));
  assert.throws(()=>renderWordPressPage(page,'https://example.com/f/testform'),/exact HTTPS Formspree/);
 });
+
+test('WordPress export retries a reset while reading a response body', async () => {
+ const {fetchWordPress}=await import('../src/lib/wordpress-fetch.mjs');
+ let calls=0;
+ const response=await fetchWordPress('http://local/wp-json', async()=>{
+   calls++;
+   if(calls===1) return {arrayBuffer:async()=>{throw new Error('ECONNRESET');}};
+   return new Response('{"id":14}');
+ }, {delayMs:0});
+ assert.equal(calls,2);assert.equal((await response.json()).id,14);
+});
+
+test('WordPress export stops on permanent errors and limits temporary retries', async()=>{
+ const {fetchWordPress}=await import('../src/lib/wordpress-fetch.mjs');
+ let calls=0;
+ const forbidden=await fetchWordPress('http://local/wp-json',async()=>{calls++;return new Response('Forbidden',{status:403});},{delayMs:0});
+ assert.equal(forbidden.status,403);assert.equal(calls,1);
+ calls=0;
+ await assert.rejects(fetchWordPress('http://local/wp-json',async()=>{calls++;throw new Error('offline');},{delayMs:0}),/offline/);
+ assert.equal(calls,3);
+});
