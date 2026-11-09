@@ -1,11 +1,11 @@
 # Oderinde Stephen — Astro + WordPress
 
-Astro serves the public frontend. WordPress remains the content editor. During this local-first stage, content is read from the public WordPress REST API on your Mac, saved as a versioned snapshot, and built into static pages. Cloudflare never needs to reach a `.local` address and visitors do not need WordPress running.
+Astro serves the public frontend. WordPress remains the content editor. Content is read from the public WordPress REST API at `https://cms.oderindestephen.com`, saved as a versioned snapshot, and built into static pages. The latest local WordPress copy has been restored to that separate online CMS. The older main-domain WordPress site is preserved until the Astro frontend is ready for its domain switch.
 
 ## Requirements
 
 - Node.js 22.23.4 or newer
-- Your WordPress site running in Local when refreshing content
+- Access to the online WordPress CMS when refreshing content
 
 ## Local development
 
@@ -16,7 +16,7 @@ npm run sync:wordpress
 npm run dev
 ```
 
-The initial WordPress URL is `http://oderindestephen.local`. Optional `WORDPRESS_PUBLIC_DIR` points to the Local site's `app/public` folder and speeds up copying public assets. `.env` is ignored by Git; no WordPress login is required for published content.
+.env.example points to `https://cms.oderindestephen.com`. Leave `WORDPRESS_PUBLIC_DIR` unset for the online CMS so public assets come from the same online source. For local-only development, both settings can point to the same Local site. `.env` is ignored by Git; no WordPress login is required for published content.
 
 ## Refresh after editing WordPress
 
@@ -57,9 +57,9 @@ npm run install:publisher
 
 The first command checks connectivity without changing anything. The second exports, tests, builds, validates, commits generated content/assets, pushes to GitHub and deploys to the existing preview project. After one successful manual publish, the installer creates a macOS login agent that checks every 60 seconds. It keeps an official Node runtime under the ignored `.tools/` directory so a temporary runtime cleanup will not break the service. Logs and last successful publication are stored under ignored `.local/`.
 
-Your Mac must be awake, signed in, online, and running the Local WordPress site. When WordPress is unavailable, publication waits and retries; the existing hosted preview stays live. No custom-domain or live WordPress changes are made. This does not provide publishing while the Mac is asleep/offline; that requires an online WordPress backend.
+The current publisher still runs on your Mac, which must be awake, signed in and online. Local WordPress no longer needs to run when the source is the online CMS. When WordPress is unavailable, publication waits and retries; the existing hosted preview stays live. Publishing updates the Pages preview; it does not attach the public domain. Publishing while the Mac is asleep/offline still requires a hosted build workflow and deployment credentials; hosting WordPress online alone does not move the publisher online.
 
-Published pages/posts/case studies are detected through their REST API modification metadata, including additions, deletions and route changes. The companion `wordpress/astro-local-publisher` notifier is installed only in this Mac's Local site as `wp-content/mu-plugins/astro-local-publisher.php`; it signals Divi Theme Builder, menu and selected site-option changes through a timestamp file outside the public web root. It exposes no public endpoint and contains no credentials. Deployments are serialized and never auto-commit unrelated source edits or overwrite GitHub changes. A failed stage is retried without treating the update as published.
+Published pages/posts/case studies are detected through their REST API modification metadata, including additions, deletions and route changes. The companion `wordpress/astro-local-publisher` notifier is retained only in this Mac's Local site and was excluded from the online CMS. It is installed locally as `wp-content/mu-plugins/astro-local-publisher.php`; it signals Divi Theme Builder, menu and selected site-option changes through a timestamp file outside the public web root. It exposes no public endpoint and contains no credentials. The online CMS does not use this local marker; after changing shared Theme Builder layouts, menus or site options online, run `npm run publish:wordpress` to force a refresh. Deployments are serialized and never auto-commit unrelated source edits or overwrite GitHub changes. A failed stage is retried without treating the update as published.
 
 To stop and disable background publishing:
 
@@ -77,7 +77,7 @@ The current Pages project was created using Direct Upload from the Cloudflare da
 
 Repository: https://github.com/pythonhero1/Oderinde-Stephen-Website
 
-The custom domain is intentionally not connected. The live WordPress site and its DNS remain unchanged.
+The main custom domain is intentionally not connected to Pages. Its older WordPress site is preserved. Only the new `cms` DNS record was added for the migrated backend. Search indexing is discouraged on the CMS copy. Review the exported robots metadata before attaching the public domain, since the preview preserves the source metadata.
 
 To build from this repository in Cloudflare Pages, choose the Astro preset, build command `npm run build`, output folder `dist`, and Node.js `22.23.4` or newer. This uses the committed snapshot, so WordPress can remain local.
 
@@ -91,7 +91,7 @@ npm run deploy:preview
 
 This uploads to the `preview` branch of a separate Pages project. It does not attach `oderindestephen.com` or change any DNS records. Reuse the existing preview project after its initial creation. Account authentication is required. If automatic builds from GitHub are preferred, create a Git-integrated Pages project in Cloudflare first; a Direct Upload project cannot later be converted to Git integration.
 
-After changing local WordPress content, refresh, review, commit and push the updated snapshot/assets, then deploy again. Automatic publishing directly from WordPress can be configured once the backend is hosted online.
+After changing online WordPress content, refresh, review, commit and push the updated snapshot/assets, then deploy again. A hosted publishing workflow can be configured separately using the online CMS and scoped Cloudflare deployment credentials.
 
 ## Validation
 
