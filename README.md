@@ -45,6 +45,10 @@ The preview has an email link to `Contact@oderindestephen.com`. The original Div
 
 ## GitHub and Cloudflare preview
 
+Published review site: https://oderinde-stephen-preview.pages.dev
+
+The current Pages project was created using Direct Upload from the Cloudflare dashboard. It serves the locally built static output independently of the local WordPress server.
+
 Repository: https://github.com/pythonhero1/Oderinde-Stephen-Website
 
 The custom domain is intentionally not connected. The live WordPress site and its DNS remain unchanged.
