@@ -41,7 +41,7 @@ An older export received an empty WordPress response for the blog. A reconstruct
 
 ## Contact enquiries
 
-The form is prepared for Formspree's free plan (currently 50 submissions/month), delivering to `Contact@oderindestephen.com`. Create/claim the form in the intended Formspree account and verify that recipient address. Put its public `https://formspree.io/f/...` endpoint in `src/config/contact.json`, then build and publish. No API key is needed.
+The form is prepared for Formspree's free plan (currently 50 submissions/month), delivering to `Contact@oderindestephen.com`. Create/claim the form in the intended Formspree account and verify that recipient address. Put its public `https://formspree.io/f/...` endpoint in `src/config/contact.json` and set `verified` to `true` only after the destination shows Verified in Formspree, then build and publish. No API key is needed.
 
 Until an endpoint is configured, the submit button stays disabled and the email link remains available. After configuration the form uses native browser validation and Formspree's submission/confirmation flow. WordPress nonces, the old Divi captcha, and Divi's PHP submission script are removed; Formspree provides its own server-side spam handling. The existing design and fields remain in place, with company, budget and timeline optional.
 

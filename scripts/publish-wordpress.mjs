@@ -33,6 +33,14 @@ async function run(command, args) {
   });
 }
 async function git(args) { return (await exec('git', args, { cwd: root, env })).stdout.trim(); }
+async function assertSourceUnchanged(expectedHead) {
+  if (await git(['branch','--show-current']) !== 'main' || await git(['rev-parse','HEAD']) !== expectedHead) {
+    throw new Error('The source branch changed during export. Will retry from a clean, reviewed checkout.');
+  }
+  const tracked = await git(['diff','--name-only','HEAD']);
+  const untracked = await git(['ls-files','--others','--exclude-standard']);
+  assertCleanSource([tracked,untracked].join('\n').split('\n').filter(Boolean));
+}
 async function revisions() {
   const records = [];
   for (const type of ['pages','posts','case-study']) records.push(...await fetchCollection(base, type));
@@ -85,16 +93,19 @@ async function publish(target) {
     await run(process.execPath, ['scripts/sync-wordpress.mjs']);
     const after = await revisions();
     if (target.fingerprint !== after.fingerprint) throw new Error('WordPress changed during export. The next check will retry.');
+    await assertSourceUnchanged(head);
     await run(process.execPath, ['--test','tests/wordpress.test.mjs','tests/publishing.test.mjs']);
     await run(process.execPath, ['node_modules/astro/bin/astro.mjs','build']);
     await run(process.execPath, ['scripts/validate-build.mjs']);
+    await assertSourceUnchanged(head);
     await run('git', ['add','src/data/wordpress.json','public','migration/sync-report.json','migration/link-audit.json']);
     if (await git(['diff','--cached','--name-only'])) {
       await run('git', ['commit','-m','Refresh published WordPress content']);
     }
-    await run('git', ['-c','http.version=HTTP/1.1','-c','http.postBuffer=524288000','push','origin','main']);
-    await run(process.execPath, ['node_modules/wrangler/bin/wrangler.js','pages','deploy','dist','--project-name',project,'--branch',branchName,'--commit-hash',await git(['rev-parse','HEAD'])]);
-    await writeFile(stateFile, JSON.stringify({ fingerprint: after.fingerprint, publishedAt: new Date().toISOString(), commit: await git(['rev-parse','HEAD']) }, null, 2));
+    const publishedCommit = await git(['rev-parse','HEAD']);
+    await run('git', ['-c','http.version=HTTP/1.1','-c','http.postBuffer=524288000','push','origin',`${publishedCommit}:refs/heads/main`]);
+    await run(process.execPath, ['node_modules/wrangler/bin/wrangler.js','pages','deploy','dist','--project-name',project,'--branch',branchName,'--commit-hash',publishedCommit]);
+    await writeFile(stateFile, JSON.stringify({ fingerprint: after.fingerprint, publishedAt: new Date().toISOString(), commit: publishedCommit }, null, 2));
     log('Published https://oderinde-stephen-preview.pages.dev; live domain unchanged.');
   } finally { await rm(lock, { recursive: true, force: true }); }
 }
