@@ -24,7 +24,7 @@ test('REST content replaces the layout marker and navigation stays portable', ()
 
 test('preview forms do not submit to an unavailable WordPress handler', () => {
   const html = renderWordPressPage({ path: 'contact', contentSource: 'rest-api', content: '<form class="et_pb_contact_form"><button class="et_pb_contact_submit">Send</button></form>', template: `<html><head></head><body>${CONTENT_MARKER}</body></html>` });
-  assert.match(html, /disabled aria-disabled="true"/);
+  assert.match(html, /disabled(?:="")? aria-disabled="true"/);
   assert.match(html, /e.preventDefault\(\)/);
   assert.match(html, /mailto:Contact@oderindestephen.com/);
 });
@@ -39,4 +39,14 @@ test('public exports remove dashboard and plugin telemetry', () => {
 test('production-hosted and protocol-relative fonts are served locally in previews', () => {
   assert.equal(normalizeUrls('url(//oderindestephen.com/wp-content/font.woff)', 'http://example.local'), 'url(/wp-content/font.woff)');
   assert.equal(normalizeUrls('https://oderindestephen.com/wp-content/photo.webp', 'http://example.local'), '/wp-content/photo.webp');
+});
+
+test('configured forms use Formspree, native validation and no WordPress submission code', () => {
+ const page={path:'contact',contentSource:'rest-api',content:'<form class="et_pb_contact_form" action="/wp-json"><input type="text" data-original_id="emailaddress" name="wp_email"><input type="hidden" name="_wpnonce" value="publicnonce"><div class="et_pb_contact_right">Old captcha</div><button type="submit" class="et_pb_contact_submit">Send</button></form>',template:`<html><head></head><body>${CONTENT_MARKER}<script src="/module-library-script-contact-form.js"></script></body></html>`};
+ const html=renderWordPressPage(page,'https://formspree.io/f/testform');
+ assert.match(html,/action="https:\/\/formspree.io\/f\/testform"/);
+ assert.match(html,/name="email"/);assert.match(html,/type="email"/);
+ assert.ok(!html.includes('_wpnonce'));assert.ok(!html.includes('Old captcha'));
+ assert.ok(!html.includes('module-library-script-contact-form.js'));assert.ok(!html.includes('disabled'));
+ assert.throws(()=>renderWordPressPage(page,'https://example.com/f/testform'),/exact HTTPS Formspree/);
 });

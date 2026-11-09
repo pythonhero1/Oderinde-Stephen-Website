@@ -1,4 +1,5 @@
 import { parse } from 'parse5';
+import { configureContactForms } from './contact-form.mjs';
 
 export const CONTENT_MARKER = '<!-- ASTRO_WORDPRESS_CONTENT -->';
 export const SITE_ORIGIN = 'https://oderindestephen.com';
@@ -40,15 +41,7 @@ export function cleanMarkup(html, wordpressUrl) {
     .replace(/<style[^>]*>\s*html\s*\{\s*margin-top:[\s\S]*?<\/style>/gi, '');
   return output;
 }
-export function protectPreviewForms(html) {
-  if (!html.includes('et_pb_contact_form')) return html;
-  return html.replace(/(<form\b[^>]*class="et_pb_contact_form[^>]*>)/g,
-    '$1<p role="status">Contact form delivery is not enabled in this preview. Please email <a href="mailto:Contact@oderindestephen.com">Contact@oderindestephen.com</a>.</p>')
-    .replace(/<button([^>]*class="[^"]*et_pb_contact_submit[^"]*"[^>]*)>/g,
-      '<button disabled aria-disabled="true"$1>')
-    .replace('</body>', '<script>document.addEventListener("submit",function(e){if(e.target.matches(".et_pb_contact_form")){e.preventDefault();e.stopImmediatePropagation();}},true);</script></body>');
-}
-export function renderWordPressPage(page) {
+export function renderWordPressPage(page, endpoint = '') {
   let html = normalizeUrls(page.template, SITE_ORIGIN);
   if (page.contentSource === 'rest-api') {
     if (!html.includes(CONTENT_MARKER)) throw new Error(`Missing content marker for ${page.path}`);
@@ -57,7 +50,7 @@ export function renderWordPressPage(page) {
   const canonical = SITE_ORIGIN + '/' + (page.path ? page.path + '/' : '');
   html = html.replace(/<link[^>]*rel=["']canonical["'][^>]*>/gi, '')
     .replace('</head>', `<link rel="canonical" href="${canonical}"></head>`);
-  return protectPreviewForms(html);
+  return configureContactForms(html, endpoint);
 }
 
 export async function fetchCollection(base, endpoint, fetcher = fetch) {

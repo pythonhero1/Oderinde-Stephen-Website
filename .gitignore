@@ -9,3 +9,5 @@ dist/
 artifacts/
 migration/wordpress-content.json
 migration/wordpress-case-studies.json
+.tools/
+.local/

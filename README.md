@@ -41,7 +41,33 @@ An older export received an empty WordPress response for the blog. A reconstruct
 
 ## Contact enquiries
 
-The preview has an email link to `Contact@oderindestephen.com`. The original Divi submit button is disabled because WordPress's PHP/AJAX form handler cannot run on a static Pages site. An email delivery backend must be configured before enabling submissions; an email recipient alone does not provide a delivery service.
+The form is prepared for Formspree's free plan (currently 50 submissions/month), delivering to `Contact@oderindestephen.com`. Create/claim the form in the intended Formspree account and verify that recipient address. Put its public `https://formspree.io/f/...` endpoint in `src/config/contact.json`, then build and publish. No API key is needed.
+
+Until an endpoint is configured, the submit button stays disabled and the email link remains available. After configuration the form uses native browser validation and Formspree's submission/confirmation flow. WordPress nonces, the old Divi captcha, and Divi's PHP submission script are removed; Formspree provides its own server-side spam handling. The existing design and fields remain in place, with company, budget and timeline optional.
+
+## Automatic local publishing
+
+The publisher is prepared, but must not be enabled until Cloudflare's CLI is authenticated and the first publish has been checked.
+
+```sh
+npm run check:publisher
+npm run publish:wordpress
+npm run install:publisher
+```
+
+The first command checks connectivity without changing anything. The second exports, tests, builds, validates, commits generated content/assets, pushes to GitHub and deploys to the existing preview project. After one successful manual publish, the installer creates a macOS login agent that checks every 60 seconds. It keeps an official Node runtime under the ignored `.tools/` directory so a temporary runtime cleanup will not break the service. Logs and last successful publication are stored under ignored `.local/`.
+
+Your Mac must be awake, signed in, online, and running the Local WordPress site. When WordPress is unavailable, publication waits and retries; the existing hosted preview stays live. No custom-domain or live WordPress changes are made. This does not provide publishing while the Mac is asleep/offline; that requires an online WordPress backend.
+
+Published pages/posts/case studies are detected through their REST API modification metadata, including additions, deletions and route changes. The companion `wordpress/astro-local-publisher` notifier is installed only in this Mac's Local site as `wp-content/mu-plugins/astro-local-publisher.php`; it signals Divi Theme Builder, menu and selected site-option changes through a timestamp file outside the public web root. It exposes no public endpoint and contains no credentials. Deployments are serialized and never auto-commit unrelated source edits or overwrite GitHub changes. A failed stage is retried without treating the update as published.
+
+To stop and disable background publishing:
+
+```sh
+npm run stop:publisher
+```
+
+Run `npm run install:publisher` to re-enable it. Do not move or delete this project folder while the agent is enabled.
 
 ## GitHub and Cloudflare preview
 
