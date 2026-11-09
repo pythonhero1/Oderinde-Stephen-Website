@@ -5,7 +5,7 @@ import { renderWordPressPage } from '../lib/wordpress.mjs';
 export function getStaticPaths() {
   return pages.map(page => ({
     params: { path: page.path || undefined },
-    props: { html: renderWordPressPage(page, contact.endpoint) }
+    props: { html: renderWordPressPage(page, contact.verified ? contact.endpoint : '') }
   }));
 }
 const { html } = Astro.props;
