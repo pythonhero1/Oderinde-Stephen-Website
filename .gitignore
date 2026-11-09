@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.env*
+.wrangler/
+!.env.example
+.dev.vars*
+.DS_Store
+artifacts/
+migration/wordpress-content.json
+migration/wordpress-case-studies.json

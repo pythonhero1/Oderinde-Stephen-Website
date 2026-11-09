@@ -1,0 +1,12 @@
+---
+import pages from '../data/wordpress.json';
+import { renderWordPressPage } from '../lib/wordpress.mjs';
+export function getStaticPaths() {
+  return pages.map(page => ({
+    params: { path: page.path || undefined },
+    props: { html: renderWordPressPage(page) }
+  }));
+}
+const { html } = Astro.props;
+---
+<Fragment set:html={html} />

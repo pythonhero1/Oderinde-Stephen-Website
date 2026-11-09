@@ -1,0 +1,9 @@
+{
+  "pages": 13,
+  "assets": 186,
+  "errors": [],
+  "missing_assets": [],
+  "notes": [
+    "Blog source URL returned an empty response; reconstructed its page with exported article text and shared site header/footer."
+  ]
+}
