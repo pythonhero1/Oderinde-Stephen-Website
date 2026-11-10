@@ -1,5 +1,6 @@
 ---
 import site from '../../config/site.json';
+import SolutionsGraphic from '../../components/content/SolutionsGraphic.astro';
 import PageSection from '../../components/content/PageSection.astro';
 import Container from '../../components/content/Container.astro';
 import Column from '../../components/content/Column.astro';
@@ -11,7 +12,7 @@ import ResponsiveImage from '../../components/content/ResponsiveImage.astro';
 import Accordion from '../../components/content/Accordion.astro';
 ---
 
-<article id="page-entry">
+<article id="page-entry" class="solutions-page">
   <div class="entry-content">
     <div class="page-layout page-content">
       <div class="section-stack">
@@ -50,18 +51,7 @@ import Accordion from '../../components/content/Accordion.astro';
               </div>
             </Column>
             <Column class="column-2 column last-column flex-column blend-normal width-12-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
-              <ImageBlock class="image-1 image-block block flex-block">
-                <span class="image-frame">
-                  <ResponsiveImage
-                    source="paper-cutout-hand-pressing-business-solution-like-button-scaled.avif"
-                    title="paper-cutout-hand-pressing-business-solution-like-button"
-                    width="2560"
-                    height="1709"
-                    sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 640px"
-                    priority
-                  />
-                </span>
-              </ImageBlock>
+              <SolutionsGraphic />
             </Column>
           </Container>
           <Container class="row-2 container flex-row">
@@ -139,7 +129,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 <ImageBlock class="image-2 image-block block flex-block">
                   <span class="image-frame">
                     <ResponsiveImage
-                      source="business-professionals-working-at-modern-office-work-scaled.avif"
+                      source="BUSINESS-WEBSITE-—-Icon.svg"
                       title="business-professionals-working-at-modern-office-work"
                       width="2560"
                       height="1707"
@@ -178,7 +168,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 <ImageBlock class="image-3 image-block block flex-block">
                   <span class="image-frame">
                     <ResponsiveImage
-                      source="woman-selling-product-and-man-shopping-for-clothes-together-scaled.avif"
+                      source="ONLINE-STORE-—-Icon.svg"
                       title="woman selling product and man shopping for clothes together"
                       width="2560"
                       height="1707"
@@ -219,7 +209,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 <ImageBlock class="image-4 image-block block flex-block">
                   <span class="image-frame">
                     <ResponsiveImage
-                      source="frustrated-businessman-working-on-his-website-with-compute-scaled.avif"
+                      source="WEBSITE-REDESIGN-—-Icon.svg"
                       title="frustrated businessman working on his website with compute"
                       width="2560"
                       height="1440"
@@ -258,7 +248,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 <ImageBlock class="image-5 image-block block flex-block">
                   <span class="image-frame">
                     <ResponsiveImage
-                      source="typing-on-laptop-displaying-online-payment-interfa-2026-01-22-23-21-01-utc-scaled.avif"
+                      source="AUTOMATION-—-Icon.svg"
                       title="typing-on-laptop-displaying-online-payment-interfa-2026-01-22-23-21-01-utc"
                       width="2560"
                       height="1440"
@@ -430,97 +420,6 @@ import Accordion from '../../components/content/Accordion.astro';
                   <ResponsiveImage
                     source="framer-website-platform-icon.png"
                     title="framer website platform icon"
-                    width="1254"
-                    height="1254"
-                    sizes="96px"
-                  />
-                </span>
-              </ImageBlock>
-            </Column>
-            <Column class="column-20 column flex-column blend-normal width-6-24 width-6-24-tablet width-24-24-phone width-6-24-wide-tablet">
-              <ImageBlock class="image-11 image-block block flex-block">
-                <span class="image-frame">
-                  <ResponsiveImage
-                    source="wix-studio-platform-icon.png"
-                    title="wix studio platform icon"
-                    width="1254"
-                    height="1254"
-                    sizes="96px"
-                  />
-                </span>
-              </ImageBlock>
-            </Column>
-            <Column class="column-21 column flex-column blend-normal width-6-24 width-6-24-tablet width-24-24-phone width-6-24-wide-tablet">
-              <ImageBlock class="image-12 image-block block flex-block">
-                <span class="image-frame">
-                  <ResponsiveImage
-                    source="wix-studio-platform-icon.png"
-                    title="wix studio platform icon"
-                    width="1254"
-                    height="1254"
-                    sizes="96px"
-                  />
-                </span>
-              </ImageBlock>
-            </Column>
-            <Column class="column-22 column flex-column blend-normal width-6-24 width-6-24-tablet width-24-24-phone width-6-24-wide-tablet">
-              <ImageBlock class="image-13 image-block block flex-block">
-                <span class="image-frame">
-                  <ResponsiveImage
-                    source="wix-studio-platform-icon.png"
-                    title="wix studio platform icon"
-                    width="1254"
-                    height="1254"
-                    sizes="96px"
-                  />
-                </span>
-              </ImageBlock>
-            </Column>
-            <Column class="column-23 column flex-column blend-normal width-6-24 width-6-24-tablet width-24-24-phone width-6-24-wide-tablet">
-              <ImageBlock class="image-14 image-block block flex-block">
-                <span class="image-frame">
-                  <ResponsiveImage
-                    source="wix-studio-platform-icon.png"
-                    title="wix studio platform icon"
-                    width="1254"
-                    height="1254"
-                    sizes="96px"
-                  />
-                </span>
-              </ImageBlock>
-            </Column>
-            <Column class="column-24 column flex-column blend-normal width-6-24 width-6-24-tablet width-24-24-phone width-6-24-wide-tablet">
-              <ImageBlock class="image-15 image-block block flex-block">
-                <span class="image-frame">
-                  <ResponsiveImage
-                    source="wix-studio-platform-icon.png"
-                    title="wix studio platform icon"
-                    width="1254"
-                    height="1254"
-                    sizes="96px"
-                  />
-                </span>
-              </ImageBlock>
-            </Column>
-            <Column class="column-25 column flex-column blend-normal width-6-24 width-6-24-tablet width-24-24-phone width-6-24-wide-tablet">
-              <ImageBlock class="image-16 image-block block flex-block">
-                <span class="image-frame">
-                  <ResponsiveImage
-                    source="wix-studio-platform-icon.png"
-                    title="wix studio platform icon"
-                    width="1254"
-                    height="1254"
-                    sizes="96px"
-                  />
-                </span>
-              </ImageBlock>
-            </Column>
-            <Column class="column-26 column last-column flex-column blend-normal width-6-24 width-6-24-tablet width-24-24-phone width-6-24-wide-tablet">
-              <ImageBlock class="image-17 image-block block flex-block">
-                <span class="image-frame">
-                  <ResponsiveImage
-                    source="wix-studio-platform-icon.png"
-                    title="wix studio platform icon"
                     width="1254"
                     height="1254"
                     sizes="96px"
@@ -1074,13 +973,39 @@ import Accordion from '../../components/content/Accordion.astro';
             <Column class="column-51 column last-column flex-column blend-normal width-12-24 width-24-24-tablet width-24-24-phone width-12-24-wide-tablet">
               <ImageBlock class="image-25 image-block block flex-block">
                 <span class="image-frame">
-                  <ResponsiveImage
-                    source="Split-Tone-3D-Pricing-Badge.avif"
-                    title="Split-Tone 3D Pricing Badge"
-                    width="1448"
-                    height="1086"
-                    sizes="96px"
-                  />
+                  <svg
+                    class="pricing-graphic"
+                    viewBox="0 0 320 250"
+                    fill="none"
+                    role="img"
+                    aria-label="Transparent project pricing"
+                  >
+                    <rect
+                      x="30"
+                      y="35"
+                      width="260"
+                      height="180"
+                      rx="24"
+                      fill="#101c40"
+                      stroke="#537ef0"
+                    />
+                    <path d="M30 85H290" stroke="#537ef0" />
+                    <circle cx="54" cy="60" r="4" fill="#7ba4ff" />
+                    <circle cx="70" cy="60" r="4" fill="#4164b1" />
+                    <path
+                      d="M62 118H136M62 136H116M62 174H152"
+                      stroke="#8db2ff"
+                      stroke-width="6"
+                      stroke-linecap="round"
+                    />
+                    <circle cx="228" cy="149" r="38" fill="#244ec0" stroke="#8db2ff" />
+                    <path
+                      d="M238 131C228 121 212 130 220 140C225 146 239 142 239 154C239 166 219 169 215 157M228 120V177"
+                      stroke="#e8f1ff"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                    />
+                  </svg>
                 </span>
               </ImageBlock>
             </Column>

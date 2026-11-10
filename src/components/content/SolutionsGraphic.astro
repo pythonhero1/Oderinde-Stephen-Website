@@ -1,0 +1,54 @@
+---
+const nodes = [
+  { icon: 'BUSINESS-WEBSITE-—-Icon.svg', position: 'website' },
+  { icon: 'ONLINE-STORE-—-Icon.svg', position: 'store' },
+  { icon: 'WEBSITE-REDESIGN-—-Icon.svg', position: 'redesign' },
+  { icon: 'AUTOMATION-—-Icon.svg', position: 'systems' },
+];
+---
+
+<div
+  class="solutions-graphic"
+  role="img"
+  aria-label="A connected business website, online store, redesign and automation system"
+>
+  <svg class="system-connections" viewBox="0 0 560 480" fill="none" aria-hidden="true">
+    <defs>
+      <radialGradient id="system-halo">
+        <stop stop-color="#3565ee" stop-opacity=".3" />
+        <stop offset="1" stop-color="#3565ee" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+    <circle cx="280" cy="240" r="230" fill="url(#system-halo)" />
+    <g stroke="#5389ff">
+      <circle cx="280" cy="240" r="158" opacity=".25" />
+      <circle cx="280" cy="240" r="195" opacity=".12" stroke-dasharray="3 9" />
+      <path
+        d="M120 115H210L280 240M440 115H350L280 240M120 365H210L280 240M440 365H350L280 240"
+        opacity=".7"
+      />
+    </g>
+    <g fill="#a7cbff">
+      <circle cx="210" cy="115" r="3" />
+      <circle cx="350" cy="115" r="3" />
+      <circle cx="210" cy="365" r="3" />
+      <circle cx="350" cy="365" r="3" />
+    </g>
+  </svg>
+  <div class="system-core" aria-hidden="true">
+    <svg viewBox="0 0 80 64" fill="none">
+      <rect x="4" y="4" width="72" height="47" rx="6" stroke="currentColor" stroke-width="2" />
+      <path
+        d="M5 16H75M28 60H52M40 51V60M15 29H35M15 36H29M45 26H64V43H45Z"
+        stroke="currentColor"
+        stroke-width="2"
+      />
+      <circle cx="12" cy="10" r="1" fill="currentColor" />
+    </svg>
+  </div>
+  {nodes.map(({ icon, position }) => (
+    <div class={`system-node system-node-${position}`} aria-hidden="true">
+      <img src={`/images/${icon}`} alt="" width="96" height="96" />
+    </div>
+  ))}
+</div>
