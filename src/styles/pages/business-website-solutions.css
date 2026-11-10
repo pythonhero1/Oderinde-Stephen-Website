@@ -2366,8 +2366,8 @@ body {
 }
 #page-entry.solutions-page .container {
   display: grid;
-  width: min(1440px, 88%);
-  max-width: none;
+  width: 100%;
+  max-width: 1248px;
   grid-template-columns: minmax(0, 1fr);
   gap: 28px;
   margin: 0 auto;
@@ -2992,6 +2992,14 @@ body {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
   }
 }
+@media (max-width: 1024px) {
+  #page-entry.solutions-page .container {
+    width: 90%;
+  }
+  #page-entry.solutions-page .layout-row-nested {
+    width: 100%;
+  }
+}
 @media (max-width: 850px) {
   #page-entry.solutions-page
     :is(.template-split-hero, .row-6, .template-pricing-promo, .template-guidance-faq) {
@@ -3018,7 +3026,7 @@ body {
     font-size: 16px;
   }
   #page-entry.solutions-page .container {
-    width: calc(100% - 40px);
+    width: 90%;
     gap: 24px;
   }
   #page-entry.solutions-page .container > .column {

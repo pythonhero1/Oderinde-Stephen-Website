@@ -42,6 +42,10 @@ Inspected directly at [oderindestephen.com](https://oderindestephen.com/) on 10 
 
 Exact observed values are saved in [live-homepage-observations.json](live-homepage-observations.json). Reusable CSS variables are available in [theme-tokens.css](theme-tokens.css); this file is deliberately not imported into public pages yet.
 
+## Section width standard
+
+Verified against the Cloudflare homepage and pricing page on 10 November 2026: centre primary content rows with a maximum width of **1248px** on large screens. Use the homepage's **90% width at 1024px and below** for responsive side margins. Nested rows use 100% of their parent, without adding another outer gutter. Keep decorative full-width background layers separate from the content width.
+
 ## Existing project assets
 
 Reuse the original assets under `src/assets/images` and `public/images`, including `Split-Tone-3D-Pricing-Badge.avif`, the platform/review icons, `ATTRACT-Icon.svg`, `CONVERT-Icon.svg`, `Flow-Arrow.svg`, `website-project-clarity-question-background.avif`, `neon-growth-chart-icon.avif`, `thoughtful-young-man-in-blue-glow.avif` and the original case-study artwork. Resolve each template's actual asset before implementation; the screenshot itself is a reference, not a flattened replacement for a section.
