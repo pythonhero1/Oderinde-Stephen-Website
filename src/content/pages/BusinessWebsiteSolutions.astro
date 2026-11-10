@@ -16,13 +16,14 @@ import Accordion from '../../components/content/Accordion.astro';
     <div class="page-layout page-content">
       <div class="section-stack">
         <PageSection class="section-1 page-section flex-section">
-          <Container class="row-1 container flex-row">
+          <Container class="row-1 template-split-hero container flex-row">
             <Column class="column-1 column flex-column blend-normal width-12-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
               <TextBlock class="copy-1 copy-block tone-light block flex-block">
                 <p>SOLUTIONS FOR BUSINESS PROBLEMS</p>
               </TextBlock>
               <Heading class="heading-1 block flex-block" level={1}>
-                Start with what your business needs the website to solve.
+                Start with what your <span class="accent">business needs</span> the website to
+                solve.
               </Heading>
               <TextBlock class="copy-2 copy-block tone-light block flex-block">
                 <p>
@@ -64,7 +65,7 @@ import Accordion from '../../components/content/Accordion.astro';
               </ImageBlock>
             </Column>
           </Container>
-          <Container class="row-2 container flex-row">
+          <Container class="row-2 template-benefit-strip container flex-row">
             <Column class="column-3 column flex-column blend-normal width-6-24 width-6-24-tablet width-2-5-phone width-6-24-wide-tablet">
               <div class="group-2 last-column block flex-group blend-normal">
                 <Heading class="heading-2 block flex-block" level={1}>
@@ -123,7 +124,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 <p>FIND THE RIGHT ROUTE</p>
               </TextBlock>
               <Heading id="solution-paths" class="heading-6 block flex-block" level={2}>
-                Which situation sounds most like yours?
+                Which situation <span class="accent">sounds most like yours?</span>
               </Heading>
               <TextBlock class="copy-4 copy-block tone-light block flex-block">
                 <p>
@@ -360,7 +361,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 <p>PLATFORMS I BUILD WITH</p>
               </TextBlock>
               <Heading class="heading-13 block flex-block" level={2}>
-                Technology comes after the business need is clear.
+                Technology comes after <span class="accent">the business need is clear.</span>
               </Heading>
               <TextBlock class="copy-20 copy-block tone-light block flex-block">
                 <p>
@@ -371,7 +372,7 @@ import Accordion from '../../components/content/Accordion.astro';
               </TextBlock>
             </Column>
           </Container>
-          <Container class="row-8 container flex-row">
+          <Container class="row-8 template-platform-strip container flex-row">
             <Column class="column-15 column flex-column blend-normal width-6-24 width-6-24-tablet width-24-24-phone width-6-24-wide-tablet">
               <ImageBlock class="image-6 image-block block flex-block">
                 <span class="image-frame">
@@ -537,7 +538,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 <p>ALREADY KNOW YOUR PLATFORM?</p>
               </TextBlock>
               <Heading class="heading-14 block flex-block" level={2}>
-                Go directly to the platform-specific service.
+                Go directly to the <span class="accent">platform-specific service.</span>
               </Heading>
               <TextBlock class="copy-22 copy-block tone-light block flex-block">
                 <p>
@@ -668,7 +669,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 <p>SELECTED WORK - REAL PROJECTS</p>
               </TextBlock>
               <Heading class="heading-15 block flex-block" level={2}>
-                See how digital solutions become real business results.
+                See how digital solutions become <span class="accent">real business results.</span>
               </Heading>
               <TextBlock class="copy-24 copy-block tone-light block flex-block">
                 <p>
@@ -851,7 +852,7 @@ import Accordion from '../../components/content/Accordion.astro';
               </TextBlock>
             </Column>
           </Container>
-          <Container class="row-16 container flex-row">
+          <Container class="row-16 template-review-strip container flex-row">
             <Column class="column-40 column flex-column blend-normal width-6-24 width-24-24-tablet width-24-24-phone width-12-24-wide-tablet">
               <div class="group-14 last-column block flex-group blend-normal os-motion-lift">
                 <ImageBlock class="image-21 image-block block flex-block">
@@ -961,7 +962,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 <p>HOW WE MOVE FORWARD</p>
               </TextBlock>
               <Heading class="heading-27 block flex-block" level={2}>
-                From business problem to the right website system.
+                From business problem to <span class="accent">the right website system.</span>
               </Heading>
               <TextBlock class="copy-41 copy-block tone-light block flex-block">
                 <p>
@@ -1031,7 +1032,7 @@ import Accordion from '../../components/content/Accordion.astro';
           </Container>
         </PageSection>
         <PageSection class="section-9 page-section flex-section">
-          <Container class="row-19 container flex-row">
+          <Container class="row-19 template-pricing-promo container flex-row">
             <Column class="column-49 column flex-column blend-normal width-12-24 width-24-24-tablet width-24-24-phone width-12-24-wide-tablet">
               <TextBlock class="copy-54 copy-block tone-light block flex-block">
                 <p>TRANSPARENT STARTING PRICES</p>
@@ -1079,7 +1080,7 @@ import Accordion from '../../components/content/Accordion.astro';
                     title="Split-Tone 3D Pricing Badge"
                     width="1448"
                     height="1086"
-                    sizes="96px"
+                    sizes="(max-width: 767px) 100vw, 45vw"
                   />
                 </span>
               </ImageBlock>
@@ -1093,7 +1094,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 <p>COMMON DECISION QUESTIONS</p>
               </TextBlock>
               <Heading class="heading-33 block flex-block" level={2}>
-                Questions that help you choose the right direction.
+                Questions that help you <span class="accent">choose the right direction.</span>
               </Heading>
               <TextBlock class="copy-58 copy-block tone-light block flex-block">
                 <p>
@@ -1103,7 +1104,7 @@ import Accordion from '../../components/content/Accordion.astro';
               </TextBlock>
             </Column>
           </Container>
-          <Container class="row-22 container flex-row">
+          <Container class="row-22 template-guidance-faq container flex-row">
             <Column class="column-53 column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet os-motion-lift">
               <ImageBlock class="image-26 image-block block flex-block">
                 <span class="image-frame">
@@ -1209,7 +1210,7 @@ import Accordion from '../../components/content/Accordion.astro';
         </PageSection>
         <PageSection class="section-11 page-section flex-section os-motion-reveal">
           <Container class="row-26 container flex-row">
-            <Column class="column-58 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet os-motion-lift">
+            <Column class="column-58 template-project-cta column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet os-motion-lift">
               <Container class="row-27 container layout-row-nested flex-row">
                 <Column class="column-59 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
                   <TextBlock class="copy-60 copy-block tone-light block flex-block">
@@ -1218,7 +1219,8 @@ import Accordion from '../../components/content/Accordion.astro';
                 </Column>
               </Container>
               <Heading class="heading-39 block flex-block" level={2}>
-                Start with the problem. We can define the right system from there.
+                Start with the problem. We can define <span class="accent">the right system</span>{' '}
+                from there.
               </Heading>
               <TextBlock class="copy-61 copy-block tone-light block flex-block">
                 <p>
