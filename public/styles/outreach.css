@@ -39,3 +39,5 @@ a.outreach-button:hover{background:#4c78ff}a.outreach-text-link{display:inline-b
 
 .outreach-project-card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:8px;margin-bottom:24px}.outreach-service-image{max-width:720px;margin:0 auto 48px}.outreach-service-image img{width:100%;height:auto;border-radius:16px}.outreach-story h5,.outreach-story h6{color:var(--outreach-text);font-size:20px;line-height:1.4;margin:24px 0 14px}.outreach-story a{overflow-wrap:anywhere}
 @media(max-width:767px){.outreach-preview #main-content .et_pb_row{max-width:calc(100% - 40px)!important;width:calc(100% - 40px)!important;margin-left:auto!important;margin-right:auto!important}}
+
+.outreach-preview #main-content .os-hero-visual{background-image:none!important}
