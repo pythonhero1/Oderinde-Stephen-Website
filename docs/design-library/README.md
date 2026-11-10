@@ -49,3 +49,7 @@ Verified against the Cloudflare homepage and pricing page on 10 November 2026: c
 ## Existing project assets
 
 Reuse the original assets under `src/assets/images` and `public/images`, including `Split-Tone-3D-Pricing-Badge.avif`, the platform/review icons, `ATTRACT-Icon.svg`, `CONVERT-Icon.svg`, `Flow-Arrow.svg`, `website-project-clarity-question-background.avif`, `neon-growth-chart-icon.avif`, `thoughtful-young-man-in-blue-glow.avif` and the original case-study artwork. Resolve each template's actual asset before implementation; the screenshot itself is a reference, not a flattened replacement for a section.
+
+## Reusable style patterns
+
+`src/styles/reference-theme.css` provides opt-in styles for the approved hero, benefit strip, card grids, connected flow, reviews, pricing, guidance/FAQ and project CTA patterns. The Business Website Development page uses these named `ref-*` classes under `#page-entry[data-reference-theme]`. Import the stylesheet through a page stylesheet and add the matching hooks to existing markup to reuse a pattern without altering its content.

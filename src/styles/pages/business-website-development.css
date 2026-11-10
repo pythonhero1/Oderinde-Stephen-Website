@@ -1,3 +1,5 @@
+@import '../reference-theme.css';
+
 input[type='email'],
 input[type='password'],
 input[type='tel'],
