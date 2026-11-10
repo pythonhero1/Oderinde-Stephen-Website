@@ -1,0 +1,113 @@
+[
+  {
+    "path": "pricing",
+    "title": "Pricing",
+    "description": "Explore website development pricing from \u00a3450, e-commerce from \u00a3250, redesigns from \u00a3400 and custom digital solutions from \u00a3700. Request a tailored quote.",
+    "type": "page",
+    "updated": "2026-10-20",
+    "layoutKey": "pricing"
+  },
+  {
+    "path": "case-studies",
+    "title": "Case Studies",
+    "description": "Explore website development case studies by Oderinde Stephen, covering WordPress projects, website redesigns, business challenges and digital solutions.",
+    "type": "page",
+    "updated": "2026-10-20",
+    "layoutKey": "case-studies"
+  },
+  {
+    "path": "contact",
+    "title": "Contact",
+    "description": "Discuss your website, e-commerce or automation project with Oderinde Stephen. Send a project brief, email directly or book a strategy call.",
+    "type": "page",
+    "updated": "2026-10-19",
+    "layoutKey": "contact"
+  },
+  {
+    "path": "business-website-development",
+    "title": "Business Website Development",
+    "description": "Professional business website development focused on clear services, responsive design and customer enquiries. Explore projects and discuss your website with Oderinde Stephen.",
+    "type": "page",
+    "updated": "2026-10-21",
+    "layoutKey": "business-website-development"
+  },
+  {
+    "path": "business-website-solutions",
+    "title": "Business Website Solutions",
+    "description": "Explore website, e-commerce, redesign and business-system solutions. Find a practical starting point for your project with Oderinde Stephen.",
+    "type": "page",
+    "updated": "2026-10-21",
+    "layoutKey": "business-website-solutions"
+  },
+  {
+    "path": "",
+    "title": "Website Development & Digital Solutions | Oderinde Stephen",
+    "description": "Oderinde Stephen builds professional websites, e-commerce stores and digital automation solutions using WordPress, Shopify and connected business systems.",
+    "type": "page",
+    "updated": "2026-10-21",
+    "layoutKey": "home"
+  },
+  {
+    "path": "case-study/pipe-patch-pro-amazon-listing-website",
+    "title": "Pipe Patch Pro WordPress Product Website Development",
+    "description": "Discover my WordPress product website development project for Pipe Patch Pro, featuring three repair kits, Amazon purchase links and WooCommerce infrastructure.",
+    "type": "project",
+    "updated": "2026-10-21",
+    "layoutKey": "case-study--pipe-patch-pro-amazon-listing-website"
+  },
+  {
+    "path": "case-study/samuel-edmond-stone-landing-page",
+    "title": "Doug Steinman building a launch-ready author website for Samuel Edmond Stone",
+    "description": "Doug needed help creating an online presence for the Samuel Edmondstone / Homeless Trilogy project. The work started around improving the website experience and later expanded into helping establish supporting social media presence.",
+    "type": "project",
+    "updated": "2026-09-09",
+    "layoutKey": "case-study--samuel-edmond-stone-landing-page"
+  },
+  {
+    "path": "case-study/einbruchschutz-baumgaertner-modernizing-website-redesign-case-study",
+    "title": "Einbruchschutz Baumgaertner modernizing an 11-page security site while protecting what already worked",
+    "description": "A larger repeat-client WordPress engagement covering visual redesign, responsive rebuilding, on-page SEO, video, manufacturer proof, Google reviews, staging and production migration for a German security business.",
+    "type": "project",
+    "updated": "2026-09-03",
+    "layoutKey": "case-study--einbruchschutz-baumgaertner-modernizing-website-redesign-case-study"
+  },
+  {
+    "path": "case-study/bau-helden-website-redesign-case-study",
+    "title": "Bau Helden turning a direct order into a structured redesign process",
+    "description": "A three-page German WordPress redesign that began without normal pre-sale discovery, moved through visual planning and mobile refinement, and became the design reference for the client\u2019s next, larger engagement.",
+    "type": "project",
+    "updated": "2026-09-03",
+    "layoutKey": "case-study--bau-helden-website-redesign-case-study"
+  },
+  {
+    "path": "case-study/born-accelerators-case-study-website",
+    "title": "BORN Accelerators building a bilingual launch platform around a moving campaign",
+    "description": "A Sport, Health & Tech accelerator website built to explain a new ecosystem, support German and English audiences, route startups and investors toward the right action, and still launch while campaign priorities were changing.",
+    "type": "project",
+    "updated": "2026-09-03",
+    "layoutKey": "case-study--born-accelerators-case-study-website"
+  },
+  {
+    "path": "case-study/agentur-ostwest-turning-an-outdated-agency-site-into-a-clean-bilingual-portfolio",
+    "title": "Agentur Ostwest turning an outdated agency site into a clean bilingual portfolio",
+    "description": "A focused DE/EN WordPress redesign for a German voice-over agency: simpler structure, stronger portfolio presentation, clearer navigation and a content workflow the client could continue managing himself.",
+    "type": "project",
+    "updated": "2026-09-03",
+    "layoutKey": "case-study--agentur-ostwest-turning-an-outdated-agency-site-into-a-clean-bilingual-portfolio"
+  },
+  {
+    "path": "insights",
+    "title": "Website Insights",
+    "description": "Practical website, e-commerce and business technology articles from Oderinde Stephen.",
+    "type": "collection",
+    "layoutKey": "article"
+  },
+  {
+    "path": "privacy",
+    "title": "Privacy & Project Enquiries",
+    "description": "How project enquiry information is handled and how to contact Oderinde Stephen.",
+    "type": "page",
+    "layoutKey": "article",
+    "contentKey": "privacy"
+  }
+]

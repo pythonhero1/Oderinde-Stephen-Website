@@ -1,5 +1,6 @@
 import { parseFragment, serialize } from 'parse5';
-import { findElement, hasClass } from './wordpress.mjs';
+import { findElement, hasClass } from './html.mjs';
+const labels = {name:'Your name',email:'Email address',company:'Company or website (optional)',service:'Service required',budget:'Project budget (optional)',timeline:'Preferred timeline (optional)',message:'Tell me about your project'};
 const names = { yourname: 'name', emailaddress: 'email', companyorwebsiteoptional: 'company', servicerequired: 'service', projectbudgetoptional: 'budget', preferredtimelineoptional: 'timeline', tellmeaboutyourproject: 'message' };
 export function configureContactForms(html, endpoint = '') {
   if (!html.includes('et_pb_contact_form')) return html;
@@ -21,6 +22,7 @@ export function configureContactForms(html, endpoint = '') {
       const field = names[attr(node, 'data-original_id')];
       if (field) {
         set(node,'name',field);
+        set(node,'aria-label',labels[field]);
         set(node,'required',['name','email','service','message'].includes(field) ? '' : null);
         if (node.tagName !== 'select') set(node,'maxlength',field === 'message' ? '6000' : '254');
         if (field === 'email') { set(node,'type','email');set(node,'autocomplete','email'); }

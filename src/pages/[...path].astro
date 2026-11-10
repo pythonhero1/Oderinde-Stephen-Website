@@ -1,14 +1,19 @@
 ---
-import pages from '../data/wordpress.json';
+import pageManifest from '../content/pages.json';
 import contact from '../config/contact.json';
-import { renderWordPressPage } from '../lib/wordpress.mjs';
-import { getSitePages } from '../lib/site-pages.mjs';
+import { renderSitePage } from '../lib/site.mjs';
+import header from '../design/shared/header.html?raw';
+import footer from '../design/shared/footer.html?raw';
 export function getStaticPaths() {
-  return getSitePages(pages).map(page => ({
-    params: { path: page.path || undefined },
-    props: { html: renderWordPressPage(page, contact.verified ? contact.endpoint : '', pages) }
-  }));
+const layouts = import.meta.glob('../design/layouts/*.html', {query:'?raw',import:'default',eager:true});
+const contents = import.meta.glob('../content/pages/*.html', {query:'?raw',import:'default',eager:true});
+const articles = import.meta.glob('../content/blog/*.md', {eager:true});
+  const posts=Object.values(articles).filter(post=>!post.frontmatter.draft).map(post=>({post,path:post.frontmatter.slug,title:post.frontmatter.title,description:post.frontmatter.description,updated:post.frontmatter.updated,type:'post',layoutKey:post.frontmatter.layoutKey||'article'}));
+  return [...pageManifest.map(page=>({page,content:contents[`../content/pages/${page.contentKey||page.layoutKey}.html`]})),...posts.map(page=>({page,post:page.post}))].map(props=>({params:{path:props.page.path||undefined},props:{...props,posts,layout:layouts[`../design/layouts/${props.page.layoutKey}.html`]}}));
 }
-const { html } = Astro.props;
+const {page,content,post,posts,layout}=Astro.props;
+const collection=page.type==='collection' ? `<article class="site-article"><h1>Website Insights</h1><p>Practical notes on websites, e-commerce and digital systems for business.</p>${posts.map(p=>`<section class="site-article-card"><h2><a href="/${p.path}/">${p.title}</a></h2><p>${p.description}</p><a href="/${p.path}/">Read article →</a></section>`).join('')}</article><link rel="stylesheet" href="/styles/content.css">` : content;
+const articleHTML=post ? `<article class="site-article"><header><p>WEBSITE INSIGHTS</p><h1>${page.title.replaceAll('&','&amp;').replaceAll('<','&lt;')}</h1><p>${page.description.replaceAll('&','&amp;').replaceAll('<','&lt;')}</p></header>${await post.compiledContent()}</article><link rel="stylesheet" href="/styles/content.css">` : collection;
+const html=renderSitePage({page,layout,content:articleHTML,header,footer,endpoint:contact.verified?contact.endpoint:'',posts});
 ---
 <Fragment set:html={html} />

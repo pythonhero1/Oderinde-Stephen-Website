@@ -7,16 +7,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "sync:wordpress": "node scripts/sync-wordpress.mjs",
-    "build:wordpress": "npm run sync:wordpress && npm run build",
     "test": "node --test tests/*.test.mjs",
-    "deploy:preview": "npm run build && wrangler pages deploy dist --project-name oderinde-stephen-preview --branch preview",
+    "deploy:preview": "npm run build && npm run validate && wrangler pages deploy dist --project-name oderinde-stephen-preview --branch main",
     "validate": "node scripts/validate-build.mjs",
-    "publish:wordpress": "node scripts/publish-wordpress.mjs",
-    "watch:wordpress": "node scripts/publish-wordpress.mjs --watch",
-    "check:publisher": "node scripts/publish-wordpress.mjs --check",
-    "install:publisher": "node scripts/install-publisher.mjs",
-    "stop:publisher": "node scripts/install-publisher.mjs --stop"
+    "new:post": "node scripts/new-post.mjs"
   },
   "dependencies": {
     "astro": "^7.4.7",
