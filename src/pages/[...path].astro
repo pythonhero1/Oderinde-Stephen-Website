@@ -2,10 +2,11 @@
 import pages from '../data/wordpress.json';
 import contact from '../config/contact.json';
 import { renderWordPressPage } from '../lib/wordpress.mjs';
+import { getSitePages } from '../lib/site-pages.mjs';
 export function getStaticPaths() {
-  return pages.map(page => ({
+  return getSitePages(pages).map(page => ({
     params: { path: page.path || undefined },
-    props: { html: renderWordPressPage(page, contact.verified ? contact.endpoint : '') }
+    props: { html: renderWordPressPage(page, contact.verified ? contact.endpoint : '', pages) }
   }));
 }
 const { html } = Astro.props;

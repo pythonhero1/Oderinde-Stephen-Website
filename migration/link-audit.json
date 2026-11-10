@@ -1,16 +1,7 @@
 {
-  "pages": 13,
-  "checkedAssetReferences": 1705,
+  "pages": 15,
+  "checkedAssetReferences": 391,
   "missingAssets": [],
-  "unresolvedOriginalLinks": [
-    "/client-portals-business-systems/",
-    "/e-commerce-development/",
-    "/insights/",
-    "/portfolio/",
-    "/shopify-development/",
-    "/solutions/",
-    "/website-redesign/",
-    "/woocommerce-development/",
-    "/wordpress-development/"
-  ]
+  "unresolvedOriginalLinks": [],
+  "brokenFragments": []
 }

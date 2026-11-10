@@ -1,6 +1,7 @@
 import { parse } from 'parse5';
 import { fetchWordPress } from './wordpress-fetch.mjs';
 import { configureContactForms } from './contact-form.mjs';
+import { prepareOutreach } from './outreach.mjs';
 
 export const CONTENT_MARKER = '<!-- ASTRO_WORDPRESS_CONTENT -->';
 export const SITE_ORIGIN = 'https://oderindestephen.com';
@@ -42,7 +43,7 @@ export function cleanMarkup(html, wordpressUrl) {
     .replace(/<style[^>]*>\s*html\s*\{\s*margin-top:[\s\S]*?<\/style>/gi, '');
   return output;
 }
-export function renderWordPressPage(page, endpoint = '') {
+export function renderWordPressPage(page, endpoint = '', pages = []) {
   let html = normalizeUrls(page.template, SITE_ORIGIN);
   if (page.contentSource === 'rest-api') {
     if (!html.includes(CONTENT_MARKER)) throw new Error(`Missing content marker for ${page.path}`);
@@ -51,7 +52,7 @@ export function renderWordPressPage(page, endpoint = '') {
   const canonical = SITE_ORIGIN + '/' + (page.path ? page.path + '/' : '');
   html = html.replace(/<link[^>]*rel=["']canonical["'][^>]*>/gi, '')
     .replace('</head>', `<link rel="canonical" href="${canonical}"></head>`);
-  return configureContactForms(html, endpoint);
+  return configureContactForms(prepareOutreach(html, page, pages), endpoint);
 }
 
 export async function fetchCollection(base, endpoint, fetcher = fetch) {

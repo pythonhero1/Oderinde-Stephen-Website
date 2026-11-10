@@ -35,9 +35,11 @@ npm run preview
 
 This first version keeps Divi's generated markup, styling and presentation scripts to preserve the current design; it is not a rewrite into individual Astro components. Astro inserts the REST content into the captured page shell at build time.
 
-The six case-study pages use a Divi Theme Builder body that replaces the normal post content. For these pages the sync also refreshes the public WordPress view, because `content.rendered` alone does not include that template. Edit that display in WordPress Theme Builder. The current WordPress template displays Pipe Patch Pro content across all six case-study URLs; this pre-existing behaviour is retained, rather than silently changing those layouts.
+The six case studies now render their individual authored WordPress content in a shared lightweight article layout, correcting the source Theme Builder template that displayed Pipe Patch Pro on every project. Blog posts, services, the project index, insights index, contact and privacy pages also use lightweight layouts. The home and pricing pages retain their Divi presentation. Shared navigation and footer are rendered consistently across the site. Edit project and article text in WordPress; layout, profile links and preview SEO settings are maintained in this repository.
 
 An older export received an empty WordPress response for the blog. A reconstructed article layout is retained in `migration/layout-fallbacks.json` as an explicit fallback for that route; the latest sync recovered its normal WordPress view. `migration/sync-report.json` records any fallback use and template-managed pages.
+
+Real Upwork and Fiverr profiles are configured in `src/config/site.json`. Placeholder review badges and the unfinished checklist download are hidden in the review build. The automatic Mac publisher is currently paused; a hosted publishing workflow and traffic analytics are not configured yet.
 
 ## Contact enquiries
 
@@ -77,7 +79,7 @@ The current Pages project was created using Direct Upload from the Cloudflare da
 
 Repository: https://github.com/pythonhero1/Oderinde-Stephen-Website
 
-The main custom domain is intentionally not connected to Pages. Its older WordPress site is preserved. Only the new `cms` DNS record was added for the migrated backend. Search indexing is discouraged on the CMS copy. Review the exported robots metadata before attaching the public domain, since the preview preserves the source metadata.
+The main custom domain is intentionally not connected to Pages. Its older WordPress site is preserved. Only the new `cms` DNS record was added for the migrated backend. Search indexing is discouraged on the CMS copy. The review build deliberately uses `noindex, follow` and a disallowing robots.txt. Before attaching the public domain, set `indexable` to true in `src/config/site.json`, rebuild and verify the resulting robots metadata and sitemap. Public canonical URLs already use oderindestephen.com.
 
 To build from this repository in Cloudflare Pages, choose the Astro preset, build command `npm run build`, output folder `dist`, and Node.js `22.23.4` or newer. This uses the committed snapshot, so WordPress can remain local.
 
@@ -101,4 +103,4 @@ npm run build
 npm run validate
 ```
 
-Tests cover REST pagination and errors, content insertion, URL rewriting, and prevention of preview form submissions. The validator checks all generated routes and local asset references. The link audit reports pre-existing links to unpublished/missing pages; these should be reviewed before attaching the live domain.
+Tests cover REST pagination and errors, content insertion, URL rewriting, contact delivery configuration, individual case studies, profile links, blog navigation and preview SEO metadata. The validator checks all generated routes, local assets, internal links and section anchors. Unpublished service links currently lead to the relevant available solutions sections.

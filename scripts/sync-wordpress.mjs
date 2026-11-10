@@ -74,33 +74,37 @@ function collect(text) {
 for (const page of result) collect(page.template + page.content);
 const seen = new Set();
 while (pending.size) {
-  const asset = pending.values().next().value; pending.delete(asset);
-  if (seen.has(asset)) continue;
-  seen.add(asset);
-  const relative = asset.replace(/^\//, '');
-  const output = path.resolve('public', relative);
-  if (!output.startsWith(path.resolve('public') + path.sep)) throw new Error(`Unsafe asset path: ${asset}`);
-  await mkdir(path.dirname(output), { recursive: true });
-  let bytes;
-  const local = sourceRoot && path.resolve(sourceRoot, relative);
-  if (local && local.startsWith(sourceRoot + path.sep) && existsSync(local)) bytes = await readFile(local);
-  else {
-    const response = await fetchWordPress(new URL(asset, base));
-    if (!response.ok) throw new Error(`Asset unavailable ${asset}: ${response.status}`);
-    bytes = Buffer.from(await response.arrayBuffer());
-  }
-  if (asset.endsWith('.css')) {
-    const text = normalizeUrls(bytes.toString(), base);
-    collect(text);
-    for (const ref of text.matchAll(/url\(["']?([^)'"\s]+)/g)) {
-      if (!/^(?:https?:|data:|\/\/)/.test(ref[1])) {
-        const resolved = new URL(ref[1], base + asset).pathname;
-        if (resolved.startsWith('/wp-content/') || resolved.startsWith('/wp-includes/')) pending.add(resolved);
-      }
+  const batch = [...pending].slice(0, 4);
+  for (const asset of batch) pending.delete(asset);
+  await Promise.all(batch.map(async asset => {
+    if (seen.has(asset)) return;
+    seen.add(asset);
+    const relative = asset.replace(/^\//, '');
+    const output = path.resolve('public', relative);
+    if (!output.startsWith(path.resolve('public') + path.sep)) throw new Error(`Unsafe asset path: ${asset}`);
+    await mkdir(path.dirname(output), { recursive: true });
+    let bytes;
+    const local = sourceRoot && path.resolve(sourceRoot, relative);
+    if (local && local.startsWith(sourceRoot + path.sep) && existsSync(local)) bytes = await readFile(local);
+    else {
+      const response = await fetchWordPress(new URL(asset, base));
+      if (!response.ok) throw new Error(`Asset unavailable ${asset}: ${response.status}`);
+      bytes = Buffer.from(await response.arrayBuffer());
     }
-    bytes = Buffer.from(text);
-  }
-  await writeFile(output, bytes);
+    if (asset.endsWith('.css')) {
+      const text = normalizeUrls(bytes.toString(), base);
+      collect(text);
+      for (const ref of text.matchAll(/url\(["']?([^)'"\s]+)/g)) {
+        if (!/^(?:https?:|data:|\/\/)/.test(ref[1])) {
+          const resolved = new URL(ref[1], base + asset).pathname;
+          if (resolved.startsWith('/wp-content/') || resolved.startsWith('/wp-includes/')) pending.add(resolved);
+        }
+      }
+      bytes = Buffer.from(text);
+    }
+    await writeFile(output, bytes);
+  }));
+  console.log(`Refreshed ${seen.size} assets; ${pending.size} pending.`);
 }
 await writeFile('src/data/wordpress.json', JSON.stringify(result));
 await writeFile('migration/sync-report.json', JSON.stringify({ syncedAt: new Date().toISOString(), pages: result.length, assets: seen.size, notes }, null, 2) + '\n');

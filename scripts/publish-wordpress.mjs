@@ -94,7 +94,7 @@ async function publish(target) {
     const after = await revisions();
     if (target.fingerprint !== after.fingerprint) throw new Error('WordPress changed during export. The next check will retry.');
     await assertSourceUnchanged(head);
-    await run(process.execPath, ['--test','tests/wordpress.test.mjs','tests/publishing.test.mjs']);
+    await run(process.execPath, ['--test','tests/wordpress.test.mjs','tests/publishing.test.mjs','tests/outreach.test.mjs']);
     await run(process.execPath, ['node_modules/astro/bin/astro.mjs','build']);
     await run(process.execPath, ['scripts/validate-build.mjs']);
     await assertSourceUnchanged(head);
@@ -118,7 +118,7 @@ async function tick(force = false) {
 }
 if (!watching) await tick(!checking);
 else {
-  log('Watching published WordPress changes. The Mac and Local site must remain running.');
+  log(`Watching ${base}. The Mac must remain awake and online.${process.env.WORDPRESS_PUBLIC_DIR ? ' Keep the local WordPress site running.' : ''}`);
   while (!stopping) {
     try { await tick(); } catch (error) { log(`Publish paused: ${error.message}. Will retry; the existing preview stays live.`); }
     if (!stopping) await new Promise(resolve => setTimeout(resolve, interval));
