@@ -1,0 +1,54 @@
+{
+  "pricing": {
+    "words": 1342,
+    "hash": "a91e545d4f7fa72ec9fe84f7bed2ee2270921db2e6e2994b43457c4b833bb409"
+  },
+  "case-studies": {
+    "words": 1654,
+    "hash": "b062583d4945bfcb802952454d15ddf1ca683dbc360f97229f32178498e1abd4"
+  },
+  "contact": {
+    "words": 1172,
+    "hash": "c2d3295c5d55afdc62a6e2b82350c5fda93baf2452a0fe00580a4d71a111040b"
+  },
+  "business-website-development": {
+    "words": 2329,
+    "hash": "bddd260f7f3a3aed967136cd4a285e8005b194fedc33f3159489f0bfafaf0d8f"
+  },
+  "business-website-solutions": {
+    "words": 1294,
+    "hash": "7f0b9ec211f8fb8cfb3d6b8a43aa252cdafd8811d7cba036a28907fe0d72c286"
+  },
+  "": {
+    "words": 2065,
+    "hash": "cb9feb8ef5245a098550179c9037215f97c15ba08d2fb16cd4a37d46a5d6f49f"
+  },
+  "case-study/pipe-patch-pro-amazon-listing-website": {
+    "words": 897,
+    "hash": "fbec122ef0e26b0cf5c169fe33260f1c1147344016c55c9c7ab38846b49821be"
+  },
+  "case-study/samuel-edmond-stone-landing-page": {
+    "words": 875,
+    "hash": "4659aef88b50940238fff3964c2ca17d0a36590711c21b7cefe2bab6a329c92d"
+  },
+  "case-study/einbruchschutz-baumgaertner-modernizing-website-redesign-case-study": {
+    "words": 813,
+    "hash": "599acac70178cebe9997dd83c3b686e59e6aea72b890acb8df708a2d6dd556c9"
+  },
+  "case-study/bau-helden-website-redesign-case-study": {
+    "words": 810,
+    "hash": "95d60c9db979efa2cecb6c8b7110df361c48d4880829c9f9fd1a3be5352113a7"
+  },
+  "case-study/born-accelerators-case-study-website": {
+    "words": 1055,
+    "hash": "92e74ac0c0e696bcf14e2c41e9916a273e498a8aac7facabdb20c5b33b1df0b5"
+  },
+  "case-study/agentur-ostwest-turning-an-outdated-agency-site-into-a-clean-bilingual-portfolio": {
+    "words": 752,
+    "hash": "7a930cddac72a676ad2e45abef3365f756e15171c757c0d03b71e957f321049b"
+  },
+  "privacy": {
+    "words": 79,
+    "hash": "d65b06477969b138a633c4156d9192ea9c6798ee58b98ffd22feea8c5592c2c9"
+  }
+}

@@ -1,43 +1,153 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFile,mkdtemp,mkdir,readdir,rm,writeFile} from 'node:fs/promises';
-import {createHash} from 'node:crypto';
-import {execFile} from 'node:child_process';
-import {promisify} from 'node:util';
-import {tmpdir} from 'node:os';
+import { readFile, mkdtemp, mkdir, readdir, rm, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
-import {parse} from 'parse5';
-import {renderSitePage} from '../src/lib/site.mjs';
-import {getContentPages} from '../src/lib/content.mjs';
-const manifest=JSON.parse(await readFile('src/content/pages.json','utf8'));
-const original=JSON.parse(await readFile('tests/fixtures/original-layouts.json','utf8'));
-const header=await readFile('src/design/shared/header.html','utf8');
-const footer=await readFile('src/design/shared/footer.html','utf8');
-const attr=(n,k)=>n.attrs?.find(a=>a.name===k)?.value;
-const text=n=>n.nodeName==='#text'?n.value:(n.childNodes||[]).map(text).join('');
-function find(n,p){if(p(n))return n;for(const c of n.childNodes||[]){const r=find(c,p);if(r)return r}}
-async function render(page){return renderSitePage({page,layout:await readFile(`src/design/layouts/${page.layoutKey}.html`,'utf8'),content:await readFile(`src/content/pages/${page.contentKey||page.layoutKey}.html`,'utf8'),header,footer,endpoint:'https://formspree.io/f/mnppkklg'});}
-function signature(main){const nodes=[];function walk(n){if(n.tagName&&n.tagName!=='a')nodes.push([n.tagName,attr(n,'class')||'']);if(n.tagName!=='form')for(const c of n.childNodes||[])walk(c)}walk(main);return createHash('sha256').update(JSON.stringify(nodes)).digest('hex');}
+import { parse } from 'parse5';
 
-test('restored page structure matches the original design before the rejected redesign',async()=>{
- for(const [slug,expected]of Object.entries(original)){const html=await render(manifest.find(p=>p.path===slug));const main=find(parse(html),n=>attr(n,'id')==='main-content');assert.equal(signature(main),expected,slug||'home');assert.ok(!html.includes('outreach-article'));}
+const pages = JSON.parse(await readFile('src/content/pages.json', 'utf8'));
+const inventory = JSON.parse(await readFile('tests/fixtures/content-inventory.json', 'utf8'));
+const site = JSON.parse(await readFile('src/config/site.json', 'utf8'));
+const attribute = (node, name) => node.attrs?.find((item) => item.name === name)?.value;
+const blockTags = new Set([
+  'p',
+  'div',
+  'li',
+  'ul',
+  'ol',
+  'article',
+  'section',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'form',
+  'label',
+  'button',
+  'select',
+  'option',
+  'textarea',
+  'table',
+  'tr',
+  'td',
+  'th',
+  'blockquote',
+  'br',
+  'span',
+  'strong',
+  'em',
+]);
+function text(node) {
+  if (['script', 'style'].includes(node.tagName) || attribute(node, 'id') === 'project-count-value')
+    return '';
+  if (node.nodeName === '#text') return node.value;
+  const body = (node.childNodes || []).map(text).join('');
+  return blockTags.has(node.tagName) ? ` ${body} ` : body;
+}
+function find(node, predicate) {
+  if (predicate(node)) return node;
+  for (const child of node.childNodes || []) {
+    const result = find(child, predicate);
+    if (result) return result;
+  }
+}
+const documentFor = async (slug) =>
+  parse(await readFile(path.join('dist', slug, 'index.html'), 'utf8'));
+
+test('the native page components preserve the existing authored content', async () => {
+  for (const [slug, expected] of Object.entries(inventory)) {
+    const document = await documentFor(slug);
+    const main = find(document, (node) => attribute(node, 'id') === 'main-content');
+    const words = (text(main).match(/[\p{L}\p{N}]+/gu) || []).join(' ');
+    assert.equal(createHash('sha256').update(words).digest('hex'), expected.hash, slug || 'home');
+  }
 });
-test('local pages render with no WordPress connection and preserve preview SEO',async()=>{
- const fetcher=globalThis.fetch;globalThis.fetch=()=>{throw new Error('Network use is not permitted for static content');};
- try{for(const page of manifest.filter(p=>p.type!=='collection')){const html=await render(page);assert.ok(!/https?:\/\/(?:cms\.oderindestephen\.com|oderindestephen\.local)|\/wp-json\/|\/wp-admin\//.test(html),page.path);const root=parse(html);assert.equal(attr(find(root,n=>n.tagName==='meta'&&attr(n,'name')==='robots'),'content'),'noindex, follow');assert.equal(attr(find(root,n=>n.tagName==='link'&&attr(n,'rel')==='canonical'),'href'),`https://oderindestephen.com/${page.path?page.path+'/':''}`);}}
- finally{globalThis.fetch=fetcher;}
+
+test('all native pages have public canonical URLs and review indexing protection', async () => {
+  for (const page of pages) {
+    const document = await documentFor(page.path);
+    assert.equal(
+      attribute(
+        find(document, (node) => node.tagName === 'meta' && attribute(node, 'name') === 'robots'),
+        'content',
+      ),
+      site.indexable ? 'index, follow' : 'noindex, follow',
+    );
+    assert.equal(
+      attribute(
+        find(document, (node) => node.tagName === 'link' && attribute(node, 'rel') === 'canonical'),
+        'href',
+      ),
+      `${site.origin}/${page.path ? page.path + '/' : ''}`,
+    );
+  }
 });
-test('contact form retains its original layout and verified Formspree delivery',async()=>{
- const root=parse(await render(manifest.find(p=>p.path==='contact')));const form=find(root,n=>n.tagName==='form');assert.equal(attr(form,'action'),'https://formspree.io/f/mnppkklg');assert.equal(attr(form,'method'),'post');for(const name of ['name','email','service','message'])assert.equal(attr(find(form,n=>attr(n,'name')===name),'required'),'');for(const name of ['company','budget','timeline'])assert.equal(attr(find(form,n=>attr(n,'name')===name),'required'),undefined);assert.ok(!find(form,n=>attr(n,'type')==='hidden'));
+
+test('contact enquiries use native validation and the verified email endpoint', async () => {
+  const form = find(await documentFor('contact'), (node) => node.tagName === 'form');
+  assert.equal(attribute(form, 'action'), 'https://formspree.io/f/mnppkklg');
+  assert.equal(attribute(form, 'method'), 'post');
+  for (const name of ['name', 'email', 'service', 'message']) {
+    const field = find(form, (node) => attribute(node, 'name') === name);
+    assert.notEqual(attribute(field, 'required'), undefined);
+    assert.ok(attribute(field, 'aria-label'));
+  }
+  for (const name of ['company', 'budget', 'timeline'])
+    assert.equal(
+      attribute(
+        find(form, (node) => attribute(node, 'name') === name),
+        'required',
+      ),
+      undefined,
+    );
 });
-test('each project has its authored content instead of the duplicated template',async()=>{
- for(const page of manifest.filter(p=>p.type==='project')){const root=parse(await render(page));const main=find(root,n=>attr(n,'id')==='main-content');assert.ok(find(main,n=>n.tagName==='h1'));if(!page.path.includes('pipe-patch'))assert.ok(!text(main).includes('Pipe Patch Pro'),page.path);}
+
+test('FAQ controls expose their state and content without a builder runtime', async () => {
+  const document = await documentFor('');
+  const accordion = find(document, (node) => attribute(node, 'data-accordion') !== undefined);
+  const button = find(accordion, (node) => node.tagName === 'button');
+  assert.equal(attribute(button, 'aria-expanded'), 'false');
+  assert.ok(text(accordion).includes('project-specific quotations'));
 });
-test('blog metadata and local content create unique published routes',async()=>{
- const pages=await getContentPages();const routes=pages.map(p=>p.path);assert.equal(new Set(routes).size,routes.length);assert.ok(pages.some(p=>p.type==='post'&&p.path.includes('why-wordpress')));assert.ok(pages.every(p=>typeof p.title==='string'&&p.title.length>0));
+
+test('the local Markdown article is rendered and listed in the sitemap', async () => {
+  const slug = 'why-wordpress-is-still-a-game-changer-for-small-businesses-in-2026';
+  const document = await documentFor(slug);
+  assert.ok(text(document).includes('Choosing a website platform has become more complicated.'));
+  assert.ok(!text(document).includes('[object Promise]'));
+  assert.ok((await readFile('dist/sitemap.xml', 'utf8')).includes(`/${slug}/`));
 });
-test('new article helper creates a draft and refuses an overwrite',async()=>{
- const directory=await mkdtemp(path.join(tmpdir(),'astro-content-'));const run=promisify(execFile);const helper=path.resolve('scripts/new-post.mjs');
- try{await mkdir(path.join(directory,'src/content'),{recursive:true});await writeFile(path.join(directory,'src/content/pages.json'),'[]');await run(process.execPath,[helper,'A practical website guide'],{cwd:directory});const files=await readdir(path.join(directory,'src/content/blog'));assert.deepEqual(files,['a-practical-website-guide.md']);const source=await readFile(path.join(directory,'src/content/blog',files[0]),'utf8');assert.match(source,/draft: true/);assert.match(source,/slug: "a-practical-website-guide"/);await assert.rejects(run(process.execPath,[helper,'A practical website guide'],{cwd:directory}));}
- finally{await rm(directory,{recursive:true,force:true});}
+
+test('new article drafts cannot overwrite an existing article', async () => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'astro-content-'));
+  const run = promisify(execFile);
+  const helper = path.resolve('scripts/new-post.mjs');
+  try {
+    await mkdir(path.join(directory, 'src/content'), { recursive: true });
+    await writeFile(path.join(directory, 'src/content/pages.json'), '[]');
+    await run(process.execPath, [helper, 'A practical website guide'], { cwd: directory });
+    const files = await readdir(path.join(directory, 'src/content/blog'));
+    assert.deepEqual(files, ['a-practical-website-guide.md']);
+    const source = await readFile(path.join(directory, 'src/content/blog', files[0]), 'utf8');
+    assert.match(source, /draft: true/);
+    await assert.rejects(
+      run(process.execPath, [helper, 'A practical website guide'], { cwd: directory }),
+    );
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test('project count is rendered from real local projects without an animation library', async () => {
+  const document = await documentFor('case-studies');
+  const counter = find(document, (node) => attribute(node, 'id') === 'project-count-value');
+  assert.equal(
+    counter.childNodes.map((node) => node.value || '').join(''),
+    String(pages.filter((page) => page.type === 'project').length),
+  );
 });

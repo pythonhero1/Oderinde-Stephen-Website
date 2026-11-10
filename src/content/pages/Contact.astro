@@ -1,0 +1,832 @@
+---
+import site from '../../config/site.json';
+import PageSection from '../../components/content/PageSection.astro';
+import Container from '../../components/content/Container.astro';
+import Column from '../../components/content/Column.astro';
+import TextBlock from '../../components/content/TextBlock.astro';
+import Heading from '../../components/content/Heading.astro';
+import ButtonLink from '../../components/content/ButtonLink.astro';
+import ImageBlock from '../../components/content/ImageBlock.astro';
+import ResponsiveImage from '../../components/content/ResponsiveImage.astro';
+import ContactForm from '../../components/site/ContactForm.astro';
+import Accordion from '../../components/content/Accordion.astro';
+---
+
+<article id="page-entry">
+  <div class="entry-content">
+    <div class="page-layout page-content">
+      <div class="section-stack">
+        <PageSection class="section-1 page-section flex-section">
+          <Container class="row-1 container flex-row">
+            <Column class="column-1 column flex-column blend-normal width-12-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+              <TextBlock class="copy-1 copy-block tone-light block flex-block">
+                <p>LET'S BUILD SOMETHING MEANINGFUL</p>
+              </TextBlock>
+              <Heading class="heading-1 block flex-block" level={1}>
+                {' '}
+                Have a <span style="color: #3B82F6;">Website or Digital Project</span> in Mind?
+                Let's Talk.
+              </Heading>
+              <TextBlock class="copy-2 copy-block tone-light block flex-block">
+                <p>
+                  Whether you need a professional business website, an online store, a redesign or a
+                  custom digital solution, tell me what you're planning. I'll help you explore a
+                  practical approach based on your goals.
+                </p>
+              </TextBlock>
+              <div class="group-1 last-column block flex-group blend-normal">
+                <ButtonLink
+                  wrapperClass="block button-wrap button-1-wrapper"
+                  class="button-1 button tone-light block flex-block"
+                  href="/#about"
+                >
+                  Learn More About Me
+                </ButtonLink>
+                <ButtonLink
+                  wrapperClass="block button-wrap button-2-wrapper"
+                  class="button-2 button tone-light block flex-block"
+                  href={site.booking}
+                >
+                  Book a Strategy Call
+                </ButtonLink>
+              </div>
+            </Column>
+            <Column class="column-2 column last-column flex-column blend-normal width-12-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+              <ImageBlock class="image-1 image-block block flex-block">
+                <span class="image-frame">
+                  <ResponsiveImage
+                    source="Contact-Me.avif"
+                    title="Contact Me"
+                    width="1448"
+                    height="1086"
+                    sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 640px"
+                    priority
+                  />
+                </span>
+              </ImageBlock>
+            </Column>
+          </Container>
+          <Container class="row-2 container flex-row">
+            <Column class="column-3 column flex-column blend-normal width-6-24 width-6-24-tablet width-2-5-phone width-6-24-wide-tablet">
+              <div class="group-2 last-column block flex-group blend-normal">
+                <Heading class="heading-2 block flex-block" level={1}>
+                  Business-first thinking
+                </Heading>
+                <div class="icon-1 icon-block block flex-block">
+                  <span class="icon-frame">
+                    <span class="icon"></span>
+                  </span>
+                </div>
+              </div>
+            </Column>
+            <Column class="column-4 column flex-column blend-normal width-6-24 width-6-24-tablet width-2-5-phone width-6-24-wide-tablet">
+              <div class="group-3 last-column block flex-group blend-normal">
+                <Heading class="heading-3 block flex-block" level={1}>
+                  Responsive development
+                </Heading>
+                <div class="icon-2 icon-block block flex-block">
+                  <span class="icon-frame">
+                    <span class="icon"></span>
+                  </span>
+                </div>
+              </div>
+            </Column>
+            <Column class="column-5 column flex-column blend-normal width-6-24 width-6-24-tablet width-12-24-phone width-6-24-wide-tablet">
+              <div class="group-4 last-column block flex-group blend-normal">
+                <Heading class="heading-4 block flex-block" level={1}>
+                  Clear project communication
+                </Heading>
+                <div class="icon-3 icon-block block flex-block">
+                  <span class="icon-frame">
+                    <span class="icon"></span>
+                  </span>
+                </div>
+              </div>
+            </Column>
+            <Column class="column-6 column last-column flex-column blend-normal width-6-24 width-6-24-tablet width-2-5-phone width-6-24-wide-tablet">
+              <div class="group-5 last-column block flex-group blend-normal">
+                <Heading class="heading-5 block flex-block" level={1}>
+                  Built around your goals
+                </Heading>
+                <div class="icon-4 icon-block block flex-block">
+                  <span class="icon-frame">
+                    <span class="icon"></span>
+                  </span>
+                </div>
+              </div>
+            </Column>
+          </Container>
+        </PageSection>
+        <PageSection class="section-2 page-section flex-section">
+          <Container class="row-3 container flex-row">
+            <Column class="column-7 column flex-column blend-normal width-12-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+              <TextBlock class="copy-3 copy-block tone-light block flex-block">
+                <p>PROJECT DETAILS</p>
+              </TextBlock>
+              <div
+                class="layout-contact-form-container clearfix block flex-block"
+                data-form_unique_num="0"
+                data-form_unique_id="04f48ab7-e2cf-47ea-9632-d09bace20bb7"
+                id="project-enquiry"
+              >
+                <div class="form-message"></div>
+                <div class="contact-block">
+                  <ContactForm />
+                </div>
+              </div>
+            </Column>
+            <Column class="column-8 column last-column flex-column blend-normal width-12-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+              <TextBlock class="copy-4 copy-block tone-light block flex-block">
+                <p>PROJECT ENQUIRY</p>
+              </TextBlock>
+              <Heading class="heading-6 block flex-block" level={1}>
+                {' '}
+                Tell Me About <span style="color: #3B82F6;">Your Project.</span>
+              </Heading>
+              <TextBlock class="copy-5 copy-block tone-light block flex-block">
+                <p>
+                  Share a few details about your website or digital project, including the services
+                  you need, your goals and any preferred timeline. I'll review your enquiry and
+                  discuss the most suitable next steps with you.
+                </p>
+              </TextBlock>
+              <TextBlock class="copy-6 copy-block tone-light block flex-block">
+                <p>
+                  Please avoid including passwords, private access links, or sensitive customer
+                  information in this form.
+                </p>
+              </TextBlock>
+              <TextBlock class="copy-7 copy-block tone-light block flex-block">
+                <p>You can also book a call if you would rather discuss the project live.</p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-3-wrapper"
+                class="button-3 button tone-light block flex-block"
+                target="_blank"
+                href={site.booking}
+                rel="noopener noreferrer"
+              >
+                Book a Strategy Call
+              </ButtonLink>
+            </Column>
+          </Container>
+        </PageSection>
+        <PageSection class="section-3 page-section flex-section">
+          <Container class="row-4 container flex-row">
+            <Column class="column-9 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+              <TextBlock class="copy-8 copy-block tone-light block flex-block">
+                <p>DIRECT CONTACT &amp; PROFESSIONAL PROFILES</p>
+              </TextBlock>
+              <Heading class="heading-7 block flex-block" level={2}>
+                Choose How You’d Like to <span style="color: #3B82F6;">Connect.</span>
+              </Heading>
+              <TextBlock class="copy-9 copy-block tone-light block flex-block">
+                <p>
+                  Connect with Oderinde Stephen Web &amp; Digital Solutions for business website
+                  development, WordPress projects, e-commerce, website redesigns and custom digital
+                  solutions. Choose the contact method that works best for you, or explore my
+                  professional profiles.
+                </p>
+              </TextBlock>
+            </Column>
+          </Container>
+          <Container class="row-5 container flex-row">
+            <Column class="column-10 column flex-column blend-normal width-12-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+              <div class="icon-5 icon-block block flex-block">
+                <span class="icon-frame">
+                  <span class="icon"></span>
+                </span>
+              </div>
+              <Heading class="heading-8 block flex-block" level={3}>
+                Email Your Project Brief
+              </Heading>
+              <TextBlock class="copy-10 copy-block tone-light block flex-block">
+                <p>
+                  Share your goals, current website and the features you need. Email is ideal for a
+                  detailed brief.
+                </p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-4-wrapper"
+                class="button-4 button tone-light block flex-block"
+                href={`mailto:${site.email}`}
+              >
+                {site.email}
+              </ButtonLink>
+            </Column>
+            <Column class="column-11 column last-column flex-column blend-normal width-12-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+              <div class="icon-6 icon-block block flex-block">
+                <span class="icon-frame">
+                  <span class="icon"></span>
+                </span>
+              </div>
+              <Heading class="heading-9 block flex-block" level={3}>
+                Call or Contact Directly
+              </Heading>
+              <TextBlock class="copy-11 copy-block tone-light block flex-block">
+                <p>Prefer to discuss the next step directly? Use the business contact number.</p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-5-wrapper"
+                class="button-5 button tone-light block flex-block"
+                href={`tel:${site.phone}`}
+              >
+                {site.phoneDisplay}
+              </ButtonLink>
+            </Column>
+          </Container>
+          <Container class="row-6 container flex-row">
+            <Column class="column-12 column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+              <div class="icon-7 icon-block block flex-block">
+                <span class="icon-frame">
+                  <span class="icon"></span>
+                </span>
+              </div>
+              <Heading class="heading-10 block flex-block" level={3}>
+                Book a Strategy Call
+              </Heading>
+              <TextBlock class="copy-12 copy-block tone-light block flex-block">
+                <p>Arrange a project conversation using the online calendar.</p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-6-wrapper"
+                class="button-6 button tone-light block flex-block"
+                target="_blank"
+                href={site.booking}
+                rel="noopener noreferrer"
+              >
+                Open Book a Strategy Call
+              </ButtonLink>
+            </Column>
+            <Column class="column-13 column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+              <div class="icon-8 icon-block block flex-block">
+                <span class="icon-frame">
+                  <span class="icon"></span>
+                </span>
+              </div>
+              <Heading class="heading-11 block flex-block" level={3}>
+                LinkedIn
+              </Heading>
+              <TextBlock class="copy-13 copy-block tone-light block flex-block">
+                <p>Connect with Stephen and review professional insights.</p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-7-wrapper"
+                class="button-7 button tone-light block flex-block"
+                target="_blank"
+                href={site.linkedin}
+                rel="noopener noreferrer"
+              >
+                Open LinkedIn
+              </ButtonLink>
+            </Column>
+            <Column class="column-14 column last-column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+              <div class="icon-9 icon-block block flex-block">
+                <span class="icon-frame">
+                  <span class="icon"></span>
+                </span>
+              </div>
+              <Heading class="heading-12 block flex-block" level={3}>
+                Google Business Profile
+              </Heading>
+              <TextBlock class="copy-14 copy-block tone-light block flex-block">
+                <p>
+                  Find Oderinde Stephen Web &amp; Digital Solutions on Google, including business
+                  information and its listed location in London, United Kingdom.
+                </p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-8-wrapper"
+                class="button-8 button tone-light block flex-block"
+                target="_blank"
+                href="https://www.google.com/search?kgmid=/g/11zzmz2_dk&amp;hl=en-GB&amp;q=Oderinde+Stephen+Web+%26+Digital+Solutions"
+                rel="noopener noreferrer"
+              >
+                Open Google Business Profile
+              </ButtonLink>
+            </Column>
+          </Container>
+          <Container class="row-7 container flex-row">
+            <Column class="column-15 column flex-column blend-normal width-12-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+              <div class="icon-10 icon-block block flex-block">
+                <span class="icon-frame">
+                  <span class="icon"></span>
+                </span>
+              </div>
+              <Heading class="heading-13 block flex-block" level={3}>
+                <a
+                  href={site.upwork}
+                  style="color:inherit;text-decoration:inherit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Upwork Profile
+                </a>
+              </Heading>
+              <TextBlock class="copy-15 copy-block tone-light block flex-block">
+                <p>
+                  Explore my freelance services, project experience and professional profile on
+                  Upwork
+                </p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-9-wrapper"
+                class="button-9 button tone-light block flex-block"
+                target="_blank"
+                href={site.upwork}
+                rel="noopener noreferrer"
+              >
+                Start a Conversation on Upwork
+              </ButtonLink>
+            </Column>
+            <Column class="column-16 column last-column flex-column blend-normal width-12-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+              <div class="icon-11 icon-block block flex-block">
+                <span class="icon-frame">
+                  <span class="icon"></span>
+                </span>
+              </div>
+              <Heading class="heading-14 block flex-block" level={3}>
+                <a
+                  href={site.fiverr}
+                  style="color:inherit;text-decoration:inherit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Fiverr Profile
+                </a>
+              </Heading>
+              <TextBlock class="copy-16 copy-block tone-light block flex-block">
+                <p>
+                  Explore my website development services, client feedback and available packages on
+                  Fiverr.
+                </p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-10-wrapper"
+                class="button-10 button tone-light block flex-block"
+                target="_blank"
+                href={site.fiverr}
+                rel="noopener noreferrer"
+              >
+                Start a Conversation on Fiverr
+              </ButtonLink>
+            </Column>
+          </Container>
+        </PageSection>
+        <PageSection class="section-4 page-section flex-section">
+          <Container class="row-8 container flex-row">
+            <Column class="column-17 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+              <TextBlock class="copy-17 copy-block tone-light block flex-block">
+                <p>AFTER YOU REACH OUT</p>
+              </TextBlock>
+              <Heading class="heading-15 block flex-block" level={2}>
+                {' '}
+                What Happens <span style="color: #3B82F6;">After You Contact Me?</span>
+              </Heading>
+              <TextBlock class="copy-18 copy-block tone-light block flex-block">
+                <p style="text-align: center;">
+                  Once you submit your enquiry, I'll review your project details, clarify any
+                  questions and discuss the most suitable next steps. Here's what you can generally
+                  expect when starting a website or digital development project.
+                </p>
+              </TextBlock>
+            </Column>
+          </Container>
+          <Container class="row-9 container flex-row">
+            <Column class="column-18 column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+              <div class="group-6 last-column block flex-group blend-normal">
+                <TextBlock class="copy-19 copy-block tone-light block flex-block">
+                  <p>01 · SHARE</p>
+                </TextBlock>
+                <Heading class="heading-16 block flex-block" level={3}>
+                  Share Your Project
+                </Heading>
+                <TextBlock class="copy-20 copy-block tone-light block flex-block">
+                  <p>
+                    Tell me about your business, project goals, required features and any existing
+                    website.
+                  </p>
+                </TextBlock>
+              </div>
+            </Column>
+            <Column class="column-19 column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+              <div class="group-7 last-column block flex-group blend-normal">
+                <TextBlock class="copy-21 copy-block tone-light block flex-block">
+                  <p>02 · DISCUSS</p>
+                </TextBlock>
+                <Heading class="heading-17 block flex-block" level={3}>
+                  Review &amp; Discuss
+                </Heading>
+                <TextBlock class="copy-22 copy-block tone-light block flex-block">
+                  <p>
+                    I'll review your requirements and clarify the scope, priorities and possible
+                    solutions.
+                  </p>
+                </TextBlock>
+              </div>
+            </Column>
+            <Column class="column-20 column last-column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+              <div class="group-8 last-column block flex-group blend-normal">
+                <TextBlock class="copy-23 copy-block tone-light block flex-block">
+                  <p>03 · PLAN</p>
+                </TextBlock>
+                <Heading class="heading-18 block flex-block" level={3}>
+                  Agree on Next Steps
+                </Heading>
+                <TextBlock class="copy-24 copy-block tone-light block flex-block">
+                  <p>
+                    We'll discuss the proposed approach, deliverables and timeline before moving
+                    forward.
+                  </p>
+                </TextBlock>
+              </div>
+            </Column>
+          </Container>
+        </PageSection>
+        <PageSection class="section-5 page-section flex-section os-motion-reveal">
+          <Container class="row-10 container flex-row">
+            <Column class="column-21 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+              <TextBlock class="copy-25 copy-block tone-light block flex-block">
+                <p>CONTACT QUESTIONS</p>
+              </TextBlock>
+              <Heading class="heading-19 block flex-block" level={2}>
+                Questions Before <span style="color: #3B82F6;">Getting Started?</span>
+              </Heading>
+              <TextBlock class="copy-26 copy-block tone-light block flex-block">
+                <p>
+                  Find answers to common questions about project enquiries, website development,
+                  timelines and working together before you get in touch.
+                </p>
+              </TextBlock>
+            </Column>
+          </Container>
+          <Container class="row-11 container flex-row">
+            <Column class="column-22 column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet os-motion-lift">
+              <ImageBlock class="image-2 image-block block flex-block">
+                <span class="image-frame">
+                  <ResponsiveImage
+                    source="neon-growth-chart-icon.avif"
+                    title="neon growth chart icon"
+                    width="1254"
+                    height="1254"
+                    sizes="96px"
+                  />
+                </span>
+              </ImageBlock>
+              <Container class="row-12 container layout-row-nested flex-row">
+                <Column class="column-23 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+                  <Heading class="heading-20 block flex-block" level={1}>
+                    PROJECT GUIDANCE
+                  </Heading>
+                </Column>
+              </Container>
+              <Heading class="heading-21 block flex-block" level={1}>
+                Not sure what your project needs yet?
+              </Heading>
+              <TextBlock class="copy-27 copy-block tone-light block flex-block">
+                <p>
+                  You don't need a complete project brief to get started. Whether you're planning a
+                  business website, an online store or a custom digital solution, I can help you
+                  clarify the requirements and identify a suitable next step.
+                </p>
+              </TextBlock>
+              <Container class="row-13 container layout-row-nested flex-row">
+                <Column class="column-24 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+                  <Heading class="heading-22 block flex-block" level={1}>
+                    PLATFORMS
+                  </Heading>
+                  <Heading class="heading-23 block flex-block" level={1}>
+                    TIMELINES
+                  </Heading>
+                  <Heading class="heading-24 block flex-block" level={1}>
+                    SUPPORT
+                  </Heading>
+                </Column>
+              </Container>
+              <Container class="row-14 container layout-row-nested flex-row">
+                <Column class="column-25 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+                  <ButtonLink
+                    wrapperClass="block button-wrap button-11-wrapper"
+                    class="button-11 button tone-light block flex-block"
+                    href="/contact/"
+                  >
+                    Ask a Project Question
+                  </ButtonLink>
+                </Column>
+              </Container>
+            </Column>
+            <Column class="column-26 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+              <Accordion class="faq-1 accordion is-closed block flex-block">
+                <Fragment slot="title">
+                  1. Can I contact you before I have a full project brief?
+                </Fragment>
+                <p>
+                  Yes. A summary of your business, goals and current challenges is enough to begin a
+                  conversation.
+                </p>
+              </Accordion>
+              <Accordion class="faq-2 accordion is-closed block flex-block">
+                <Fragment slot="title">
+                  2. Do you work with businesses outside your country?
+                </Fragment>
+                <p>
+                  Yes. I work with remote clients and can discuss requirements online across
+                  different markets.
+                </p>
+              </Accordion>
+              <Accordion class="faq-3 accordion is-closed block flex-block">
+                <Fragment slot="title">
+                  3. Can you improve an existing website instead of building a new one?
+                </Fragment>
+                <p>
+                  Depending on the existing website and your goals, a redesign or targeted
+                  improvements may be more suitable than a full rebuild.
+                </p>
+              </Accordion>
+              <Accordion class="faq-4 accordion is-closed block flex-block">
+                <Fragment slot="title">4. What should I include in my initial enquiry?</Fragment>
+                <p>
+                  Tell me the type of website or solution you need, your key goals, useful reference
+                  links, and any timeline or budget considerations.
+                </p>
+              </Accordion>
+              <Accordion class="faq-5 accordion is-closed block flex-block">
+                <Fragment slot="title">
+                  5. How much does a professional website or digital project cost?
+                </Fragment>
+                <p>
+                  Project costs depend on the number of pages, design requirements, features,
+                  integrations and technical complexity. After reviewing your project details, I can
+                  provide a quotation based on the agreed scope and deliverables.
+                </p>
+              </Accordion>
+              <Accordion class="faq-6 accordion is-closed block flex-block">
+                <Fragment slot="title">6. How long does it take to develop a website?</Fragment>
+                <p>
+                  Development timelines vary depending on the project size, functionality, content
+                  readiness and revision requirements. A straightforward business website generally
+                  takes less time than a complex e-commerce store or custom digital system. I'll
+                  discuss a realistic timeline after reviewing your requirements.
+                </p>
+              </Accordion>
+              <Accordion class="faq-7 accordion is-closed block flex-block">
+                <Fragment slot="title">
+                  7. Which website platforms and technologies do you work with?
+                </Fragment>
+                <p>
+                  I work with WordPress, Elementor, Divi, WooCommerce, Shopify, Wix Studio and other
+                  suitable website platforms and tools. The recommended technology depends on your
+                  business goals, content management needs, required features and long-term plans.
+                </p>
+              </Accordion>
+            </Column>
+          </Container>
+          <Container class="row-15 container flex-row">
+            <Column class="column-27 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+              <TextBlock class="copy-28 copy-block tone-light block flex-block">
+                <p>EXPLORE RELATED SERVICES</p>
+              </TextBlock>
+              <Heading class="heading-25 block flex-block" level={2}>
+                Find the Right <span style="color: #3B82F6;">Digital Solution.</span>
+              </Heading>
+              <TextBlock class="copy-29 copy-block tone-light block flex-block">
+                <p>
+                  Explore my services to understand the options available for your website or
+                  digital project.
+                </p>
+              </TextBlock>
+              <div class="group-9 last-column block flex-group blend-normal">
+                <ButtonLink
+                  wrapperClass="block button-wrap button-12-wrapper"
+                  class="button-12 button tone-light block flex-block"
+                  href="/business-website-solutions/"
+                >
+                  Business Website Solutions
+                </ButtonLink>
+                <ButtonLink
+                  wrapperClass="block button-wrap button-13-wrapper"
+                  class="button-13 button tone-light block flex-block"
+                  href="/business-website-development/"
+                >
+                  Business Website Development
+                </ButtonLink>
+                <ButtonLink
+                  wrapperClass="block button-wrap button-14-wrapper"
+                  class="button-14 button tone-light block flex-block"
+                  href="/contact/"
+                >
+                  E-commerce Development
+                </ButtonLink>
+              </div>
+            </Column>
+          </Container>
+        </PageSection>
+        <PageSection class="section-6 page-section flex-section">
+          <Container class="row-16 container flex-row">
+            <Column class="column-28 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+              <TextBlock class="copy-30 copy-block tone-light block flex-block">
+                <p>WORKING TOGETHER ACROSS REGIONS</p>
+              </TextBlock>
+              <Heading class="heading-26 block flex-block" level={2}>
+                {' '}
+                Professional <span style="color: #3B82F6;">Website Development</span> for Businesses
+                Worldwide.
+              </Heading>
+              <TextBlock class="copy-31 copy-block tone-light block flex-block">
+                <p>
+                  Oderinde Stephen Web &amp; Digital Solutions provides website development,
+                  e-commerce solutions, website redesigns and digital services for businesses in the
+                  United Kingdom, Europe, the United States, Canada, Australia and beyond. Based in
+                  London, the business collaborates remotely with clients to plan, develop and
+                  deliver digital projects tailored to their goals.
+                </p>
+              </TextBlock>
+              <Heading class="heading-27 block flex-block" level={3}>
+                How can I contact Oderinde Stephen Web &amp; Digital Solutions?
+              </Heading>
+              <TextBlock class="copy-32 copy-block tone-light block flex-block">
+                <p>
+                  Email {site.email}, phone {site.phoneDisplay}, submit the website project enquiry
+                  form, or book a strategy call at cal.com/oderinde/free.
+                </p>
+              </TextBlock>
+              <Heading class="heading-28 block flex-block" level={3}>
+                Do you support international and remote website projects?
+              </Heading>
+              <TextBlock class="copy-33 copy-block tone-light block flex-block">
+                <p>
+                  Yes. Project discussions and collaboration can take place remotely. The agreed
+                  communication methods, milestones and delivery dates depend on the individual
+                  project.
+                </p>
+              </TextBlock>
+            </Column>
+          </Container>
+        </PageSection>
+        <PageSection class="section-7 page-section flex-section">
+          <Container class="row-17 container flex-row">
+            <Column class="column-29 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+              <TextBlock class="copy-34 copy-block tone-light block flex-block">
+                <p>EXPLORE SERVICES &amp; SELECTED WORK</p>
+              </TextBlock>
+              <Heading class="heading-29 block flex-block" level={2}>
+                Explore the <span style="color: #3B82F6;">Right Solution</span> Before You Enquire.
+              </Heading>
+              <TextBlock class="copy-35 copy-block tone-light block flex-block">
+                <p>
+                  Not sure what your project needs? Review my services and project examples to
+                  understand the options before submitting an enquiry.
+                </p>
+              </TextBlock>
+            </Column>
+          </Container>
+          <Container class="row-18 container flex-row">
+            <Column class="column-30 column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+              <Heading class="heading-30 block flex-block" level={3}>
+                Homepage
+              </Heading>
+              <TextBlock class="copy-36 copy-block tone-light block flex-block">
+                <p>
+                  Explore the wider web development, e-commerce and digital automation offering.
+                </p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-15-wrapper"
+                class="button-15 button tone-light block flex-block"
+                href="/"
+              >
+                Explore Homepage
+              </ButtonLink>
+            </Column>
+            <Column class="column-31 column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+              <Heading class="heading-31 block flex-block" level={3}>
+                Business Website Solutions
+              </Heading>
+              <TextBlock class="copy-37 copy-block tone-light block flex-block">
+                <p>Compare approaches to improving a business website and digital presence.</p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-16-wrapper"
+                class="button-16 button tone-light block flex-block"
+                href="/business-website-solutions/"
+              >
+                Explore Business Website Solutions
+              </ButtonLink>
+            </Column>
+            <Column class="column-32 column last-column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+              <Heading class="heading-32 block flex-block" level={3}>
+                Business Website Development
+              </Heading>
+              <TextBlock class="copy-38 copy-block tone-light block flex-block">
+                <p>Understand professional business website planning, design and development.</p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-17-wrapper"
+                class="button-17 button tone-light block flex-block"
+                href="/business-website-development/"
+              >
+                Explore Business Website Development
+              </ButtonLink>
+            </Column>
+          </Container>
+          <Container class="row-19 container flex-row">
+            <Column class="column-33 column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+              <Heading class="heading-33 block flex-block" level={3}>
+                E-commerce Development
+              </Heading>
+              <TextBlock class="copy-39 copy-block tone-light block flex-block">
+                <p>Explore online store design, product experiences and commerce functionality.</p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-18-wrapper"
+                class="button tone-light block flex-block"
+                href="/contact/"
+              >
+                Explore E-commerce Development
+              </ButtonLink>
+            </Column>
+            <Column class="column-34 column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+              <Heading class="heading-34 block flex-block" level={3}>
+                Case Studies
+              </Heading>
+              <TextBlock class="copy-40 copy-block tone-light block flex-block">
+                <p>Read documented website and digital solution project stories.</p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-19-wrapper"
+                class="button tone-light block flex-block"
+                href="/case-studies/"
+              >
+                Explore Case Studies
+              </ButtonLink>
+            </Column>
+            <Column class="column-35 column last-column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+              <Heading class="heading-35 block flex-block" level={3}>
+                Portfolio
+              </Heading>
+              <TextBlock class="copy-41 copy-block tone-light block flex-block">
+                <p>Browse completed websites and visit live examples.</p>
+              </TextBlock>
+              <ButtonLink
+                wrapperClass="block button-wrap button-20-wrapper"
+                class="button tone-light block flex-block"
+                href="/case-studies/"
+              >
+                Explore Portfolio
+              </ButtonLink>
+            </Column>
+          </Container>
+        </PageSection>
+        <PageSection class="section-8 page-section flex-section os-motion-reveal">
+          <Container class="row-20 container flex-row">
+            <Column class="column-36 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet os-motion-lift">
+              <Container class="row-21 container layout-row-nested flex-row">
+                <Column class="column-37 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+                  <TextBlock class="copy-42 copy-block tone-light block flex-block">
+                    <p>LET’S DISCUSS YOUR NEXT PROJECT</p>
+                  </TextBlock>
+                </Column>
+              </Container>
+              <Heading class="heading-36 block flex-block" level={2}>
+                {' '}
+                Ready to Turn Your <span style="color: #3B82F6;">Project Idea</span> Into Reality?
+              </Heading>
+              <TextBlock class="copy-43 copy-block tone-light block flex-block">
+                <p>
+                  Whether you're planning a business website, an e-commerce store or a custom
+                  digital solution, let's discuss your goals and explore the right approach. Share
+                  your project details or book a strategy call to get started.
+                </p>
+              </TextBlock>
+              <Container class="row-22 container layout-row-nested flex-row">
+                <Column class="column-38 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+                  <ButtonLink
+                    wrapperClass="block button-wrap button-21-wrapper"
+                    class="button tone-light block flex-block"
+                    href="/contact/"
+                  >
+                    Start Your Project
+                  </ButtonLink>
+                  <ButtonLink
+                    wrapperClass="block button-wrap button-22-wrapper"
+                    class="button tone-light block flex-block"
+                    href={site.booking}
+                  >
+                    Book a Strategy Call
+                  </ButtonLink>
+                </Column>
+              </Container>
+              <TextBlock class="copy-44 copy-block tone-light block flex-block">
+                <p>
+                  Explore more: <a href="/">Homepage</a> ·{' '}
+                  <a href="/business-website-solutions/">Business Website Solutions</a> ·{' '}
+                  <a href="/case-studies/">Case Studies</a> · <a href="/case-studies/">Portfolio</a>
+                </p>
+              </TextBlock>
+            </Column>
+          </Container>
+        </PageSection>
+      </div>
+    </div>
+  </div>
+</article>

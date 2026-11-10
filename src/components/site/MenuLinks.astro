@@ -1,0 +1,43 @@
+---
+interface Props {
+  id: string;
+  mobile?: boolean;
+}
+const { id, mobile = false } = Astro.props;
+const items = [
+  { label: 'H.', href: '/' },
+  {
+    label: 'Solutions',
+    href: '/business-website-solutions/',
+    children: [{ label: 'Business Website Development', href: '/business-website-development/' }],
+  },
+  {
+    label: 'Case Studies',
+    href: '/case-studies/',
+    children: [{ label: 'Portfolio', href: '/case-studies/' }],
+  },
+  { label: 'Pricing', href: '/pricing/' },
+  { label: 'About', href: '/#about' },
+  { label: 'Insights', href: '/insights/' },
+  { label: 'Contact', href: '/contact/' },
+];
+---
+
+<ul id={id} class={mobile ? 'mobile-menu' : 'nav-list nav downwards'}>
+  {items.map((item) => (
+    <li class:list={['menu-item', { 'menu-item-has-children': item.children }]}>
+      <a href={item.href} aria-current={Astro.url.pathname === item.href ? 'page' : undefined}>
+        {item.label}
+      </a>
+      {item.children && (
+        <ul class="sub-menu">
+          {item.children.map((child) => (
+            <li>
+              <a href={child.href}>{child.label}</a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  ))}
+</ul>

@@ -1,0 +1,457 @@
+---
+import site from '../../config/site.json';
+import PageSection from '../content/PageSection.astro';
+import Container from '../content/Container.astro';
+import Column from '../content/Column.astro';
+import ImageBlock from '../content/ImageBlock.astro';
+import ResponsiveImage from '../content/ResponsiveImage.astro';
+import Heading from '../content/Heading.astro';
+import TextBlock from '../content/TextBlock.astro';
+import ButtonLink from '../content/ButtonLink.astro';
+---
+
+<footer class="page-layout site-footer">
+  <div class="section-stack">
+    <PageSection class="section-1-footer page-section flex-section">
+      <Container class="row-1-footer container flex-row">
+        <Column class="column-1-footer column flex-column blend-normal width-6-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+          <div class="group-1-footer block flex-group blend-normal">
+            <ImageBlock class="image-1-footer image-block block flex-block">
+              <span class="image-frame">
+                <ResponsiveImage
+                  source="oderinde-stephen-logo-navy-background.avif"
+                  title="oderinde stephen logo navy background"
+                  width="1254"
+                  height="1254"
+                  sizes="96px"
+                />
+              </span>
+            </ImageBlock>
+            <div class="group-2-footer last-column block flex-group blend-normal">
+              <Heading class="heading-1-footer block flex-block" level={1}>
+                ODERINDE STEPHEN
+              </Heading>
+              <TextBlock class="copy-1-footer copy-block tone-light block flex-block">
+                <p>CMS DEVELOPER · WEBSITE SYSTEMS</p>
+              </TextBlock>
+            </div>
+          </div>
+          <TextBlock class="copy-2-footer copy-block tone-light block flex-block">
+            <p>
+              Websites and e-commerce systems built around clear business goals, stronger customer
+              journeys and long-term growth.
+            </p>
+          </TextBlock>
+          <div class="group-3-footer block flex-group blend-normal">
+            <div class="group-4-footer block flex-group blend-normal">
+              <Heading class="heading-2-footer block flex-block" level={1}>
+                <a
+                  href={site.upwork}
+                  style="color:inherit;text-decoration:inherit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Upwork Profile
+                </a>
+              </Heading>
+              <div class="icon-1-footer icon-block block flex-block">
+                <span class="icon-frame">
+                  <span class="icon"></span>
+                </span>
+              </div>
+            </div>
+            <div class="group-5-footer last-column block flex-group blend-normal">
+              <Heading class="heading-3-footer block flex-block" level={1}>
+                <a
+                  href={site.linkedin}
+                  style="color:inherit;text-decoration:inherit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn Profile
+                </a>
+              </Heading>
+              <div class="icon-2-footer icon-block block flex-block">
+                <span class="icon-frame">
+                  <span class="icon"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="group-6-footer last-column block flex-group blend-normal">
+            <ButtonLink
+              wrapperClass="block button-wrap button-1-footer-wrapper"
+              class="button-1-footer button tone-light block flex-block"
+              target="_blank"
+              href="https://portal.oderindestephen.com/"
+              rel="noopener noreferrer"
+            >
+              Client Portal
+            </ButtonLink>
+            <ButtonLink
+              wrapperClass="block button-wrap button-2-footer-wrapper"
+              class="button-2-footer button tone-light block flex-block"
+              href={site.booking}
+            >
+              Book a Call
+            </ButtonLink>
+          </div>
+        </Column>
+        <Column class="column-2-footer column flex-column blend-normal width-6-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+          <Heading class="heading-4-footer block flex-block" level={1}>
+            WEBSITE SERVICES
+          </Heading>
+          <div class="group-7-footer last-column block flex-group blend-normal">
+            <a class="layout-link-0-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Landing Pages</span>
+              </span>
+            </a>
+            <a class="layout-link-1-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Website Maintenance</span>
+              </span>
+            </a>
+            <a class="layout-link-2-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Website Performance</span>
+              </span>
+            </a>
+            <a class="layout-link-3-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Website Migrations</span>
+              </span>
+            </a>
+          </div>
+        </Column>
+        <Column class="column-3-footer column flex-column blend-normal width-6-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+          <Heading class="heading-5-footer block flex-block" level={1}>
+            WEBSITE SERVICES
+          </Heading>
+          <div class="group-8-footer last-column block flex-group blend-normal">
+            <a class="layout-link-4-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Landing Pages</span>
+              </span>
+            </a>
+            <a class="layout-link-5-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Website Maintenance</span>
+              </span>
+            </a>
+            <a class="layout-link-6-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Website Performance</span>
+              </span>
+            </a>
+            <a class="layout-link-7-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Website Migrations</span>
+              </span>
+            </a>
+          </div>
+        </Column>
+        <Column class="column-4-footer column last-column flex-column blend-normal width-6-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+          <Heading class="heading-6-footer block flex-block" level={1}>
+            BUSINESS SYSTEMS
+          </Heading>
+          <div class="group-9-footer last-column block flex-group blend-normal">
+            <a class="layout-link-8-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Lead-generation Systems</span>
+              </span>
+            </a>
+            <a class="layout-link-9-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Booking Systems</span>
+              </span>
+            </a>
+            <a class="layout-link-10-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Membership Platforms</span>
+              </span>
+            </a>
+            <a class="layout-link-11-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Learning Systems</span>
+              </span>
+            </a>
+            <a class="layout-link-12-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">CRM &amp; Email Integrations</span>
+              </span>
+            </a>
+            <a class="layout-link-13-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Analytics Dashboards</span>
+              </span>
+            </a>
+          </div>
+        </Column>
+      </Container>
+      <Container class="row-2-footer container flex-row">
+        <Column class="column-5-footer column flex-column blend-normal width-6-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+          <Heading class="heading-7-footer block flex-block" level={1}>
+            PLATFORMS
+          </Heading>
+          <div class="group-10-footer last-column block flex-group blend-normal">
+            <a class="layout-link-14-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Wix Studio</span>
+              </span>
+            </a>
+            <a class="layout-link-15-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Squarespace</span>
+              </span>
+            </a>
+            <a class="layout-link-16-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Framer</span>
+              </span>
+            </a>
+            <a class="layout-link-17-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Divi 5 &amp; Elementor</span>
+              </span>
+            </a>
+          </div>
+        </Column>
+        <Column class="column-6-footer column flex-column blend-normal width-6-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+          <Heading class="heading-8-footer block flex-block" level={1}>
+            WORK &amp; PROOF
+          </Heading>
+          <div class="group-11-footer last-column block flex-group blend-normal">
+            <a class="layout-link-18-tb-footer layout-link block flex-block" href="/case-studies/">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Selected Work</span>
+              </span>
+            </a>
+            <a class="layout-link-19-tb-footer layout-link block flex-block" href="/case-studies/">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Case Studies</span>
+              </span>
+            </a>
+            <a class="layout-link-20-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Testimonials</span>
+              </span>
+            </a>
+            <a class="layout-link-21-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">How I Work</span>
+              </span>
+            </a>
+            <a class="layout-link-22-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Website Results</span>
+              </span>
+            </a>
+            <a class="layout-link-23-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Client Portal</span>
+              </span>
+            </a>
+            <a class="layout-link-24-tb-footer layout-link block flex-block" href="/contact/">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Start a Project</span>
+              </span>
+            </a>
+          </div>
+        </Column>
+        <Column class="column-7-footer column flex-column blend-normal width-6-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+          <Heading class="heading-9-footer block flex-block" level={1}>
+            INSIGHT &amp; RESOURCES
+          </Heading>
+          <div class="group-12-footer last-column block flex-group blend-normal">
+            <a class="layout-link-25-tb-footer layout-link block flex-block" href="/insights/">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">All Insights</span>
+              </span>
+            </a>
+            <a class="layout-link-26-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Website Strategy</span>
+              </span>
+            </a>
+            <a class="layout-link-27-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Platform Comparisons</span>
+              </span>
+            </a>
+            <a class="layout-link-28-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">SEO &amp; Content Structure</span>
+              </span>
+            </a>
+            <a class="layout-link-29-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Free Website Checklist</span>
+              </span>
+            </a>
+            <a class="layout-link-30-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Frequently Asked Questions</span>
+              </span>
+            </a>
+          </div>
+        </Column>
+        <Column class="column-8-footer column last-column flex-column blend-normal width-6-24 width-12-24-tablet width-24-24-phone width-12-24-wide-tablet">
+          <Heading class="heading-10-footer block flex-block" level={1}>
+            BUSINESS SYSTEMS
+          </Heading>
+          <div class="group-13-footer last-column block flex-group blend-normal">
+            <a class="layout-link-31-tb-footer layout-link block flex-block" href={site.booking}>
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Book a Strategy Call</span>
+              </span>
+            </a>
+            <a class="layout-link-32-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Privacy Policy</span>
+              </span>
+            </a>
+            <a class="layout-link-33-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Terms &amp; Conditions</span>
+              </span>
+            </a>
+            <a class="layout-link-34-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Cookie Policy</span>
+              </span>
+            </a>
+            <a class="layout-link-35-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Accessibility</span>
+              </span>
+            </a>
+            <a class="layout-link-36-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">HTML Sitemap</span>
+              </span>
+            </a>
+          </div>
+        </Column>
+      </Container>
+      <Container class="row-3-footer container flex-row">
+        <Column class="column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+          <div class="group-14-footer last-column block flex-group blend-normal">
+            <a class="layout-link-37-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">ODERINDE STEPHEN </span>
+              </span>
+            </a>
+            <a class="layout-link-38-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">CMS DEVELOPER </span>
+              </span>
+            </a>
+            <a class="layout-link-39-tb-footer layout-link block flex-block" href={site.upwork}>
+              <span class="layout-link-inner">
+                <span class="layout-link-text">UPWORK PROFILE </span>
+              </span>
+            </a>
+            <a class="layout-link-40-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">LINKEDIN PROFILE</span>
+              </span>
+            </a>
+          </div>
+        </Column>
+        <Column class="column-10-footer column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+          <ImageBlock class="image-2-footer image-block block flex-block">
+            <span class="image-frame">
+              <ResponsiveImage
+                source="Black-and-Blue-linkedin-social-media-icon.avif"
+                title="Black and Blue linkedin social media icon"
+                width="1254"
+                height="1254"
+                sizes="96px"
+              />
+            </span>
+          </ImageBlock>
+          <ImageBlock class="image-3-footer image-block block flex-block">
+            <span class="image-frame">
+              <ResponsiveImage
+                source="Black-and-blue-instagram-social-media-icon.avif"
+                title="Black and blue instagram social media icon"
+                width="1254"
+                height="1254"
+                sizes="96px"
+              />
+            </span>
+          </ImageBlock>
+          <ImageBlock class="image-4-footer image-block block flex-block">
+            <span class="image-frame">
+              <ResponsiveImage
+                source="Black-and-blue-x-twitter-social-media-icon.avif"
+                title="Black and blue x twitter social media icon"
+                width="1254"
+                height="1254"
+                sizes="96px"
+              />
+            </span>
+          </ImageBlock>
+          <ImageBlock class="image-5-footer image-block block flex-block">
+            <span class="image-frame">
+              <ResponsiveImage
+                source="Black-and-blue-github-social-media-icon.avif"
+                title="Black and blue github social media icon"
+                width="1254"
+                height="1254"
+                sizes="96px"
+              />
+            </span>
+          </ImageBlock>
+        </Column>
+      </Container>
+      <Container class="row-4-footer container flex-row">
+        <Column class="column-11-footer column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+          <Heading class="heading-11-footer block flex-block" level={1}>
+            © 2026 Oderinde Stephen. All rights reserved.
+          </Heading>
+        </Column>
+        <Column class="column-12-footer column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+          <div class="group-15-footer last-column block flex-group blend-normal">
+            <a class="layout-link-41-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Privacy</span>
+              </span>
+            </a>
+            <a class="layout-link-42-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Terms</span>
+              </span>
+            </a>
+            <a class="layout-link-43-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Cookies</span>
+              </span>
+            </a>
+            <a class="layout-link-44-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Accessibility</span>
+              </span>
+            </a>
+            <a class="layout-link-45-tb-footer layout-link block flex-block">
+              <span class="layout-link-inner">
+                <span class="layout-link-text">Sitemap</span>
+              </span>
+            </a>
+          </div>
+        </Column>
+        <Column class="column-13-footer column last-column flex-column blend-normal width-8-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+          <ButtonLink
+            wrapperClass="block button-wrap button-3-footer-wrapper"
+            class="button-3-footer button tone-light block flex-block"
+            href="#page-top"
+            data-icon=""
+          >
+            Back to top{' '}
+          </ButtonLink>
+        </Column>
+      </Container>
+    </PageSection>
+  </div>
+</footer>

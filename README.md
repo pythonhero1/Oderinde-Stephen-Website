@@ -1,10 +1,8 @@
-# Oderinde Stephen — Astro on Cloudflare
+# Oderinde Stephen — Astro portfolio
 
-This site is an independent static Astro project. Its pages, blog posts, images, styles and browser interactions live in this repository. There is no WordPress backend, REST sync, PHP server or database. Building does not contact WordPress. The previous WordPress publisher has been disabled and removed from the active project.
+A static Astro website hosted on Cloudflare Pages. Pages use native Astro components, blog posts use Astro content collections and Markdown, and enquiries go to the verified Formspree endpoint. There is no WordPress backend, theme runtime, jQuery or client-side framework.
 
-The original saved page structure and styling from before the recent redesign are retained as local HTML and static assets. This preserves the existing design rather than replacing it with a new component theme. Historical Divi class names in these files are styling hooks; they do not require a WordPress installation to serve the site. Unfinished sections in the original design still need content review before launch.
-
-## Run locally
+## Start locally
 
 Use Node.js 22.23.4 or newer.
 
@@ -13,66 +11,77 @@ npm ci
 npm run dev
 ```
 
-No backend environment variables or WordPress login are required.
+## Project structure
 
-## Edit an existing page
+| Location                       | Purpose                                                   |
+| ------------------------------ | --------------------------------------------------------- |
+| `src/content/pages/*.astro`    | Editable pages and project case studies                   |
+| `src/content/pages.json`       | Page addresses, titles, descriptions and theme selection  |
+| `src/content/blog/*.md`        | Blog articles and draft status                            |
+| `src/content.config.ts`        | Validation rules for article metadata                     |
+| `src/components/content/`      | Shared headings, text, buttons, columns, images and FAQs  |
+| `src/components/site/`         | Navigation, footer, contact form and search metadata      |
+| `src/layouts/SiteLayout.astro` | Shared page document and site shell                       |
+| `src/styles/`                  | Local design styles, layout rules and named design tokens |
+| `src/assets/images/`           | Source images optimized by Astro at build time            |
+| `public/images/`               | Static backgrounds, SVGs and animated images              |
+| `public/fonts/`                | Locally hosted fonts and small icon subsets               |
+| `src/scripts/ui.ts`            | Dependency-free menu, FAQ and workspace-demo interactions |
 
-Page content is in `src/content/pages/`. For example:
+The page structures, typography and colors retain the saved design. The previous exported HTML document assembly, generated configuration, vendor scripts, plugin folders and builder metadata have been removed. Some original content sections are still unfinished and marked for review.
 
-- `home.html`: homepage text and sections
-- `contact.html`: original contact layout and fields
-- `pricing.html`: pricing page
-- `case-study--samuel-edmond-stone-landing-page.html`: individual project content
+## Edit a page
 
-Edit text or images inside the existing elements to preserve their appearance. Page titles and search descriptions are in `src/content/pages.json`. Shared navigation and footer are in `src/design/shared/`. Page-specific document shells and original styling references are in `src/design/layouts/`. Uploaded images, fonts, scripts and styles are local under `public/assets/`.
+Edit the corresponding `.astro` file in `src/content/pages/`. Components describe the layout directly: `PageSection`, `Container`, `Column`, `Heading`, `TextBlock`, `ButtonLink` and `ResponsiveImage`. Update the page's title and search description in `src/content/pages.json`.
 
-## Write a blog post
+Navigation links live in `src/components/site/MenuLinks.astro`. The footer and contact form are their own components. Public profile links and the production origin are in `src/config/site.json`; existing page links use those configured destinations.
+
+## Add a page
+
+1. Create a component in `src/content/pages/`, for example `MyPage.astro`.
+2. Add a record to `src/content/pages.json` with a unique `path`, `title`, `description`, `type: "page"`, `component: "MyPage"`, `style: "article"` and the same `bodyClass` as the Insights page.
+3. Add a navigation link if the page should appear in the menu.
+
+The page is generated automatically and included in the sitemap. For a new visual layout, add its stylesheet under `src/styles/pages/` and use its filename without `.css` as the record's `style` value.
+
+## Write an article
 
 ```sh
 npm run new:post -- "Your article title"
 ```
 
-This creates a Markdown draft in `src/content/blog/`. Open it, edit its title, description and content, and change `draft: true` to `draft: false` when ready. Published articles appear in `/insights/` and the sitemap automatically. Keep the `slug` unique; it controls the article's address.
+This creates a Markdown draft in `src/content/blog/`. Edit the title, description and content, then change `draft: true` to `draft: false` to publish it. Keep each slug unique. Astro validates the metadata, renders the article, and updates Insights and the sitemap.
 
-Use `## Heading` for sections, `**bold**` for emphasis, `[link text](https://example.com)` for links, and `![Image description](/assets/my-image.jpg)` for an image saved at `public/assets/my-image.jpg`.
+Use `## Heading`, `**bold**`, `[link text](https://example.com)` and ordinary Markdown lists. Save a blog image in `public/images/` and reference it as `![Description](/images/my-image.avif)`. For existing page images, add the source to `src/assets/images/` and use `ResponsiveImage`; Astro generates appropriately sized WebP/AVIF versions and reserves their dimensions.
 
-For a new normal page using the existing shared shell:
+## Contact delivery
 
-1. Add `src/content/pages/my-page.html` with the page's HTML content.
-2. Add an entry to `src/content/pages.json`: `{"path":"my-page","title":"My Page","description":"A useful search description.","type":"page","layoutKey":"article","contentKey":"my-page"}`.
-3. Add the page link to the shared navigation if it should appear there.
+`src/config/contact.json` contains the verified Formspree endpoint. It delivers enquiries to `Contact@oderindestephen.com`. The form uses native HTML validation, accessible field labels and direct submission to Formspree. No website server or database processes the message.
 
-For a fully custom layout, add a normal `.astro` page under `src/pages/` instead. Match the existing site styles and update navigation and sitemap coverage when introducing custom routes.
+## Performance
 
-## Contact email
+- Static pages and metadata are generated during the build.
+- No jQuery, theme scripts, plugin scripts, hydration framework or exported document parser is shipped.
+- A small browser script handles the menu, FAQs and the optional workspace illustration.
+- Images use responsive sizes; below-the-fold images load lazily.
+- Fonts are hosted locally; icon fonts contain only the characters the site uses.
+- Build output is checked for unused assets, missing links, legacy dependencies and payload budgets.
 
-Formspree continues delivering enquiries to `Contact@oderindestephen.com`, as requested. The public endpoint and verified state are in `src/config/contact.json`. The original form layout is retained; browser validation and Formspree replace the previous PHP submission handler. Formspree is the only contact-form processing service; no WordPress connection is used.
+`reports/performance.json` records the current homepage payload. `reports/performance-before.json` records the starting export for comparison. These measure file sizes; they are not Lighthouse scores or guarantees of network load time.
 
-## SEO and review status
-
-`src/config/site.json` sets the public origin, profile links and indexing policy. Titles, descriptions, canonical URLs, social metadata and structured data are generated locally. The sitemap includes local pages and published Markdown posts.
-
-The preview deliberately has `indexable: false`, `noindex, follow` metadata and a disallowing robots.txt. Enable indexing only as part of the approved main-domain launch. Traffic analytics are not configured yet.
-
-## Publish the review preview
+## Check and publish
 
 ```sh
+npm run format:check
 npm test
+npm run validate
 npm run deploy:preview
 ```
 
-This builds and validates the site, then uploads to the existing Cloudflare project `oderinde-stephen-preview` on its `main` branch. Cloudflare CLI sign-in is required. The review URL is https://oderinde-stephen-preview.pages.dev. It does not attach or change `oderindestephen.com`.
+`npm test` builds first and tests the generated pages, content preservation, contact form, blog, FAQs and draft creation. The build generates optimized images and removes unreferenced generated assets. Its first image optimization pass takes longer; subsequent builds reuse the image cache. `npm run validate` audits internal links and local assets, then enforces the homepage budgets of 30 KB compressed HTML, 40 KB compressed stylesheets and 8 KB browser JavaScript.
 
-Commit and push source changes to https://github.com/pythonhero1/Oderinde-Stephen-Website as well. A GitHub push alone does not deploy this Direct Upload Pages project. Deployment currently uses the command above; unattended GitHub deployment would need a separate workflow and a scoped Cloudflare credential.
+For a single publishing command, `npm run deploy:preview` runs the build/tests and validation before deploying. Cloudflare CLI authentication is required. It updates the existing review project at https://oderinde-stephen-preview.pages.dev and does not change `oderindestephen.com`.
 
-The existing hosted and local WordPress installations are preserved as backups. They are no longer content sources for Astro. Retiring those hosting installations and changing the main domain are separate launch actions.
+Source repository: https://github.com/pythonhero1/Oderinde-Stephen-Website. Commit and push source changes as well. This Direct Upload Cloudflare project currently deploys through the command above; a GitHub push alone does not publish it.
 
-## Checks
-
-```sh
-npm test
-npm run build
-npm run validate
-```
-
-Checks cover preservation of the original main-page structure, independent local rendering, original form delivery, individual project content, blog routes and draft creation. The build validator checks local assets, internal links and section anchors; its report is `reports/link-audit.json`.
+The review build remains excluded from indexing through `src/config/site.json`. Enable indexing only with the approved main-domain launch. Existing WordPress installations and private migration backups are separate from this source and are not used by the site. Traffic analytics are not configured yet.

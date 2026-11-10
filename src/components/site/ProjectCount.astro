@@ -1,0 +1,15 @@
+---
+import pages from '../../content/pages.json';
+const count = pages.filter((page) => page.type === 'project').length;
+---
+
+<div class="project-count number-stat tone-light layout-text-align-center block flex-block">
+  <div class="percent">
+    <p>
+      <span id="project-count-value" class="percent-value">
+        {count}
+      </span>
+    </p>
+  </div>
+  <h3 class="title">documented case studies with full project context</h3>
+</div>

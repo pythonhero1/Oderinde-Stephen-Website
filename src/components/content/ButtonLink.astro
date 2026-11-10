@@ -1,0 +1,9 @@
+---
+const { wrapperClass, ...attributes } = Astro.props;
+---
+
+<div class={wrapperClass}>
+  <a {...attributes}>
+    <slot />
+  </a>
+</div>

@@ -1,0 +1,18 @@
+---
+const { class: className, ...attributes } = Astro.props;
+---
+
+<div
+  class={[...new Set(['accordion', ...(className || '').split(/\s+/)])].join(' ')}
+  {...attributes}
+  data-accordion
+>
+  <h5 class="accordion-title">
+    <button type="button" class="accordion-trigger" aria-expanded="false">
+      <slot name="title" />
+    </button>
+  </h5>
+  <div class="accordion-content clearfix flex-block" hidden>
+    <slot />
+  </div>
+</div>

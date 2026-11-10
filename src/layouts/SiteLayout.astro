@@ -1,0 +1,37 @@
+---
+import Header from '../components/site/Header.astro';
+import Footer from '../components/site/Footer.astro';
+import SEO from '../components/site/SEO.astro';
+import '../styles/site.css';
+import '../styles/article.css';
+import foundation from '../styles/foundation.css?url';
+const { page, stylesheet, bodyClass } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SEO page={page} />
+    <link rel="icon" type="image/avif" href="/favicon.avif" />
+    <link rel="stylesheet" href={foundation} />
+    <link rel="stylesheet" href={stylesheet} />
+  </head>
+  <body class={bodyClass}>
+    <div id="page-top">
+      <div id="site-root">
+        <Header />
+        <div id="site-main">
+          <main id="main-content">
+            <slot />
+          </main>
+          <Footer />
+        </div>
+      </div>
+    </div>
+    <script>
+      import '../scripts/ui';
+    </script>
+  </body>
+</html>

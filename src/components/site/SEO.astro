@@ -1,0 +1,29 @@
+---
+import site from '../../config/site.json';
+const { page } = Astro.props;
+const title = page.title.includes(site.name) ? page.title : `${page.title} | ${site.name}`;
+const canonical = `${site.origin}/${page.path ? `${page.path}/` : ''}`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': page.type === 'post' ? 'BlogPosting' : page.type === 'project' ? 'Article' : 'WebPage',
+  name: page.title,
+  headline: page.title,
+  description: page.description,
+  url: canonical,
+  author: { '@type': 'Person', name: site.name, url: site.origin },
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={page.description} />
+<meta name="robots" content={site.indexable ? 'index, follow' : 'noindex, follow'} />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content={page.type === 'post' ? 'article' : 'website'} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={page.description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={`${site.origin}/social-preview.avif`} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={page.description} />
+<script type="application/ld+json" set:html={JSON.stringify(schema).replaceAll('<', '\\u003c')} />

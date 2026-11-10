@@ -1,0 +1,81 @@
+---
+import site from '../../config/site.json';
+import MenuLinks from './MenuLinks.astro';
+import PageSection from '../content/PageSection.astro';
+import Container from '../content/Container.astro';
+import Column from '../content/Column.astro';
+import ImageBlock from '../content/ImageBlock.astro';
+import ResponsiveImage from '../content/ResponsiveImage.astro';
+import ButtonLink from '../content/ButtonLink.astro';
+---
+
+<header class="page-layout site-header">
+  <div class="section-stack">
+    <PageSection class="header-section page-section flex-section">
+      <Container class="header-container container flex-row">
+        <Column class="header-brand column flex-column blend-normal width-24-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+          <ImageBlock class="image-1-header image-block block flex-block">
+            <a href="/" aria-label="Oderinde Stephen — home">
+              <span class="image-frame">
+                <ResponsiveImage
+                  source="oderinde-stephen-logo-navy-background.avif"
+                  title="oderinde stephen logo navy background"
+                  width="1254"
+                  height="1254"
+                  sizes="96px"
+                  priority
+                />
+              </span>
+            </a>
+          </ImageBlock>
+        </Column>
+        <Column class="header-navigation column flex-column blend-normal width-24-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+          <div class="header-menu menu-block layout-menu--without-logo layout-menu--style-left-aligned layout-dropdown-animation-fade tone-light layout-text-align-right-tablet layout-text-align-right-phone block flex-block">
+            <div class="menu-inner flex-block">
+              <div class="menu-wrap">
+                <div class="desktop-menu">
+                  <nav class="nav-container">
+                    <MenuLinks id="main-menu" />
+                  </nav>
+                </div>
+                <div class="mobile-menu-container">
+                  <div class="mobile-navigation is-closed">
+                    <button
+                      class="menu-toggle"
+                      type="button"
+                      data-menu-toggle
+                      aria-label="Open menu"
+                      aria-expanded="false"
+                      aria-controls="mobile-menu"
+                    ></button>
+                    <MenuLinks id="mobile-menu" mobile />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Column>
+        <Column class="header-actions column last-column flex-column blend-normal width-24-24 width-8-24-tablet width-24-24-phone width-8-24-wide-tablet">
+          <ButtonLink
+            wrapperClass="block button-wrap button-1-header-wrapper"
+            class="button-1-header button tone-light block flex-block"
+            target="_blank"
+            href="https://portal.oderindestephen.com/"
+            rel="noopener noreferrer"
+          >
+            Client Portal
+          </ButtonLink>
+          <ButtonLink
+            wrapperClass="block button-wrap button-2-header-wrapper"
+            class="button-2-header button tone-light block flex-block"
+            target="_blank"
+            href={site.booking}
+            rel="noopener noreferrer"
+          >
+            Book a Call
+          </ButtonLink>
+        </Column>
+      </Container>
+    </PageSection>
+  </div>
+</header>

@@ -1,0 +1,94 @@
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+}
+.menu-toggle {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.mobile-navigation:not(.is-open) .mobile-menu {
+  display: none;
+}
+.mobile-navigation.is-open .mobile-menu {
+  display: block;
+}
+.accordion-trigger {
+  border: 0;
+  padding: 0;
+  width: 100%;
+  background: transparent;
+  text-align: inherit;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.accordion-content[hidden] {
+  display: none !important;
+}
+.accordion-content:not([hidden]) {
+  display: block !important;
+}
+.desktop-menu .menu-item-has-children:focus-within > .sub-menu {
+  visibility: visible;
+  opacity: 1;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #688dff;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Keep native controls visually identical to the original text/icon controls. */
+button.menu-toggle,
+button.accordion-trigger {
+  appearance: none;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  font: inherit;
+}
+button.menu-toggle {
+  line-height: 1;
+}
+
+@font-face {
+  font-family: SiteIcons;
+  src: url('/fonts/site-icons-all.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+button.menu-toggle::before {
+  font-family: Arial, sans-serif !important;
+  content: '☰' !important;
+  font-size: 24px !important;
+  line-height: 1;
+}
+.mobile-navigation.is-open button.menu-toggle::before {
+  content: '×' !important;
+}
+
+.menu-item-has-children > a::after {
+  content: '⌄' !important;
+  font-family: Arial, sans-serif !important;
+}

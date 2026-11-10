@@ -7,7 +7,5 @@ dist/
 .dev.vars*
 .DS_Store
 artifacts/
-migration/wordpress-content.json
-migration/wordpress-case-studies.json
 .tools/
 .local/

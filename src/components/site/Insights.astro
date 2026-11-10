@@ -1,0 +1,17 @@
+---
+const { posts } = Astro.props;
+---
+
+<article class="site-article">
+  <h1>Website Insights</h1>
+  <p>Practical notes on websites, e-commerce and digital systems for business.</p>
+  {posts.map((post) => (
+    <section class="site-article-card">
+      <h2>
+        <a href={`/${post.path}/`}>{post.title}</a>
+      </h2>
+      <p>{post.description}</p>
+      <a href={`/${post.path}/`}>Read article →</a>
+    </section>
+  ))}
+</article>

@@ -1,6 +1,0 @@
-/* Honor the saved full-width phone columns without altering desktop layouts. */
-@media (max-width:767px){
-  #main-content .et_flex_row{flex-wrap:wrap!important}
-  #main-content .et_flex_row>.et_flex_column_24_24_phone{width:100%!important;max-width:100%!important;flex:0 0 100%!important;min-width:0}
-  #main-content .et_pb_button{max-width:100%;white-space:normal;box-sizing:border-box;overflow-wrap:anywhere}
-}

@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  source: string;
+  alt?: string;
+  priority?: boolean;
+  sizes?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { source, priority = false, sizes = '100vw', width, height, ...attributes } = Astro.props;
+const images = import.meta.glob('../../assets/images/*', { eager: true, import: 'default' });
+const image = images[`../../assets/images/${source}`] as ImageMetadata;
+if (!image) throw new Error(`Missing image: ${source}`);
+const small = sizes === '96px';
+const maximum = Math.min(image.width, small ? 192 : 1440);
+const widths = [
+  ...new Set((small ? [96, maximum] : [480, 960, maximum]).filter((value) => value <= maximum)),
+];
+const isVectorOrAnimated = /\.(svg|gif)$/i.test(source);
+const className = ['responsive-image', attributes.class].filter(Boolean).join(' ');
+const common = {
+  ...attributes,
+  class: className,
+  alt: String(attributes.alt || ''),
+  loading: priority ? ('eager' as const) : ('lazy' as const),
+  decoding: 'async' as const,
+  fetchpriority: priority ? ('high' as const) : ('auto' as const),
+};
+---
+
+{isVectorOrAnimated ? (
+  <img
+    src={`/images/${source}`}
+    width={Number(width) || image.width}
+    height={Number(height) || image.height}
+    {...common}
+  />
+) : (
+  <Image
+    src={image}
+    width={maximum}
+    widths={widths}
+    sizes={sizes}
+    format={priority ? 'webp' : 'avif'}
+    quality={75}
+    {...common}
+  />
+)}

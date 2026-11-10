@@ -1,0 +1,12 @@
+---
+const { level = 2, ...attributes } = Astro.props;
+const Tag = `h${level}`;
+---
+
+<div {...attributes}>
+  <div class="heading-inner">
+    <Tag class="heading-text">
+      <slot />
+    </Tag>
+  </div>
+</div>

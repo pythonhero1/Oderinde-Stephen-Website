@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.local/
+.tools/
+artifacts/
+public/
+package-lock.json

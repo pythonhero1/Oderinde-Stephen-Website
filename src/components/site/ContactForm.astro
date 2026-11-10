@@ -1,0 +1,138 @@
+---
+import contact from '../../config/contact.json';
+if (!contact.verified || !/^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i.test(contact.endpoint))
+  throw new Error('Configure and verify the Formspree endpoint before publishing.');
+---
+
+<form class="contact-form flex-block" action={contact.endpoint} method="post">
+  <div class="form-field block flex-block width-12-24 width-12-24-tablet width-12-24-phone width-12-24-wide-tablet">
+    <label class="layout-contact-form-label" for="field-yourname-0">
+      Your Name
+    </label>
+    <input
+      type="text"
+      id="field-yourname-0"
+      placeholder="Your Name"
+      title=""
+      value=""
+      name="name"
+      aria-label="Your name"
+      required=""
+      maxlength="254"
+      autocomplete="name"
+    />
+  </div>
+
+  <div class="form-field block flex-block width-12-24 width-12-24-tablet width-12-24-phone width-12-24-wide-tablet">
+    <label class="layout-contact-form-label" for="field-emailaddress-1">
+      Email Address
+    </label>
+    <input
+      id="field-emailaddress-1"
+      placeholder="Email Address"
+      title=""
+      value=""
+      name="email"
+      aria-label="Email address"
+      required=""
+      maxlength="254"
+      type="email"
+      autocomplete="email"
+    />
+  </div>
+
+  <div class="form-field block flex-block width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+    <label class="layout-contact-form-label" for="field-companyorwebsiteoptional-2">
+      Company or Website (optional)
+    </label>
+    <input
+      type="text"
+      id="field-companyorwebsiteoptional-2"
+      placeholder="Company or Website (optional)"
+      title=""
+      value=""
+      name="company"
+      aria-label="Company or website (optional)"
+      maxlength="254"
+    />
+  </div>
+
+  <div class="form-field block flex-block width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+    <label class="layout-contact-form-label" for="field-servicerequired-3">
+      Service Required
+    </label>
+    <select
+      id="field-servicerequired-3"
+      class="layout-contact-select"
+      name="service"
+      aria-label="Service required"
+      required=""
+    >
+      <option value="">Service Required</option>
+      <option value="Business Website Development">Business Website Development</option>
+      <option value="E-commerce Development">E-commerce Development</option>
+      <option value="Website Redesign">Website Redesign</option>
+      <option value="Client Portal / Digital Systems">Client Portal / Digital Systems</option>
+      <option value="Not Sure Yet">Not Sure Yet</option>
+    </select>
+  </div>
+
+  <div class="form-field block flex-block width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+    <label class="layout-contact-form-label" for="field-projectbudgetoptional-4">
+      Project Budget (optional)
+    </label>
+    <select
+      id="field-projectbudgetoptional-4"
+      class="layout-contact-select"
+      name="budget"
+      aria-label="Project budget (optional)"
+    >
+      <option value="">Project Budget (optional)</option>
+      <option value="Not decided yet">Not decided yet</option>
+      <option value="Under $1,000">Under $1,000</option>
+      <option value="$1,000–$3,000">$1,000–$3,000</option>
+      <option value="$3,000–$7,500">$3,000–$7,500</option>
+      <option value="$7,500+">$7,500+</option>
+    </select>
+  </div>
+
+  <div class="form-field block flex-block width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+    <label class="layout-contact-form-label" for="field-preferredtimelineoptional-5">
+      Preferred Timeline (optional)
+    </label>
+    <select
+      id="field-preferredtimelineoptional-5"
+      class="layout-contact-select"
+      name="timeline"
+      aria-label="Preferred timeline (optional)"
+    >
+      <option value="">Preferred Timeline (optional)</option>
+      <option value="Flexible">Flexible</option>
+      <option value="As soon as practical">As soon as practical</option>
+      <option value="Within 1–2 months">Within 1–2 months</option>
+      <option value="3 months or later">3 months or later</option>
+    </select>
+  </div>
+
+  <div class="form-field block flex-block width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+    <label class="layout-contact-form-label" for="field-tellmeaboutyourproject-6">
+      Tell Me About Your Project
+    </label>
+    <textarea
+      id="field-tellmeaboutyourproject-6"
+      class="layout-contact-message"
+      placeholder="Tell Me About Your Project"
+      name="message"
+      aria-label="Tell me about your project"
+      required=""
+      maxlength="6000"
+    ></textarea>
+  </div>
+  <div class="layout-contact-bottom-container">
+    <div class="layout-button-wrapper">
+      <button type="submit" class="button form-submit">
+        Submit
+      </button>
+    </div>
+  </div>
+</form>
