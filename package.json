@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/prune-assets.mjs",
+    "build": "astro build && node scripts/prune-assets.mjs && node scripts/translation-manifest.mjs",
     "preview": "astro preview",
     "test": "npm run build && node --test tests/*.test.mjs",
     "deploy:preview": "npm test && npm run validate && wrangler pages deploy dist --project-name oderinde-stephen-preview --branch main",

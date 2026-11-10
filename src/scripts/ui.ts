@@ -1,4 +1,5 @@
 // Progressive enhancements: page content and enquiry submission work without JavaScript.
+import './preferences';
 for (const toggle of document.querySelectorAll<HTMLButtonElement>('[data-menu-toggle]')) {
   toggle.addEventListener('click', () => {
     const navigation = toggle.closest('.mobile-navigation');

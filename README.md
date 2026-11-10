@@ -85,3 +85,11 @@ For a single publishing command, `npm run deploy:preview` runs the build/tests a
 Source repository: https://github.com/pythonhero1/Oderinde-Stephen-Website. Commit and push source changes as well. This Direct Upload Cloudflare project currently deploys through the command above; a GitHub push alone does not publish it.
 
 The review build remains excluded from indexing through `src/config/site.json`. Enable indexing only with the approved main-domain launch. Existing WordPress installations and private migration backups are separate from this source and are not used by the site. Traffic analytics are not configured yet.
+
+### Display and language preferences
+
+The header provides light/dark mode and English, German, Italian, Spanish and French language choices. Dark is the default. Choices are remembered on the visitor's device. Translation loads only after selection; the original English content, URLs, metadata and structured data remain the source for SEO. Automatically translated copy should be reviewed before relying on exact wording; this feature does not create separate indexed language pages.
+
+Automatic translation uses Cloudflare Workers AI (`@cf/meta/m2m100-1.2b`) through the Pages `AI` binding in `wrangler.jsonc`. `npm run build` generates an allowlist of published text in `.generated/translation-strings.json`. The endpoint accepts only these keys, never contact form entries. Translated phrases are cached at the edge. If the free daily allowance is exhausted or the service fails, visitors see the original English with an explanatory message. No paid plan was enabled. The website and Formspree form work independently of translation.
+
+Use `npm run build` before deploying or running the Pages Functions locally. Astro's development server supports theme testing; use `wrangler pages dev dist` for the translation function (the AI binding executes remotely). Production deploys use the existing `npm run deploy:preview` command.

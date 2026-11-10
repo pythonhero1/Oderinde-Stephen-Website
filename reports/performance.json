@@ -1,10 +1,10 @@
 {
   "page": "/",
-  "htmlBytes": 127600,
-  "htmlGzipBytes": 18821,
-  "browserScripts": 1,
-  "browserJavaScriptBytes": 1318,
-  "externalStylesheetBytes": 182189,
-  "externalStylesheetGzipBytes": 23095,
+  "htmlBytes": 128208,
+  "htmlGzipBytes": 19000,
+  "browserScripts": 2,
+  "browserJavaScriptBytes": 5543,
+  "externalStylesheetBytes": 187606,
+  "externalStylesheetGzipBytes": 24597,
   "inlineCssBytes": 2167
 }

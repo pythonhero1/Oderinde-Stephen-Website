@@ -60,7 +60,7 @@ while (queue.length) {
   const base = '/' + path.relative(output, file);
   cssReferences(content, base);
   if (file.endsWith('.js'))
-    for (const match of content.matchAll(/["']([^"']+\.(?:js|css))["']/g))
+    for (const match of content.matchAll(/["'`]([^"'`]+\.(?:js|css))["'`]/g))
       reference(match[1], base);
 }
 let removed = 0,

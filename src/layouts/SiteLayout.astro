@@ -5,6 +5,7 @@ import SEO from '../components/site/SEO.astro';
 import '../styles/site.css';
 import '../styles/article.css';
 import foundation from '../styles/foundation.css?url';
+import preferencesStyles from '../styles/preferences.css?url';
 const { page, stylesheet, bodyClass } = Astro.props;
 ---
 
@@ -13,10 +14,24 @@ const { page, stylesheet, bodyClass } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07090d" />
+    <script is:inline>
+      (() => {
+        let theme = 'dark';
+        try {
+          const saved = localStorage.getItem('site-theme');
+          if (saved === 'light' || saved === 'dark') theme = saved;
+        } catch {}
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="theme-color"]').content =
+          theme === 'light' ? '#f5f7fc' : '#07090d';
+      })();
+    </script>
     <SEO page={page} />
     <link rel="icon" type="image/avif" href="/favicon.avif" />
     <link rel="stylesheet" href={foundation} />
     <link rel="stylesheet" href={stylesheet} />
+    <link rel="stylesheet" href={preferencesStyles} />
   </head>
   <body class={bodyClass}>
     <div id="page-top">
