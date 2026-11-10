@@ -1,0 +1,24 @@
+/* Reference tokens measured on the live homepage, 2026-11-10.
+   Opt-in only: not imported into existing pages. */
+:root {
+  --brand-page-base: #07090d;
+  --brand-navy: #0c1239;
+  --brand-black: #000;
+  --brand-blue: #2563eb;
+  --brand-label-blue: #60a5fa;
+  --brand-text: #f5f7fc;
+  --brand-heading: #f8fafc;
+  --brand-gradient-hero: linear-gradient(120deg, #0c1239 0%, #000 35%, #0c1239 100%);
+  --brand-gradient-alternate: linear-gradient(-120deg, #0c1239 0%, #000 65%, #0c1239 100%);
+  --brand-gradient-flow-card: linear-gradient(140deg, #0c1239 1%, #000 55%, #0c1239 100%);
+  --brand-card-border: 1px solid rgb(37 99 235 / 50%);
+  --brand-card-shadow: 0 2px 18px rgb(43 51 104 / 30%);
+  --brand-card-radius: 20px;
+  --brand-review-surface: #0e1219;
+  --brand-review-border: 1px solid rgb(48 56 71 / 90%);
+  --brand-review-radius: 18px;
+  --brand-button-radius: 10px;
+  --brand-font-heading: Inter, Arial, sans-serif;
+  --brand-font-body: 'Work Sans', Arial, sans-serif;
+  --brand-font-label: 'Space Mono', monospace;
+}
