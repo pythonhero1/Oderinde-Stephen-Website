@@ -1,5 +1,15 @@
 // Progressive enhancements: page content and enquiry submission work without JavaScript.
 import './preferences';
+
+const homePage = document.querySelector('.home-page');
+const siteHeader = document.querySelector<HTMLElement>('.site-header');
+if (homePage && siteHeader) {
+  const updateHomeHeader = () => {
+    siteHeader.classList.toggle('is-scrolled', window.scrollY > 24);
+  };
+  updateHomeHeader();
+  window.addEventListener('scroll', updateHomeHeader, { passive: true });
+}
 for (const toggle of document.querySelectorAll<HTMLButtonElement>('[data-menu-toggle]')) {
   toggle.addEventListener('click', () => {
     const navigation = toggle.closest('.mobile-navigation');
