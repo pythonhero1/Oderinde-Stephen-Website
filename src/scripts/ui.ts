@@ -10,6 +10,38 @@ if (homePage && siteHeader) {
   updateHomeHeader();
   window.addEventListener('scroll', updateHomeHeader, { passive: true });
 }
+
+if (homePage && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.classList.add('motion-ready');
+
+  for (const section of homePage.querySelectorAll<HTMLElement>('.os-motion-reveal')) {
+    for (const [index, item] of [
+      ...section.querySelectorAll<HTMLElement>('.os-motion-lift'),
+    ].entries()) {
+      item.style.setProperty('--motion-delay', `${Math.min(index % 4, 3) * 70}ms`);
+    }
+  }
+
+  requestAnimationFrame(() => document.documentElement.classList.add('motion-mounted'));
+
+  const revealSections = homePage.querySelectorAll<HTMLElement>('.os-motion-reveal');
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.08 },
+    );
+    for (const section of revealSections) revealObserver.observe(section);
+  } else {
+    for (const section of revealSections) section.classList.add('is-visible');
+  }
+}
+
 for (const toggle of document.querySelectorAll<HTMLButtonElement>('[data-menu-toggle]')) {
   toggle.addEventListener('click', () => {
     const navigation = toggle.closest('.mobile-navigation');

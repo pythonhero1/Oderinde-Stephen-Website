@@ -5460,7 +5460,7 @@ body #page-top .page-section .button-13 {
 
 .column-51 {
   --layout-pb-icon-self-align: center;
-  background-image: url('/images/Oderinde-stephen-blue-halo-tech-creator-portrait.png');
+  background-image: url('/images/Oderinde-stephen-blue-halo-tech-creator-portrait.avif');
   background-position: 0 0;
   background-repeat: no-repeat;
   border: 1px solid #2f72ff;
@@ -7160,7 +7160,7 @@ body #page-top .page-section .button-13 {
   }
 
   .column-51 {
-    background-image: url('/images/Oderinde-stephen-blue-halo-tech-creator-portrait.png');
+    background-image: url('/images/Oderinde-stephen-blue-halo-tech-creator-portrait.avif');
     width: 100%;
     max-width: 100%;
   }
@@ -9002,5 +9002,119 @@ body {
 
   .section-7 .row-40 {
     margin-top: auto;
+  }
+}
+
+/* Lightweight homepage motion: compositor-only transforms and opacity keep scrolling responsive. */
+.home-page .section-2,
+.home-page .section-3,
+.home-page .section-4,
+.home-page .section-5,
+.home-page .section-6,
+.home-page .section-7,
+.home-page .section-8,
+.home-page .section-9,
+.home-page .section-10,
+.home-page .section-11,
+.home-page .section-12,
+.home-page .section-13 {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+.motion-ready .home-page .section-1 .os-hero-copy,
+.motion-ready .home-page .section-1 .os-hero-visual,
+.motion-ready .home-page .section-1 .group-1,
+.motion-ready .home-page .section-1 .group-3,
+.motion-ready .home-page .section-1 .group-5,
+.motion-ready .home-page .section-1 .group-7 {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.motion-ready .home-page .section-1 .os-hero-visual {
+  transform: translate3d(22px, 0, 0) scale(0.985);
+  transition-delay: 90ms;
+}
+
+.motion-ready .home-page .section-1 .group-1 {
+  transition-delay: 180ms;
+}
+
+.motion-ready .home-page .section-1 .group-3 {
+  transition-delay: 230ms;
+}
+
+.motion-ready .home-page .section-1 .group-5 {
+  transition-delay: 280ms;
+}
+
+.motion-ready .home-page .section-1 .group-7 {
+  transition-delay: 330ms;
+}
+
+.motion-ready.motion-mounted .home-page .section-1 .os-hero-copy,
+.motion-ready.motion-mounted .home-page .section-1 .os-hero-visual,
+.motion-ready.motion-mounted .home-page .section-1 .group-1,
+.motion-ready.motion-mounted .home-page .section-1 .group-3,
+.motion-ready.motion-mounted .home-page .section-1 .group-5,
+.motion-ready.motion-mounted .home-page .section-1 .group-7 {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.motion-ready .home-page .os-motion-reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.motion-ready .home-page .os-motion-reveal > .container .os-motion-lift {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 520ms cubic-bezier(0.22, 1, 0.36, 1) var(--motion-delay, 0ms),
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1) var(--motion-delay, 0ms),
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.motion-ready .home-page .os-motion-reveal.is-visible,
+.motion-ready .home-page .os-motion-reveal.is-visible > .container .os-motion-lift {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.motion-ready .home-page .os-motion-reveal.is-visible > .container .home-case-study-card:hover,
+.motion-ready
+  .home-page
+  .os-motion-reveal.is-visible
+  > .container
+  .home-case-study-card:focus-within {
+  transform: translate3d(0, -4px, 0);
+}
+
+@media (width <= 767px) {
+  .motion-ready .home-page .os-motion-reveal {
+    transform: translate3d(0, 18px, 0);
+  }
+
+  .motion-ready .home-page .section-1 .os-hero-visual {
+    transform: translate3d(0, 16px, 0) scale(0.99);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .os-motion-reveal,
+  .home-page .os-motion-lift,
+  .home-page .os-hero-copy,
+  .home-page .os-hero-visual {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
