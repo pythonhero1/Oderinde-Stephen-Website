@@ -5243,11 +5243,15 @@ body #page-top .page-section .button-13 {
 
 .image-52 .image-frame {
   border-radius: 25px;
+  width: 100%;
   overflow: hidden;
 }
 
 .image-52 .image-frame img {
   border-radius: inherit;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .copy-52 .copy-inner,
