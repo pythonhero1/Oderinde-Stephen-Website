@@ -1434,7 +1434,7 @@ body #page-top .page-section .button-2:after {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 14px 16px !important;
+  padding: 6px 16px !important;
 }
 
 .review-platform-link {
@@ -1642,12 +1642,26 @@ body #page-top .page-section .button-2 {
 }
 
 .row-4 {
-  --horizontal-gap: 3%;
+  --horizontal-gap: 1.5%;
   --align-items: initial;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: stretch;
   max-width: 1248px !important;
+}
+
+.row-4 > [class*='et_flex_column'] {
+  --horizontal-gap-parent: 1.5%;
+}
+
+@media (width > 980px) {
+  .row-4 > .column-5,
+  .row-4 > .column-6,
+  .row-4 > .column-7,
+  .row-4 > .column-8 {
+    width: calc((100% - 4.5%) / 4);
+    max-width: calc((100% - 4.5%) / 4);
+  }
 }
 
 .copy-4 .copy-inner {
