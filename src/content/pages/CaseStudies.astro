@@ -779,6 +779,14 @@ import baumgaertnerPreview from '../../assets/images/einbruchschutz-baumgaertner
                   <h3 id="portfolio-preview-title">Website preview</h3>
                 </div>
                 <div class="portfolio-preview-actions">
+                  <button
+                    type="button"
+                    class="portfolio-preview-mode"
+                    data-preview-mode-toggle
+                    aria-pressed="false"
+                  >
+                    Image preview
+                  </button>
                   <a
                     class="portfolio-preview-live-link"
                     href="#"
@@ -801,6 +809,13 @@ import baumgaertnerPreview from '../../assets/images/einbruchschutz-baumgaertner
                   width="1024"
                   height="576"
                 />
+                <iframe
+                  class="portfolio-preview-frame"
+                  title="Interactive website preview"
+                  src="about:blank"
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
               </div>
             </section>
           </div>
@@ -1448,8 +1463,10 @@ import baumgaertnerPreview from '../../assets/images/einbruchschutz-baumgaertner
 <script>
   const portfolioModal = document.querySelector('[data-portfolio-modal]');
   const portfolioImage = portfolioModal?.querySelector('.portfolio-preview-image');
+  const portfolioFrame = portfolioModal?.querySelector('.portfolio-preview-frame');
   const portfolioTitle = portfolioModal?.querySelector('#portfolio-preview-title');
   const portfolioLiveLink = portfolioModal?.querySelector('.portfolio-preview-live-link');
+  const portfolioModeToggle = portfolioModal?.querySelector('[data-preview-mode-toggle]');
   const portfolioCloseButton = portfolioModal?.querySelector('.portfolio-preview-close');
   let portfolioPreviousFocus = null;
   let portfolioCloseTimer;
@@ -1461,9 +1478,21 @@ import baumgaertnerPreview from '../../assets/images/einbruchschutz-baumgaertner
     window.clearTimeout(portfolioCloseTimer);
     portfolioCloseTimer = window.setTimeout(() => {
       portfolioModal.hidden = true;
+      if (portfolioFrame instanceof HTMLIFrameElement) portfolioFrame.src = 'about:blank';
       if (portfolioPreviousFocus instanceof HTMLElement) portfolioPreviousFocus.focus();
     }, 220);
   };
+
+  portfolioModeToggle?.addEventListener('click', () => {
+    if (
+      !(portfolioModal instanceof HTMLElement) ||
+      !(portfolioModeToggle instanceof HTMLButtonElement)
+    )
+      return;
+    const imageMode = portfolioModal.classList.toggle('is-image-mode');
+    portfolioModeToggle.setAttribute('aria-pressed', String(imageMode));
+    portfolioModeToggle.textContent = imageMode ? 'Live preview' : 'Image preview';
+  });
 
   document.querySelectorAll('.portfolio-preview-trigger').forEach((trigger) => {
     trigger.addEventListener('click', () => {
@@ -1475,8 +1504,17 @@ import baumgaertnerPreview from '../../assets/images/einbruchschutz-baumgaertner
       window.clearTimeout(portfolioCloseTimer);
       portfolioPreviousFocus = trigger;
       portfolioModal.hidden = false;
+      portfolioModal.classList.remove('is-image-mode');
+      if (portfolioModeToggle instanceof HTMLButtonElement) {
+        portfolioModeToggle.setAttribute('aria-pressed', 'false');
+        portfolioModeToggle.textContent = 'Image preview';
+      }
       if (portfolioTitle) portfolioTitle.textContent = title;
       if (portfolioLiveLink instanceof HTMLAnchorElement) portfolioLiveLink.href = url;
+      if (portfolioFrame instanceof HTMLIFrameElement) {
+        portfolioFrame.src = url;
+        portfolioFrame.title = `${title} interactive website preview`;
+      }
       if (portfolioImage instanceof HTMLImageElement) {
         portfolioImage.src = image;
         portfolioImage.alt = `${title} website preview`;
