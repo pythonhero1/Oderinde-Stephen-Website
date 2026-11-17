@@ -146,8 +146,8 @@ import Accordion from '../../components/content/Accordion.astro';
               </TextBlock>
             </Column>
           </Container>
-          <Container class="row-4 container layout-grid-row">
-            <Column class="column-8 column flex-column blend-normal layout-clickable os-motion-lift">
+          <Container class="row-4 container layout-grid-row case-study-grid">
+            <Column class="column-8 column flex-column blend-normal layout-clickable os-motion-lift case-study-card">
               <ImageBlock class="image-2 image-block block flex-block">
                 <span class="image-frame">
                   <ResponsiveImage
@@ -160,7 +160,7 @@ import Accordion from '../../components/content/Accordion.astro';
                   />
                 </span>
               </ImageBlock>
-              <TextBlock class="copy-5 copy-block tone-light block flex-block">
+              <TextBlock class="copy-5 copy-block tone-light block flex-block case-study-label">
                 <p>CASE STUDY</p>
               </TextBlock>
               <Heading class="heading-8 block flex-block" level={1}>
@@ -172,23 +172,30 @@ import Accordion from '../../components/content/Accordion.astro';
                   links and WooCommerce infrastructure.
                 </p>
               </TextBlock>
-              <Container class="row-5 container layout-row-nested flex-row">
-                <Column class="column-9 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
-                  <Heading class="heading-9 block flex-block" level={1}>
-                    WordPress
+              <details class="case-study-details" name="case-study-details">
+                <summary aria-label="Toggle project details">
+                  <span class="case-study-details-icon" aria-hidden="true"></span>
+                </summary>
+                <div class="case-study-details-content">
+                  <Container class="row-5 container layout-row-nested flex-row">
+                    <Column class="column-9 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+                      <Heading class="heading-9 block flex-block" level={1}>
+                        WordPress
+                      </Heading>
+                      <Heading class="heading-10 block flex-block" level={1}>
+                        WooCommerce
+                      </Heading>
+                      <Heading class="heading-11 block flex-block" level={1}>
+                        Hostinger
+                      </Heading>
+                    </Column>
+                  </Container>
+                  <Heading class="heading-12 block flex-block" level={1}>
+                    Website launched; direct WooCommerce payments pending client onboarding.
                   </Heading>
-                  <Heading class="heading-10 block flex-block" level={1}>
-                    WooCommerce
-                  </Heading>
-                  <Heading class="heading-11 block flex-block" level={1}>
-                    Hostinger
-                  </Heading>
-                </Column>
-              </Container>
-              <Heading class="heading-12 block flex-block" level={1}>
-                Website launched; direct WooCommerce payments pending client onboarding.
-              </Heading>
-              <Container class="row-6 container layout-row-nested flex-row layout-clickable">
+                </div>
+              </details>
+              <Container class="row-6 container layout-row-nested flex-row layout-clickable case-study-link">
                 <Column class="column-10 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
                   <Heading class="heading-13 block flex-block" level={1}>
                     <a
@@ -206,7 +213,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 </Column>
               </Container>
             </Column>
-            <Column class="column-11 column flex-column blend-normal layout-clickable os-motion-lift">
+            <Column class="column-11 column flex-column blend-normal layout-clickable os-motion-lift case-study-card">
               <ImageBlock class="image-3 image-block block flex-block">
                 <span class="image-frame">
                   <ResponsiveImage
@@ -219,7 +226,7 @@ import Accordion from '../../components/content/Accordion.astro';
                   />
                 </span>
               </ImageBlock>
-              <TextBlock class="copy-7 copy-block tone-light block flex-block">
+              <TextBlock class="copy-7 copy-block tone-light block flex-block case-study-label">
                 <p>CASE STUDY</p>
               </TextBlock>
               <Heading class="heading-14 block flex-block" level={1}>
@@ -232,25 +239,32 @@ import Accordion from '../../components/content/Accordion.astro';
                   later expanded into helping establish supporting social media presence.
                 </p>
               </TextBlock>
-              <Container class="row-7 container layout-row-nested flex-row">
-                <Column class="column-12 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
-                  <Heading class="heading-15 block flex-block" level={1}>
-                    WordPress
+              <details class="case-study-details" name="case-study-details">
+                <summary aria-label="Toggle project details">
+                  <span class="case-study-details-icon" aria-hidden="true"></span>
+                </summary>
+                <div class="case-study-details-content">
+                  <Container class="row-7 container layout-row-nested flex-row">
+                    <Column class="column-12 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+                      <Heading class="heading-15 block flex-block" level={1}>
+                        WordPress
+                      </Heading>
+                      <Heading class="heading-16 block flex-block" level={1}>
+                        Hosting Setup
+                      </Heading>
+                      <Heading class="heading-17 block flex-block" level={1}>
+                        Responsive Design
+                      </Heading>
+                    </Column>
+                  </Container>
+                  <Heading class="heading-18 block flex-block" level={1}>
+                    The final Fiverr review gave 5/5 for Communication, 5/5 for Quality and 5/5 for
+                    Value. The client’s review: “I want a price to add the trilogy page and a couple
+                    more pages for the two new books into the website you made.
                   </Heading>
-                  <Heading class="heading-16 block flex-block" level={1}>
-                    Hosting Setup
-                  </Heading>
-                  <Heading class="heading-17 block flex-block" level={1}>
-                    Responsive Design
-                  </Heading>
-                </Column>
-              </Container>
-              <Heading class="heading-18 block flex-block" level={1}>
-                The final Fiverr review gave 5/5 for Communication, 5/5 for Quality and 5/5 for
-                Value. The client’s review: “I want a price to add the trilogy page and a couple
-                more pages for the two new books into the website you made.
-              </Heading>
-              <Container class="row-8 container layout-row-nested flex-row layout-clickable">
+                </div>
+              </details>
+              <Container class="row-8 container layout-row-nested flex-row layout-clickable case-study-link">
                 <Column class="column-13 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
                   <Heading class="heading-19 block flex-block" level={1}>
                     <a href="/case-study/samuel-edmond-stone-landing-page/" style="color:inherit">
@@ -265,7 +279,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 </Column>
               </Container>
             </Column>
-            <Column class="column-14 column flex-column blend-normal layout-clickable os-motion-lift">
+            <Column class="column-14 column flex-column blend-normal layout-clickable os-motion-lift case-study-card">
               <ImageBlock class="image-4 image-block block flex-block">
                 <span class="image-frame">
                   <ResponsiveImage
@@ -278,7 +292,7 @@ import Accordion from '../../components/content/Accordion.astro';
                   />
                 </span>
               </ImageBlock>
-              <TextBlock class="copy-9 copy-block tone-light block flex-block">
+              <TextBlock class="copy-9 copy-block tone-light block flex-block case-study-label">
                 <p>CASE STUDY</p>
               </TextBlock>
               <Heading class="heading-20 block flex-block" level={1}>
@@ -292,25 +306,32 @@ import Accordion from '../../components/content/Accordion.astro';
                   production migration for a German security business.
                 </p>
               </TextBlock>
-              <Container class="row-9 container layout-row-nested flex-row">
-                <Column class="column-15 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
-                  <Heading class="heading-21 block flex-block" level={1}>
-                    WordPress
+              <details class="case-study-details" name="case-study-details">
+                <summary aria-label="Toggle project details">
+                  <span class="case-study-details-icon" aria-hidden="true"></span>
+                </summary>
+                <div class="case-study-details-content">
+                  <Container class="row-9 container layout-row-nested flex-row">
+                    <Column class="column-15 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+                      <Heading class="heading-21 block flex-block" level={1}>
+                        WordPress
+                      </Heading>
+                      <Heading class="heading-22 block flex-block" level={1}>
+                        On-page SEO
+                      </Heading>
+                      <Heading class="heading-23 block flex-block" level={1}>
+                        Trustindex
+                      </Heading>
+                    </Column>
+                  </Container>
+                  <Heading class="heading-24 block flex-block" level={1}>
+                    The buyer returned after Bau-Helden and commissioned a significantly larger
+                    11-page redesign. The client explained: “I accepted your price after seeing that
+                    the work on Bau-Helden matched what I needed. I hired you for another website.”
                   </Heading>
-                  <Heading class="heading-22 block flex-block" level={1}>
-                    On-page SEO
-                  </Heading>
-                  <Heading class="heading-23 block flex-block" level={1}>
-                    Trustindex
-                  </Heading>
-                </Column>
-              </Container>
-              <Heading class="heading-24 block flex-block" level={1}>
-                The buyer returned after Bau-Helden and commissioned a significantly larger 11-page
-                redesign. The client explained: “I accepted your price after seeing that the work on
-                Bau-Helden matched what I needed. I hired you for another website.”
-              </Heading>
-              <Container class="row-10 container layout-row-nested flex-row layout-clickable">
+                </div>
+              </details>
+              <Container class="row-10 container layout-row-nested flex-row layout-clickable case-study-link">
                 <Column class="column-16 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
                   <Heading class="heading-25 block flex-block" level={1}>
                     <a
@@ -328,7 +349,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 </Column>
               </Container>
             </Column>
-            <Column class="column-17 column flex-column blend-normal layout-clickable os-motion-lift">
+            <Column class="column-17 column flex-column blend-normal layout-clickable os-motion-lift case-study-card">
               <ImageBlock class="image-5 image-block block flex-block">
                 <span class="image-frame">
                   <ResponsiveImage
@@ -341,7 +362,7 @@ import Accordion from '../../components/content/Accordion.astro';
                   />
                 </span>
               </ImageBlock>
-              <TextBlock class="copy-11 copy-block tone-light block flex-block">
+              <TextBlock class="copy-11 copy-block tone-light block flex-block case-study-label">
                 <p>CASE STUDY</p>
               </TextBlock>
               <Heading class="heading-26 block flex-block" level={1}>
@@ -354,25 +375,32 @@ import Accordion from '../../components/content/Accordion.astro';
                   design reference for the client’s next, larger engagement.
                 </p>
               </TextBlock>
-              <Container class="row-11 container layout-row-nested flex-row">
-                <Column class="column-18 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
-                  <Heading class="heading-27 block flex-block" level={1}>
-                    WordPress
+              <details class="case-study-details" name="case-study-details">
+                <summary aria-label="Toggle project details">
+                  <span class="case-study-details-icon" aria-hidden="true"></span>
+                </summary>
+                <div class="case-study-details-content">
+                  <Container class="row-11 container layout-row-nested flex-row">
+                    <Column class="column-18 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+                      <Heading class="heading-27 block flex-block" level={1}>
+                        WordPress
+                      </Heading>
+                      <Heading class="heading-28 block flex-block" level={1}>
+                        Elementor
+                      </Heading>
+                      <Heading class="heading-29 block flex-block" level={1}>
+                        Responsive UX
+                      </Heading>
+                    </Column>
+                  </Container>
+                  <Heading class="heading-30 block flex-block" level={1}>
+                    The strongest proof is retention. The same buyer later returned with a larger
+                    website and explicitly said: “I’d like a similar style to Bau-Helden you built
+                    that as well.&quot;
                   </Heading>
-                  <Heading class="heading-28 block flex-block" level={1}>
-                    Elementor
-                  </Heading>
-                  <Heading class="heading-29 block flex-block" level={1}>
-                    Responsive UX
-                  </Heading>
-                </Column>
-              </Container>
-              <Heading class="heading-30 block flex-block" level={1}>
-                The strongest proof is retention. The same buyer later returned with a larger
-                website and explicitly said: “I’d like a similar style to Bau-Helden you built that
-                as well.&quot;
-              </Heading>
-              <Container class="row-12 container layout-row-nested flex-row layout-clickable">
+                </div>
+              </details>
+              <Container class="row-12 container layout-row-nested flex-row layout-clickable case-study-link">
                 <Column class="column-19 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
                   <Heading class="heading-31 block flex-block" level={1}>
                     View Case Study
@@ -385,7 +413,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 </Column>
               </Container>
             </Column>
-            <Column class="column-20 column flex-column blend-normal layout-clickable os-motion-lift">
+            <Column class="column-20 column flex-column blend-normal layout-clickable os-motion-lift case-study-card">
               <ImageBlock class="image-6 image-block block flex-block">
                 <span class="image-frame">
                   <ResponsiveImage
@@ -398,7 +426,7 @@ import Accordion from '../../components/content/Accordion.astro';
                   />
                 </span>
               </ImageBlock>
-              <TextBlock class="copy-13 copy-block tone-light block flex-block">
+              <TextBlock class="copy-13 copy-block tone-light block flex-block case-study-label">
                 <p>CASE STUDY</p>
               </TextBlock>
               <Heading class="heading-32 block flex-block" level={1}>
@@ -411,24 +439,32 @@ import Accordion from '../../components/content/Accordion.astro';
                   right action, and still launch while campaign priorities were changing.
                 </p>
               </TextBlock>
-              <Container class="row-13 container layout-row-nested flex-row">
-                <Column class="column-21 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
-                  <Heading class="heading-33 block flex-block" level={1}>
-                    WordPress
+              <details class="case-study-details" name="case-study-details">
+                <summary aria-label="Toggle project details">
+                  <span class="case-study-details-icon" aria-hidden="true"></span>
+                </summary>
+                <div class="case-study-details-content">
+                  <Container class="row-13 container layout-row-nested flex-row">
+                    <Column class="column-21 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+                      <Heading class="heading-33 block flex-block" level={1}>
+                        WordPress
+                      </Heading>
+                      <Heading class="heading-34 block flex-block" level={1}>
+                        Elementor
+                      </Heading>
+                      <Heading class="heading-35 block flex-block" level={1}>
+                        Bilingual UX
+                      </Heading>
+                    </Column>
+                  </Container>
+                  <Heading class="heading-36 block flex-block" level={1}>
+                    The Fiverr review recorded 5/5 Quality, 5/5 Value and 4/5 Communication. The
+                    client described the finished result as stable and solid after a complex
+                    bilingual launch.
                   </Heading>
-                  <Heading class="heading-34 block flex-block" level={1}>
-                    Elementor
-                  </Heading>
-                  <Heading class="heading-35 block flex-block" level={1}>
-                    Bilingual UX
-                  </Heading>
-                </Column>
-              </Container>
-              <Heading class="heading-36 block flex-block" level={1}>
-                The Fiverr review recorded 5/5 Quality, 5/5 Value and 4/5 Communication. The client
-                described the finished result as stable and solid after a complex bilingual launch.
-              </Heading>
-              <Container class="row-14 container layout-row-nested flex-row layout-clickable">
+                </div>
+              </details>
+              <Container class="row-14 container layout-row-nested flex-row layout-clickable case-study-link">
                 <Column class="column-22 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
                   <Heading class="heading-37 block flex-block" level={1}>
                     View Case Study
@@ -441,7 +477,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 </Column>
               </Container>
             </Column>
-            <Column class="column-23 column last-column flex-column blend-normal layout-clickable os-motion-lift">
+            <Column class="column-23 column last-column flex-column blend-normal layout-clickable os-motion-lift case-study-card">
               <ImageBlock class="image-7 image-block block flex-block">
                 <span class="image-frame">
                   <ResponsiveImage
@@ -454,7 +490,7 @@ import Accordion from '../../components/content/Accordion.astro';
                   />
                 </span>
               </ImageBlock>
-              <TextBlock class="copy-15 copy-block tone-light block flex-block">
+              <TextBlock class="copy-15 copy-block tone-light block flex-block case-study-label">
                 <p>CASE STUDY</p>
               </TextBlock>
               <Heading class="heading-38 block flex-block" level={1}>
@@ -467,24 +503,31 @@ import Accordion from '../../components/content/Accordion.astro';
                   workflow the client could continue managing himself.
                 </p>
               </TextBlock>
-              <Container class="row-15 container layout-row-nested flex-row">
-                <Column class="column-24 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
-                  <Heading class="heading-39 block flex-block" level={1}>
-                    WordPress
+              <details class="case-study-details" name="case-study-details">
+                <summary aria-label="Toggle project details">
+                  <span class="case-study-details-icon" aria-hidden="true"></span>
+                </summary>
+                <div class="case-study-details-content">
+                  <Container class="row-15 container layout-row-nested flex-row">
+                    <Column class="column-24 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
+                      <Heading class="heading-39 block flex-block" level={1}>
+                        WordPress
+                      </Heading>
+                      <Heading class="heading-40 block flex-block" level={1}>
+                        Bilingual UX
+                      </Heading>
+                      <Heading class="heading-41 block flex-block" level={1}>
+                        Responsive UX
+                      </Heading>
+                    </Column>
+                  </Container>
+                  <Heading class="heading-42 block flex-block" level={1}>
+                    The final Fiverr review gave 5/5 for Communication, 5/5 for Quality and 5/5 for
+                    Value. The client’s review: “Perfekte Lieferung! Vielen Dank!”
                   </Heading>
-                  <Heading class="heading-40 block flex-block" level={1}>
-                    Bilingual UX
-                  </Heading>
-                  <Heading class="heading-41 block flex-block" level={1}>
-                    Responsive UX
-                  </Heading>
-                </Column>
-              </Container>
-              <Heading class="heading-42 block flex-block" level={1}>
-                The final Fiverr review gave 5/5 for Communication, 5/5 for Quality and 5/5 for
-                Value. The client’s review: “Perfekte Lieferung! Vielen Dank!”
-              </Heading>
-              <Container class="row-16 container layout-row-nested flex-row layout-clickable">
+                </div>
+              </details>
+              <Container class="row-16 container layout-row-nested flex-row layout-clickable case-study-link">
                 <Column class="column-25 column last-column flex-column blend-normal width-24-24 width-24-24-tablet width-24-24-phone width-24-24-wide-tablet">
                   <Heading class="heading-43 block flex-block" level={1}>
                     View Case Study
