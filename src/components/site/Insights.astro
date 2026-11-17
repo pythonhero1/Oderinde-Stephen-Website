@@ -24,20 +24,14 @@ const { posts } = Astro.props;
           </a>
         </div>
       </div>
-      <div
-        class="insights-hero__visual"
-        aria-label="Website strategy, platforms, performance and growth"
-      >
-        <div class="insights-orbit insights-orbit--outer" aria-hidden="true"></div>
-        <div class="insights-orbit insights-orbit--inner" aria-hidden="true"></div>
-        <div class="insights-hero__icon">
-          <img src="/images/INSIGHTS-RESOURCES-—-Icon.svg" alt="" width="86" height="86" />
-        </div>
-        <span class="insights-topic insights-topic--one">STRATEGY</span>
-        <span class="insights-topic insights-topic--two">PLATFORMS</span>
-        <span class="insights-topic insights-topic--three">PERFORMANCE</span>
-        <span class="insights-topic insights-topic--four">GROWTH</span>
-      </div>
+      <figure class="insights-hero__visual">
+        <ResponsiveImage
+          source="insights-hero-badge.jpg"
+          alt="Glossy teal and coral Insights badge"
+          priority={true}
+          sizes="(max-width: 767px) 90vw, (max-width: 1200px) 42vw, 560px"
+        />
+      </figure>
     </div>
     <div class="insights-container insights-benefits" aria-label="What the insights cover">
       <span>
