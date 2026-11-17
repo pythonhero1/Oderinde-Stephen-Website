@@ -92,3 +92,50 @@ button.menu-toggle::before {
   content: '⌄' !important;
   font-family: Arial, sans-serif !important;
 }
+
+
+/* Shared footer treatment: keep typography compact and match the approved site gradient. */
+.site-footer > .section-stack .page-section.section-1-footer {
+  background-color: #07090d !important;
+  background-image: linear-gradient(120deg, #0c1239 0%, #000000 35%, #0c1239 100%) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.site-footer [class*='layout-link-'][class*='-footer'] .layout-link-inner {
+  font-size: 0.875rem !important;
+  line-height: 1.5;
+}
+
+.site-footer :is(
+    .heading-1-footer,
+    .heading-4-footer,
+    .heading-5-footer,
+    .heading-6-footer,
+    .heading-7-footer,
+    .heading-8-footer,
+    .heading-9-footer,
+    .heading-10-footer
+  )
+  .heading-inner
+  :is(h1, h2, h3, h4, h5, h6) {
+  font-size: 1rem !important;
+  line-height: 1.35;
+}
+
+.site-footer :is(.heading-2-footer, .heading-3-footer)
+  .heading-inner
+  :is(h1, h2, h3, h4, h5, h6),
+.site-footer .copy-2-footer .copy-inner,
+.site-footer :is(.button-1-footer, .button-2-footer) {
+  font-size: 0.875rem !important;
+}
+
+.site-footer .copy-1-footer .copy-inner {
+  font-size: 0.6875rem !important;
+  line-height: 1.45;
+}
+
+.site-footer .row-3-footer .layout-link-inner {
+  font-size: 0.75rem !important;
+}
