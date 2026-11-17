@@ -532,6 +532,7 @@
   align-items: center;
 }
 
+.portfolio-preview-mode,
 .portfolio-preview-live-link,
 .portfolio-preview-close {
   display: inline-flex;
@@ -547,6 +548,20 @@
   text-decoration: none;
 }
 
+.portfolio-preview-mode {
+  padding: 0.65rem 0.9rem;
+  color: #bfdbfe;
+  background: rgba(37, 99, 235, 0.12);
+  border: 0.0625rem solid rgba(96, 165, 250, 0.42);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.portfolio-preview-mode[aria-pressed='true'] {
+  color: #ffffff;
+  background: rgba(37, 99, 235, 0.3);
+}
+
 .portfolio-preview-live-link {
   gap: 0.5rem;
   padding: 0.65rem 1rem;
@@ -560,17 +575,36 @@
 }
 
 .portfolio-preview-frame-shell {
-  overflow: auto;
-  padding: 1rem;
+  position: relative;
+  height: min(42rem, calc(92vh - 5.5rem));
+  overflow: hidden;
   background: #02050c;
 }
 
 .portfolio-preview-image {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  padding: 1rem;
+  object-fit: contain;
   background: #0c1239;
-  border-radius: 0.75rem;
+}
+
+.portfolio-preview-frame {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border: 0;
+}
+
+.portfolio-preview-modal.is-image-mode .portfolio-preview-frame {
+  display: none;
 }
 
 body.portfolio-preview-open {
@@ -631,6 +665,10 @@ body.portfolio-preview-open {
   .portfolio-preview-actions {
     width: 100%;
     justify-content: space-between;
+  }
+  .portfolio-preview-mode {
+    padding-inline: 0.7rem;
+    font-size: 0.68rem;
   }
 }
 
