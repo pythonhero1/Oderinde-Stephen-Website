@@ -356,18 +356,18 @@ const categories = ['All projects', 'Featured', 'Business', 'E-commerce'];
             View Case Studies
           </a>
         </div>
-        <div
-          class="portfolio-count"
-          aria-label={`${portfolioProjects.length} selected website projects`}
-        >
-          <strong>{String(portfolioProjects.length).padStart(2, '0')}+</strong>
+        <p class="portfolio-count-label">REAL PROJECT STORIES</p>
+        <div class="portfolio-count" aria-label="52 plus selected website projects">
+          <strong data-portfolio-counter data-target="52" aria-label="52 plus">
+            52+
+          </strong>
           <span>selected website projects across business and e-commerce</span>
         </div>
       </div>
       <div class="portfolio-hero-media">
         <ResponsiveImage
-          source="A-premium-modern-business-website-presented-across-desktop-and-mobile-devices-demonstrating-clarity-professionalism-and-responsive-design-scaled.avif"
-          alt="Professional business website shown across desktop and mobile devices"
+          source="case-study-on-blue-and-red-background-scaled.avif"
+          alt="Case study signs presented on a vivid red and blue background"
           width="2560"
           height="1920"
           sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 640px"
@@ -552,6 +552,55 @@ const categories = ['All projects', 'Featured', 'Business', 'E-commerce'];
 </article>
 
 <script>
+  const portfolioCounter = document.querySelector('[data-portfolio-counter]');
+
+  if (portfolioCounter instanceof HTMLElement) {
+    const target = Number(portfolioCounter.dataset.target || 52);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let hasCounted = false;
+
+    const setCounterValue = (value: number) => {
+      portfolioCounter.textContent = `${String(value).padStart(2, '0')}+`;
+    };
+
+    const runCounter = () => {
+      if (hasCounted) return;
+      hasCounted = true;
+
+      if (reduceMotion) {
+        setCounterValue(target);
+        return;
+      }
+
+      const duration = 1400;
+      const startTime = performance.now();
+      setCounterValue(0);
+
+      const tick = (now: number) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const easedProgress = 1 - (1 - progress) ** 3;
+        setCounterValue(Math.round(target * easedProgress));
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+
+      requestAnimationFrame(tick);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const counterObserver = new IntersectionObserver(
+        (entries, observer) => {
+          if (!entries.some((entry) => entry.isIntersecting)) return;
+          runCounter();
+          observer.disconnect();
+        },
+        { threshold: 0.45 },
+      );
+      counterObserver.observe(portfolioCounter);
+    } else {
+      runCounter();
+    }
+  }
+
   const modal = document.querySelector('[data-portfolio-modal]');
   const modalImage = modal?.querySelector('.portfolio-preview-image');
   const modalFrame = modal?.querySelector('.portfolio-preview-frame');

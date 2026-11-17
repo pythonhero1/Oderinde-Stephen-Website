@@ -74,6 +74,16 @@
   margin-top: 2rem;
 }
 
+#page-entry .portfolio-count-label {
+  margin: 1.5rem 0 0;
+  color: #b7c4da;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  line-height: 1.4;
+}
+
 #page-entry .portfolio-primary-button,
 #page-entry .portfolio-secondary-button {
   display: inline-flex;
@@ -113,7 +123,7 @@
   display: flex;
   gap: 1.25rem;
   align-items: center;
-  margin-top: 2.25rem;
+  margin-top: 1.75rem;
 }
 
 #page-entry .portfolio-count strong {
@@ -121,6 +131,7 @@
   font-family: Inter, sans-serif;
   font-size: clamp(3.25rem, 6vw, 5.25rem);
   font-weight: 500;
+  font-variant-numeric: tabular-nums;
   letter-spacing: -0.07em;
   line-height: 1;
 }
@@ -136,7 +147,7 @@
 #page-entry .portfolio-hero-media {
   position: relative;
   border: 0.0625rem solid rgba(59, 130, 246, 0.45);
-  border-radius: 1.5rem;
+  border-radius: 1.15rem;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.45);
   overflow: hidden;
 }
@@ -719,6 +730,11 @@ body.portfolio-preview-open {
   }
   #page-entry .portfolio-hero-actions > a {
     width: 100%;
+  }
+  #page-entry .portfolio-count {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
   }
   #page-entry .portfolio-benefits {
     grid-template-columns: minmax(0, 1fr);
