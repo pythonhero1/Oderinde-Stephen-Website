@@ -1,0 +1,589 @@
+---
+import ResponsiveImage from '../../components/content/ResponsiveImage.astro';
+import pipePatchPreview from '../../assets/images/pipe-patch-pro-product-website-case-study-feature-image-1024x576.avif';
+import samuelEdmondPreview from '../../assets/images/samuel-edmondstone-homeless-trilogy-website-website-1024x576.avif';
+import baumgaertnerPreview from '../../assets/images/einbruchschutz-baumgaertner-website-security-homepage-1024x512.avif';
+
+type PortfolioProject = {
+  title: string;
+  category: 'Featured' | 'Business' | 'E-commerce';
+  industry: string;
+  url: string;
+  thumbnail?: string;
+};
+
+const portfolioProjects: PortfolioProject[] = [
+  {
+    title: 'PipePatchPro',
+    category: 'Featured',
+    industry: 'Technical & infrastructure services',
+    url: 'https://pipepatchpro.net/',
+    thumbnail: pipePatchPreview.src,
+  },
+  {
+    title: 'Samuel Edmondstone',
+    category: 'Featured',
+    industry: 'Author website & storytelling',
+    url: 'https://samueledmondstone.de/',
+    thumbnail: samuelEdmondPreview.src,
+  },
+  {
+    title: 'Einbruchschutz Baumgaertner',
+    category: 'Featured',
+    industry: 'Security services',
+    url: 'https://einbruchschutz-baumgaertner.de/',
+    thumbnail: baumgaertnerPreview.src,
+  },
+  {
+    title: 'GERMAG Baumaschinen',
+    category: 'Featured',
+    industry: 'Construction & machinery',
+    url: 'https://germag-baumaschinen.de/',
+  },
+  {
+    title: 'WALDerLEBEN Nürnberg',
+    category: 'Featured',
+    industry: 'Nature education & coaching',
+    url: 'https://walderleben-nuernberg.de/',
+  },
+  {
+    title: 'Perspektiv(e) LOS',
+    category: 'Featured',
+    industry: 'Youth & family services',
+    url: 'https://perspektive-los.de/',
+  },
+  {
+    title: 'Therapie Palme',
+    category: 'Featured',
+    industry: 'Therapy & coaching',
+    url: 'https://therapie-palme.de/',
+  },
+  {
+    title: 'PETZKA Consulting',
+    category: 'Featured',
+    industry: 'Data protection, cybersecurity & compliance',
+    url: 'https://petzka-consulting.com/',
+  },
+  {
+    title: 'Kieferfreund',
+    category: 'Featured',
+    industry: 'Health, education & digital products',
+    url: 'https://kieferfreund.com/',
+  },
+  {
+    title: 'Jasmin Pfeifer',
+    category: 'Featured',
+    industry: 'Finance & property financing',
+    url: 'https://jasminpfeifer.de/',
+  },
+  {
+    title: 'BORN Accelerators',
+    category: 'Featured',
+    industry: 'Startups & investment ecosystem',
+    url: 'https://bornaccelerators.com/',
+  },
+  {
+    title: 'Bauhelden',
+    category: 'Featured',
+    industry: 'Construction & renovation',
+    url: 'https://bau-helden.de/',
+  },
+  {
+    title: 'Markarna',
+    category: 'Featured',
+    industry: 'Social media education & consulting',
+    url: 'https://markarna.ch/',
+  },
+  {
+    title: 'Ingenieurbüro Eder',
+    category: 'Featured',
+    industry: 'Engineering, fire safety & accessibility',
+    url: 'https://ib-eder.net/',
+  },
+  {
+    title: 'Zeitmessung KA',
+    category: 'Business',
+    industry: 'Timing services',
+    url: 'https://zeitmessung-ka.de/',
+  },
+  {
+    title: 'Vimo Cuisine',
+    category: 'Business',
+    industry: 'Hospitality & cuisine',
+    url: 'https://vimo-cuisine.com/',
+  },
+  {
+    title: 'Sociapart',
+    category: 'Business',
+    industry: 'Professional services',
+    url: 'https://sociapart.de/',
+  },
+  {
+    title: 'Prime Solution',
+    category: 'Business',
+    industry: 'Business services',
+    url: 'https://prime-solution.info/',
+  },
+  {
+    title: 'Content Creator Hub',
+    category: 'Business',
+    industry: 'Creator education',
+    url: 'https://contentcreatorhub.de/',
+  },
+  {
+    title: 'Agentur Ostwest',
+    category: 'Business',
+    industry: 'Creative agency',
+    url: 'https://agenturostwest.de/',
+  },
+  {
+    title: 'Bauer Martin Hofladen',
+    category: 'Business',
+    industry: 'Farm shop & local retail',
+    url: 'https://bauermartin-hofladen.de/',
+  },
+  {
+    title: 'Casa Pilate by Sabrina',
+    category: 'Business',
+    industry: 'Pilates & wellness',
+    url: 'https://casapilatebysabrina.com/',
+  },
+  {
+    title: 'Extra Watt',
+    category: 'Business',
+    industry: 'Energy services',
+    url: 'https://extra-watt.at/',
+  },
+  {
+    title: 'Geht Schon Wieder',
+    category: 'Business',
+    industry: 'Creative project',
+    url: 'https://gehtschonwieder.net/',
+  },
+  {
+    title: 'HD Photograhie',
+    category: 'Business',
+    industry: 'Photography',
+    url: 'https://hd-photograhie.de/',
+  },
+  {
+    title: 'Hettich Art',
+    category: 'Business',
+    industry: 'Art & creative services',
+    url: 'https://hettich-art.de/',
+  },
+  {
+    title: 'Hoergerarte Collet Suffering',
+    category: 'Business',
+    industry: 'Hearing services',
+    url: 'https://hoergerarte-collet-suffering.de/',
+  },
+  {
+    title: 'KMK',
+    category: 'Business',
+    industry: 'Professional services',
+    url: 'https://kmk.ninja/',
+  },
+  {
+    title: 'MyHostPoint',
+    category: 'Business',
+    industry: 'Hosting & technology',
+    url: 'https://myhostpoint.ch/',
+  },
+  {
+    title: 'Book Muse Club',
+    category: 'E-commerce',
+    industry: 'Books & membership',
+    url: 'https://bookmuseclub.com/',
+  },
+  {
+    title: 'Grill & Game',
+    category: 'E-commerce',
+    industry: 'Outdoor retail',
+    url: 'https://grillandgame.store/',
+  },
+  {
+    title: 'GymRoos',
+    category: 'E-commerce',
+    industry: 'Fitness retail',
+    url: 'https://gymroos.com.au/',
+  },
+  {
+    title: 'Vira by Ani',
+    category: 'E-commerce',
+    industry: 'Fashion & lifestyle',
+    url: 'https://virabyani.com/',
+  },
+  {
+    title: 'Anadoa Naturhaus',
+    category: 'E-commerce',
+    industry: 'Natural products',
+    url: 'https://anadoanaturhaus.com/en',
+  },
+  {
+    title: 'Volta EV',
+    category: 'E-commerce',
+    industry: 'Electric mobility',
+    url: 'https://www.voltaev.co.uk/',
+  },
+  {
+    title: 'Venum — Rest of World',
+    category: 'E-commerce',
+    industry: 'Sportswear & equipment',
+    url: 'https://row.venum.com/',
+  },
+  {
+    title: 'Spicy Tattoo Supplies — Sweden',
+    category: 'E-commerce',
+    industry: 'Tattoo supplies',
+    url: 'https://spicytattoosupplies.se/',
+  },
+  {
+    title: 'Spicy Tattoo Supplies — Germany',
+    category: 'E-commerce',
+    industry: 'Tattoo supplies',
+    url: 'https://spicytattoosupplies.de/',
+  },
+  {
+    title: 'Alessa Diamond',
+    category: 'E-commerce',
+    industry: 'Jewellery',
+    url: 'https://alessadiamond.com/',
+  },
+  {
+    title: 'VRLA Tech',
+    category: 'E-commerce',
+    industry: 'Custom computers',
+    url: 'https://vrlatech.com/',
+  },
+  {
+    title: 'Art et Culture',
+    category: 'E-commerce',
+    industry: 'Art & culture',
+    url: 'https://art-et-culture.ch/',
+  },
+  {
+    title: 'Build a Kitchen',
+    category: 'E-commerce',
+    industry: 'Kitchen retail',
+    url: 'https://buildakitchen.co.uk/',
+  },
+  {
+    title: 'Farm Cottage Brands',
+    category: 'E-commerce',
+    industry: 'Home & lifestyle',
+    url: 'https://farmcottagebrands.com/',
+  },
+  {
+    title: 'Reynolds Training',
+    category: 'E-commerce',
+    industry: 'Training & education',
+    url: 'https://reynoldstraining.com/',
+  },
+  {
+    title: 'Shop Sprees',
+    category: 'E-commerce',
+    industry: 'Online retail',
+    url: 'https://www.shopsprees.com/',
+  },
+  {
+    title: 'No Walls Fitness',
+    category: 'E-commerce',
+    industry: 'Fitness & coaching',
+    url: 'https://www.nowallsfitness.com/',
+  },
+  {
+    title: 'Five Pines Candle Co.',
+    category: 'E-commerce',
+    industry: 'Candles & home fragrance',
+    url: 'https://www.fivepinescandleco.com/',
+  },
+  {
+    title: 'Pure Sweep Cleaners',
+    category: 'E-commerce',
+    industry: 'Cleaning services',
+    url: 'https://www.puresweepcleaners.com/',
+  },
+  {
+    title: 'Jeepers 4x4',
+    category: 'E-commerce',
+    industry: 'Automotive accessories',
+    url: 'https://www.jeepers4x4.com/',
+  },
+  {
+    title: 'Handy Flag',
+    category: 'E-commerce',
+    industry: 'Specialist retail',
+    url: 'https://www.handyflag.com/',
+  },
+  {
+    title: 'Cuisine Classique',
+    category: 'E-commerce',
+    industry: 'Food & hospitality',
+    url: 'https://www.cuisineclassique.com/',
+  },
+  {
+    title: 'Get Loaded Brushes',
+    category: 'E-commerce',
+    industry: 'Art supplies',
+    url: 'https://www.getloadedbrushes.com/',
+  },
+];
+
+const screenshotUrl = (url: string) =>
+  `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1200&h=675`;
+const categories = ['All projects', 'Featured', 'Business', 'E-commerce'];
+---
+
+<article id="page-entry" class="portfolio-page">
+  <section class="portfolio-hero">
+    <div class="portfolio-hero-inner">
+      <div class="portfolio-hero-copy">
+        <p class="portfolio-eyebrow">SELECTED WEBSITE PORTFOLIO</p>
+        <h1>
+          Websites Built for <span>Real Businesses, Brands &amp; Ideas.</span>
+        </h1>
+        <p class="portfolio-intro">
+          Explore a broad selection of business websites, e-commerce stores, professional service
+          platforms and international projects delivered across different industries.
+        </p>
+        <div class="portfolio-hero-actions">
+          <a class="portfolio-primary-button" href="#portfolio-library">
+            Explore Portfolio
+          </a>
+          <a class="portfolio-secondary-button" href="/case-studies/">
+            View Case Studies
+          </a>
+        </div>
+        <div
+          class="portfolio-count"
+          aria-label={`${portfolioProjects.length} selected website projects`}
+        >
+          <strong>{String(portfolioProjects.length).padStart(2, '0')}+</strong>
+          <span>selected website projects across business and e-commerce</span>
+        </div>
+      </div>
+      <div class="portfolio-hero-media">
+        <ResponsiveImage
+          source="A-premium-modern-business-website-presented-across-desktop-and-mobile-devices-demonstrating-clarity-professionalism-and-responsive-design-scaled.avif"
+          alt="Professional business website shown across desktop and mobile devices"
+          width="2560"
+          height="1920"
+          sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 640px"
+          priority
+        />
+      </div>
+    </div>
+    <div class="portfolio-benefits" aria-label="Portfolio strengths">
+      <span>Business-first design</span>
+      <span>Responsive development</span>
+      <span>Platform-flexible builds</span>
+      <span>International project experience</span>
+    </div>
+  </section>
+
+  <section class="portfolio-library" id="portfolio-library">
+    <div class="portfolio-section-heading">
+      <p>THE PORTFOLIO LIBRARY</p>
+      <h2>
+        Explore <span>Selected Website Projects.</span>
+      </h2>
+      <p>
+        Filter the collection by project type, open a larger on-page preview, or visit any live
+        website in a new tab.
+      </p>
+    </div>
+
+    <div class="portfolio-filters" role="group" aria-label="Filter portfolio projects">
+      {categories.map((category, index) => (
+        <button
+          type="button"
+          class:list={['portfolio-filter', { 'is-active': index === 0 }]}
+          data-portfolio-filter={category === 'All projects' ? 'all' : category}
+          aria-pressed={index === 0 ? 'true' : 'false'}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+
+    <div class="portfolio-grid" data-portfolio-grid>
+      {portfolioProjects.map((project, index) => {
+        const image = project.thumbnail ?? screenshotUrl(project.url);
+        const domain = new URL(project.url).hostname.replace(/^www\./, '');
+        return (
+          <article class="portfolio-card" data-project-category={project.category}>
+            <span class="portfolio-card-number" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div class="portfolio-browser-window">
+              <div class="portfolio-browser-bar" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <small>{domain}</small>
+              </div>
+              <img
+                src={image}
+                alt={`${project.title} website homepage preview`}
+                width="1200"
+                height="675"
+                loading={index < 3 ? 'eager' : 'lazy'}
+                decoding="async"
+                referrerpolicy="no-referrer"
+              />
+            </div>
+            <div class="portfolio-card-copy">
+              <p>
+                {project.category} · {project.industry}
+              </p>
+              <h3>{project.title}</h3>
+            </div>
+            <button
+              class="portfolio-preview-trigger"
+              type="button"
+              data-preview-url={project.url}
+              data-preview-title={project.title}
+              data-preview-image={image}
+            >
+              <span>Preview website</span>
+              <span aria-hidden="true">↗</span>
+            </button>
+          </article>
+        );
+      })}
+    </div>
+    <p class="portfolio-empty" data-portfolio-empty hidden>
+      No projects match this filter.
+    </p>
+  </section>
+
+  <section class="portfolio-cta">
+    <p>HAVE A PROJECT IN MIND?</p>
+    <h2>
+      Let’s Build a Website That <span>Moves Your Business Forward.</span>
+    </h2>
+    <p>Share your goals, preferred platform and timeline to start planning the right solution.</p>
+    <div>
+      <a class="portfolio-primary-button" href="/contact/">
+        Start Your Project
+      </a>
+      <a class="portfolio-secondary-button" href="/pricing/">
+        Explore Pricing
+      </a>
+    </div>
+  </section>
+
+  <div class="portfolio-preview-modal" data-portfolio-modal hidden>
+    <button
+      class="portfolio-preview-backdrop"
+      type="button"
+      data-preview-close
+      aria-label="Close website preview"
+    ></button>
+    <section
+      class="portfolio-preview-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="portfolio-preview-title"
+    >
+      <header class="portfolio-preview-toolbar">
+        <div>
+          <span>WEBSITE PREVIEW</span>
+          <h3 id="portfolio-preview-title">Website preview</h3>
+        </div>
+        <div class="portfolio-preview-actions">
+          <a class="portfolio-preview-live-link" href="#" target="_blank" rel="noopener noreferrer">
+            Open live website <span aria-hidden="true">↗</span>
+          </a>
+          <button
+            type="button"
+            class="portfolio-preview-close"
+            data-preview-close
+            aria-label="Close website preview"
+          >
+            ×
+          </button>
+        </div>
+      </header>
+      <div class="portfolio-preview-frame-shell">
+        <img
+          class="portfolio-preview-image"
+          src={pipePatchPreview.src}
+          alt="Website preview"
+          width="1200"
+          height="675"
+        />
+      </div>
+    </section>
+  </div>
+</article>
+
+<script>
+  const modal = document.querySelector('[data-portfolio-modal]');
+  const modalImage = modal?.querySelector('.portfolio-preview-image');
+  const modalTitle = modal?.querySelector('#portfolio-preview-title');
+  const modalLink = modal?.querySelector('.portfolio-preview-live-link');
+  const closeButton = modal?.querySelector('.portfolio-preview-close');
+  let previousFocus: Element | null = null;
+  let closeTimer: number;
+
+  const closePreview = () => {
+    if (!(modal instanceof HTMLElement)) return;
+    modal.classList.remove('is-open');
+    document.body.classList.remove('portfolio-preview-open');
+    window.clearTimeout(closeTimer);
+    closeTimer = window.setTimeout(() => {
+      modal.hidden = true;
+      if (previousFocus instanceof HTMLElement) previousFocus.focus();
+    }, 220);
+  };
+
+  document.querySelectorAll('.portfolio-preview-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      if (!(modal instanceof HTMLElement) || !(trigger instanceof HTMLElement)) return;
+      const { previewUrl, previewTitle, previewImage } = trigger.dataset;
+      if (!previewUrl || !previewTitle || !previewImage) return;
+      previousFocus = trigger;
+      modal.hidden = false;
+      if (modalTitle) modalTitle.textContent = previewTitle;
+      if (modalLink instanceof HTMLAnchorElement) modalLink.href = previewUrl;
+      if (modalImage instanceof HTMLImageElement) {
+        modalImage.src = previewImage;
+        modalImage.alt = `${previewTitle} website preview`;
+      }
+      document.body.classList.add('portfolio-preview-open');
+      requestAnimationFrame(() => modal.classList.add('is-open'));
+      if (closeButton instanceof HTMLElement) closeButton.focus();
+    });
+  });
+
+  modal
+    ?.querySelectorAll('[data-preview-close]')
+    .forEach((control) => control.addEventListener('click', closePreview));
+
+  document.querySelectorAll('[data-portfolio-filter]').forEach((filter) => {
+    filter.addEventListener('click', () => {
+      if (!(filter instanceof HTMLButtonElement)) return;
+      const selected = filter.dataset.portfolioFilter;
+      document.querySelectorAll('[data-portfolio-filter]').forEach((button) => {
+        const active = button === filter;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+      let visible = 0;
+      document.querySelectorAll('[data-project-category]').forEach((card) => {
+        if (!(card instanceof HTMLElement)) return;
+        const show = selected === 'all' || card.dataset.projectCategory === selected;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      const empty = document.querySelector('[data-portfolio-empty]');
+      if (empty instanceof HTMLElement) empty.hidden = visible !== 0;
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal?.classList.contains('is-open')) closePreview();
+  });
+</script>
