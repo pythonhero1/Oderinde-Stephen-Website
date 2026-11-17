@@ -1,17 +1,130 @@
 ---
+import ResponsiveImage from '../content/ResponsiveImage.astro';
 const { posts } = Astro.props;
 ---
 
-<article class="site-article">
-  <h1>Website Insights</h1>
-  <p>Practical notes on websites, e-commerce and digital systems for business.</p>
-  {posts.map((post) => (
-    <section class="site-article-card">
+<article id="page-entry" class="insights-page">
+  <section class="insights-hero">
+    <div class="insights-container insights-hero__inner">
+      <div class="insights-hero__copy">
+        <p class="insights-eyebrow">INSIGHTS &amp; PRACTICAL GUIDES</p>
+        <h1>
+          Build a Better Website. Make <span>Clearer Digital Decisions.</span>
+        </h1>
+        <p class="insights-hero__intro">
+          Practical guidance on website strategy, platforms, performance and digital systems—written
+          to help businesses make confident decisions before, during and after a project.
+        </p>
+        <div class="insights-actions">
+          <a href="#latest-insights" class="insights-button insights-button--primary">
+            Explore Insights
+          </a>
+          <a href="/contact/" class="insights-button insights-button--secondary">
+            Ask a Project Question
+          </a>
+        </div>
+      </div>
+      <div
+        class="insights-hero__visual"
+        aria-label="Website strategy, platforms, performance and growth"
+      >
+        <div class="insights-orbit insights-orbit--outer" aria-hidden="true"></div>
+        <div class="insights-orbit insights-orbit--inner" aria-hidden="true"></div>
+        <div class="insights-hero__icon">
+          <img src="/images/INSIGHTS-RESOURCES-—-Icon.svg" alt="" width="86" height="86" />
+        </div>
+        <span class="insights-topic insights-topic--one">STRATEGY</span>
+        <span class="insights-topic insights-topic--two">PLATFORMS</span>
+        <span class="insights-topic insights-topic--three">PERFORMANCE</span>
+        <span class="insights-topic insights-topic--four">GROWTH</span>
+      </div>
+    </div>
+    <div class="insights-container insights-benefits" aria-label="What the insights cover">
+      <span>
+        <i></i> Clear platform decisions
+      </span>
+      <span>
+        <i></i> Practical website planning
+      </span>
+      <span>
+        <i></i> Performance guidance
+      </span>
+      <span>
+        <i></i> Business-first thinking
+      </span>
+    </div>
+  </section>
+
+  <section class="insights-library" id="latest-insights">
+    <div class="insights-container">
+      <header class="insights-section-heading">
+        <p>LATEST INSIGHTS</p>
+        <h2>
+          Practical Ideas for <span>Better Digital Growth.</span>
+        </h2>
+        <p>
+          Explore clear, experience-led articles designed to make website and technology decisions
+          easier to understand and act on.
+        </p>
+      </header>
+      <div class="insights-grid">
+        {posts.map((post, index) => (
+          <article class="insight-card">
+            <a
+              class="insight-card__image"
+              href={`/${post.path}/`}
+              aria-label={`Read ${post.title}`}
+            >
+              <ResponsiveImage
+                source={post.image}
+                alt={post.imageAlt}
+                priority={index === 0}
+                sizes="(max-width: 800px) 90vw, 30vw"
+              />
+              <span class="insight-card__number">{String(index + 1).padStart(2, '0')}</span>
+            </a>
+            <div class="insight-card__body">
+              <div class="insight-card__meta">
+                <span>{post.category}</span>
+                <span>{post.readingTime} min read</span>
+              </div>
+              <h3>
+                <a href={`/${post.path}/`}>{post.title}</a>
+              </h3>
+              <p>{post.description}</p>
+              <a class="insight-card__link" href={`/${post.path}/`}>
+                Read article <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="insights-cta-section">
+    <div class="insights-container insights-cta">
+      <p class="insights-cta__eyebrow">READY TO APPLY THESE IDEAS?</p>
       <h2>
-        <a href={`/${post.path}/`}>{post.title}</a>
+        Turn Website Insight Into a <span>Practical Next Step.</span>
       </h2>
-      <p>{post.description}</p>
-      <a href={`/${post.path}/`}>Read article →</a>
-    </section>
-  ))}
+      <p>
+        If you are planning a new website, redesign, e-commerce store or connected digital system,
+        let’s clarify the right approach for your business.
+      </p>
+      <div class="insights-actions">
+        <a href="/contact/" class="insights-button insights-button--primary">
+          Start Your Project
+        </a>
+        <a href="https://cal.com/oderinde/free" class="insights-button insights-button--secondary">
+          Book a Strategy Call
+        </a>
+      </div>
+      <nav aria-label="Explore more pages">
+        Explore more: <a href="/">Homepage</a> ·{' '}
+        <a href="/business-website-solutions/">Solutions</a> ·{' '}
+        <a href="/case-studies/">Case Studies</a> · <a href="/portfolio/">Portfolio</a>
+      </nav>
+    </div>
+  </section>
 </article>

@@ -123,6 +123,19 @@ test('the local Markdown article is rendered and listed in the sitemap', async (
   assert.ok((await readFile('dist/sitemap.xml', 'utf8')).includes(`/${slug}/`));
 });
 
+test('Insights publishes exactly six complete article cards and article routes', async () => {
+  const insights = await readFile('dist/insights/index.html', 'utf8');
+  const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+  const articles = (await readdir('src/content/blog')).filter((file) => file.endsWith('.md'));
+  assert.equal(articles.length, 6);
+  assert.equal((insights.match(/class="insight-card"/g) || []).length, 6);
+  for (const file of articles) {
+    const slug = file.replace(/\.md$/, '');
+    assert.ok(sitemap.includes(`/${slug}/`), slug);
+    assert.ok(insights.includes(`href="/${slug}/"`), slug);
+  }
+});
+
 test('new article drafts cannot overwrite an existing article', async () => {
   const directory = await mkdtemp(path.join(tmpdir(), 'astro-content-'));
   const run = promisify(execFile);

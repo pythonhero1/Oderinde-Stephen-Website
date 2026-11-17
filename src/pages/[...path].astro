@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import pageManifest from '../content/pages.json';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import Insights from '../components/site/Insights.astro';
+import ResponsiveImage from '../components/content/ResponsiveImage.astro';
 
 export async function getStaticPaths() {
   const components = import.meta.glob('../content/pages/*.astro', {
@@ -15,12 +16,18 @@ export async function getStaticPaths() {
     import: 'default',
   });
   const articleTheme = pageManifest.find((page) => page.type === 'collection');
-  const published = await getCollection('blog', ({ data }) => !data.draft);
+  const published = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+    (a, b) => (b.data.updated?.getTime() || 0) - (a.data.updated?.getTime() || 0),
+  );
   const posts = await Promise.all(
     published.map(async (entry) => ({
       path: entry.data.slug,
       title: entry.data.title,
       description: entry.data.description,
+      category: entry.data.category,
+      readingTime: entry.data.readingTime,
+      image: entry.data.image,
+      imageAlt: entry.data.imageAlt,
       updated: entry.data.updated?.toISOString().slice(0, 10),
       type: 'post',
       style: 'article',
@@ -43,17 +50,78 @@ export async function getStaticPaths() {
 }
 const { page, posts, Component, stylesheet } = Astro.props;
 const Article = page.Content;
+const relatedPosts = Article ? posts.filter((post) => post.path !== page.path).slice(0, 3) : [];
 ---
 
 <SiteLayout page={page} stylesheet={stylesheet} bodyClass={page.bodyClass}>
   {Article ? (
-    <article class="site-article">
-      <header>
-        <p>WEBSITE INSIGHTS</p>
-        <h1>{page.title}</h1>
-        <p>{page.description}</p>
+    <article class="insight-article">
+      <header class="insight-article-hero">
+        <div class="insight-article-hero__inner">
+          <a class="insight-article-back" href="/insights/">
+            ← All insights
+          </a>
+          <div class="insight-article-meta">
+            <span>{page.category}</span>
+            <span aria-hidden="true">•</span>
+            <span>{page.readingTime} min read</span>
+            {page.updated && (
+              <>
+                <span aria-hidden="true">•</span>
+                <time datetime={page.updated}>
+                  {new Date(`${page.updated}T00:00:00`).toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}
+                </time>
+              </>
+            )}
+          </div>
+          <h1>{page.title}</h1>
+          <p>{page.description}</p>
+        </div>
       </header>
-      <Article />
+      <div class="insight-article-media">
+        <ResponsiveImage
+          source={page.image}
+          alt={page.imageAlt}
+          priority
+          sizes="(max-width: 1024px) 90vw, 1248px"
+        />
+      </div>
+      <div class="insight-article-layout">
+        <div class="insight-article-content">
+          <Article />
+        </div>
+        <aside class="insight-article-aside" aria-label="Article information">
+          <p class="insight-article-aside__label">PRACTICAL GUIDANCE</p>
+          <h2>Planning your next website move?</h2>
+          <p>Turn the ideas in this article into a clear, practical plan for your business.</p>
+          <a href="/contact/">
+            Discuss your project <span aria-hidden="true">→</span>
+          </a>
+        </aside>
+      </div>
+      <section class="insight-related" aria-labelledby="related-insights-title">
+        <div class="insight-related__heading">
+          <p>KEEP EXPLORING</p>
+          <h2 id="related-insights-title">
+            Related <span>insights</span>
+          </h2>
+        </div>
+        <div class="insight-related__grid">
+          {relatedPosts.map((post) => (
+            <a class="insight-related__card" href={`/${post.path}/`}>
+              <span>
+                {post.category} · {post.readingTime} min read
+              </span>
+              <h3>{post.title}</h3>
+              <span class="insight-related__link">Read article →</span>
+            </a>
+          ))}
+        </div>
+      </section>
     </article>
   ) : page.type === 'collection' ? (
     <Insights posts={posts} />

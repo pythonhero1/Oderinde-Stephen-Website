@@ -144,7 +144,7 @@
     "description": "Practical website, e-commerce and business technology articles from Oderinde Stephen.",
     "type": "collection",
     "component": "Insights",
-    "style": "article",
+    "style": "insights",
     "bodyClass": "site-background has-site-header with-button-icons without-default-button-icons layout-cover-background custom-page styled-page"
   }
 ]
