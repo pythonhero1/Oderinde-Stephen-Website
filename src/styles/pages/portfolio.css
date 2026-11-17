@@ -67,7 +67,7 @@
 }
 
 #page-entry .portfolio-hero-actions,
-#page-entry .portfolio-cta > div {
+#page-entry .portfolio-cta-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
@@ -434,16 +434,80 @@
 
 #page-entry .portfolio-cta {
   text-align: center;
-  background: linear-gradient(120deg, #071329, #0c1239 55%, #020817);
+  background: linear-gradient(-120deg, #0c1239 0%, #000 65%, #0c1239 100%);
 }
 
-#page-entry .portfolio-cta > * {
-  max-width: 52rem;
-  margin-right: auto;
-  margin-left: auto;
-}
-#page-entry .portfolio-cta > div {
+#page-entry .portfolio-cta-panel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 38rem;
+  flex-direction: column;
+  gap: 1.75rem;
+  align-items: center;
   justify-content: center;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 5rem 12% 6rem;
+  background: url('/images/thoughtful-young-man-in-blue-glow.avif') 100% 100% / 100% 100% no-repeat
+    #02071b;
+  border: 0.0625rem solid rgba(75, 130, 255, 0.48);
+  border-radius: 2.125rem;
+  overflow: hidden;
+}
+
+#page-entry .portfolio-cta-panel > * {
+  position: relative;
+  z-index: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#page-entry .portfolio-cta-label {
+  padding: 0.7rem 1rem;
+  color: var(--portfolio-cyan);
+  background: rgba(8, 17, 31, 0.72);
+  border: 0.0625rem solid rgba(47, 115, 255, 0.35);
+  border-radius: 1.25rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.2;
+}
+
+#page-entry .portfolio-cta-panel h2 {
+  max-width: 55rem;
+}
+
+#page-entry .portfolio-cta-copy {
+  max-width: 58rem;
+  color: var(--portfolio-muted);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+#page-entry .portfolio-cta-actions {
+  justify-content: center;
+}
+
+#page-entry .portfolio-cta-links {
+  color: #cbd5e1;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+#page-entry .portfolio-cta-links a {
+  color: #38a9ff;
+  text-decoration: none;
+}
+
+#page-entry .portfolio-cta-links a:hover,
+#page-entry .portfolio-cta-links a:focus-visible {
+  color: #7dd3fc;
+  text-decoration: underline;
 }
 
 .portfolio-preview-modal[hidden] {
@@ -629,6 +693,15 @@ body.portfolio-preview-open {
   #page-entry .portfolio-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  #page-entry .portfolio-cta-panel {
+    min-height: 0;
+    padding: 4rem 7% 20rem;
+    background:
+      linear-gradient(#02071b, transparent 25%) center bottom / 100% 20rem no-repeat,
+      url('/images/thoughtful-young-man-in-blue-glow.avif') right bottom / auto 20rem no-repeat,
+      #02071b;
+  }
 }
 
 @media (width <= 47.9375rem) {
@@ -640,6 +713,7 @@ body.portfolio-preview-open {
   #page-entry .portfolio-hero {
     padding-top: 5.5rem;
   }
+
   #page-entry .portfolio-hero h1 {
     font-size: 2.35rem;
   }
@@ -658,6 +732,32 @@ body.portfolio-preview-open {
   }
   #page-entry .portfolio-card {
     min-height: 0;
+  }
+  #page-entry .portfolio-cta-panel {
+    gap: 1.35rem;
+    padding: 3rem 1.25rem 19rem;
+    background:
+      linear-gradient(#02071b, transparent 25%) center bottom / 100% 19rem no-repeat,
+      url('/images/thoughtful-young-man-in-blue-glow.avif') right bottom / auto 19rem no-repeat,
+      #02071b;
+    border-radius: 1.5rem;
+  }
+  #page-entry .portfolio-cta-panel h2 {
+    font-size: 1.7rem;
+  }
+  #page-entry .portfolio-cta-label {
+    font-size: 0.7rem;
+    line-height: 1.6;
+  }
+  #page-entry .portfolio-cta-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  #page-entry .portfolio-cta-actions > a {
+    width: 100%;
+  }
+  #page-entry .portfolio-cta-links {
+    font-size: 0.82rem;
   }
   .portfolio-preview-modal {
     padding: 0.75rem;
@@ -682,6 +782,10 @@ body.portfolio-preview-open {
 @media (width <= 23.75rem) {
   #page-entry .portfolio-hero h1 {
     font-size: 2rem;
+  }
+
+  #page-entry .portfolio-cta-panel h2 {
+    font-size: 1.5rem;
   }
 }
 

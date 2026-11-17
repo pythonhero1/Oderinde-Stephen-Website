@@ -1,5 +1,6 @@
 ---
 import ResponsiveImage from '../../components/content/ResponsiveImage.astro';
+import site from '../../config/site.json';
 import pipePatchPreview from '../../assets/images/pipe-patch-pro-product-website-case-study-feature-image-1024x576.avif';
 import samuelEdmondPreview from '../../assets/images/samuel-edmondstone-homeless-trilogy-website-website-1024x576.avif';
 import baumgaertnerPreview from '../../assets/images/einbruchschutz-baumgaertner-website-security-homepage-1024x512.avif';
@@ -459,18 +460,34 @@ const categories = ['All projects', 'Featured', 'Business', 'E-commerce'];
   </section>
 
   <section class="portfolio-cta">
-    <p>HAVE A PROJECT IN MIND?</p>
-    <h2>
-      Let’s Build a Website That <span>Moves Your Business Forward.</span>
-    </h2>
-    <p>Share your goals, preferred platform and timeline to start planning the right solution.</p>
-    <div>
-      <a class="portfolio-primary-button" href="/contact/">
-        Start Your Project
-      </a>
-      <a class="portfolio-secondary-button" href="/pricing/">
-        Explore Pricing
-      </a>
+    <div class="portfolio-cta-panel">
+      <p class="portfolio-cta-label">READY TO DISCUSS YOUR NEXT PROJECT?</p>
+      <h2>
+        Let’s Turn Your <span>Project Goals</span> Into a Practical Solution.
+      </h2>
+      <p class="portfolio-cta-copy">
+        Seen a project that reflects your business goals? Whether you're planning a professional
+        website, an e-commerce store or a custom digital solution, let's discuss your requirements
+        and explore the right approach for your business.
+      </p>
+      <div class="portfolio-cta-actions">
+        <a class="portfolio-primary-button" href="/contact/">
+          Start Your Project
+        </a>
+        <a
+          class="portfolio-secondary-button"
+          href={site.booking}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book a Strategy Call
+        </a>
+      </div>
+      <p class="portfolio-cta-links">
+        Explore more: <a href="/">Homepage</a> ·{' '}
+        <a href="/business-website-solutions/">Business Website Solutions</a> ·{' '}
+        <a href="/case-studies/">Case Studies</a> · <a href="/portfolio/">Portfolio</a>
+      </p>
     </div>
   </section>
 
