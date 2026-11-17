@@ -3160,3 +3160,122 @@ body {
       #02071b;
   }
 }
+
+/* Four-column interactive solution route cards. */
+#page-entry.solutions-page .solution-path-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 20px;
+}
+
+#page-entry.solutions-page .solution-path-grid > .solution-path-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 20px;
+  background-size: 140% 140%;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    background-position 0.35s ease;
+}
+
+#page-entry.solutions-page .solution-path-grid > .solution-path-card::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 0%, rgb(37 99 235 / 22%), transparent 56%);
+  transition: opacity 0.28s ease;
+}
+
+#page-entry.solutions-page .solution-path-card:is(:hover, :focus-within) {
+  transform: translateY(-8px);
+  border-color: rgb(96 165 250 / 88%);
+  box-shadow:
+    0 18px 38px rgb(0 0 0 / 36%),
+    0 0 26px rgb(37 99 235 / 22%);
+  background-position: 100% 0;
+}
+
+#page-entry.solutions-page .solution-path-card:is(:hover, :focus-within)::before {
+  opacity: 1;
+}
+
+#page-entry.solutions-page .solution-path-card :is(.group-6, .group-8, .group-10, .group-12) {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 13px;
+}
+
+#page-entry.solutions-page .solution-path-card :is(.image-2, .image-3, .image-4, .image-5) img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 13px;
+  transition: transform 0.4s ease;
+}
+
+#page-entry.solutions-page .solution-path-card:is(:hover, :focus-within)
+  :is(.image-2, .image-3, .image-4, .image-5) img {
+  transform: scale(1.045);
+}
+
+#page-entry.solutions-page .solution-path-card h3 {
+  font-size: clamp(19px, 1.4vw, 22px);
+}
+
+#page-entry.solutions-page .solution-path-card :is(.copy-6, .copy-9, .copy-12, .copy-15) {
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+#page-entry.solutions-page .solution-path-card .button-wrap,
+#page-entry.solutions-page .solution-path-card .button {
+  width: 100%;
+}
+
+#page-entry.solutions-page .solution-path-card .button {
+  background: #2563eb;
+}
+
+#page-entry.solutions-page .solution-path-card .button:hover,
+#page-entry.solutions-page .solution-path-card .button:focus-visible {
+  background: #3b82f6;
+  border-color: #93c5fd;
+  box-shadow: 0 8px 22px rgb(37 99 235 / 30%);
+}
+
+@media (max-width: 1100px) {
+  #page-entry.solutions-page .solution-path-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  #page-entry.solutions-page .solution-path-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #page-entry.solutions-page .solution-path-grid > .solution-path-card {
+    padding: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #page-entry.solutions-page .solution-path-card,
+  #page-entry.solutions-page .solution-path-card::before,
+  #page-entry.solutions-page .solution-path-card :is(.image-2, .image-3, .image-4, .image-5) img {
+    transition: none;
+  }
+
+  #page-entry.solutions-page .solution-path-card:is(:hover, :focus-within),
+  #page-entry.solutions-page .solution-path-card:is(:hover, :focus-within)
+    :is(.image-2, .image-3, .image-4, .image-5) img {
+    transform: none;
+  }
+}
