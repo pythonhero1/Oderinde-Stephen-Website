@@ -20,6 +20,16 @@
     "bodyClass": "site-background has-site-header with-button-icons without-default-button-icons layout-cover-background custom-page styled-page"
   },
   {
+    "path": "portfolio",
+    "title": "Website Portfolio | Oderinde Stephen",
+    "description": "Explore selected business websites, e-commerce stores and international web development projects by Oderinde Stephen.",
+    "type": "page",
+    "updated": "2026-11-17",
+    "component": "Portfolio",
+    "style": "portfolio",
+    "bodyClass": "site-background has-site-header with-button-icons without-default-button-icons layout-cover-background custom-page styled-page"
+  },
+  {
     "path": "contact",
     "title": "Contact",
     "description": "Discuss your website, e-commerce or automation project with Oderinde Stephen. Send a project brief, email directly or book a strategy call.",
