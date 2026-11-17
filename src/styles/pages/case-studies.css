@@ -6524,25 +6524,13 @@ body {
   overflow: hidden;
 }
 
-.portfolio-preview-loading {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: #94a3b8;
-  font-family:
-    Space Mono,
-    monospace;
-  font-size: 0.72rem;
-}
-
-.portfolio-preview-frame {
+.portfolio-preview-image {
   position: relative;
   z-index: 1;
+  display: block;
   width: 100%;
   height: 100%;
-  background: #fff;
-  border: 0;
+  object-fit: contain;
 }
 
 body.portfolio-preview-open {
