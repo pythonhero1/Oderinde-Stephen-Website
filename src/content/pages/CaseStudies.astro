@@ -10,6 +10,9 @@ import ButtonLink from '../../components/content/ButtonLink.astro';
 import ImageBlock from '../../components/content/ImageBlock.astro';
 import ResponsiveImage from '../../components/content/ResponsiveImage.astro';
 import Accordion from '../../components/content/Accordion.astro';
+import pipePatchPreview from '../../assets/images/pipe-patch-pro-product-website-case-study-feature-image-1024x576.avif';
+import samuelEdmondPreview from '../../assets/images/samuel-edmondstone-homeless-trilogy-website-website-1024x576.avif';
+import baumgaertnerPreview from '../../assets/images/einbruchschutz-baumgaertner-website-security-homepage-1024x512.avif';
 ---
 
 <article id="page-entry">
@@ -38,14 +41,14 @@ import Accordion from '../../components/content/Accordion.astro';
                 <ButtonLink
                   wrapperClass="block button-wrap button-1-wrapper"
                   class="button-1 button tone-light block flex-block"
-                  href="/case-studies/"
+                  href="/portfolio/"
                 >
                   Explore Case Studies
                 </ButtonLink>
                 <ButtonLink
                   wrapperClass="block button-wrap button-2-wrapper"
                   class="button-2 button tone-light block flex-block"
-                  href="/case-studies/"
+                  href="/portfolio/"
                 >
                   View Full Portfolio
                 </ButtonLink>
@@ -678,6 +681,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 type="button"
                 data-preview-url="https://www.pipepatchpro.net/"
                 data-preview-title="Pipe Patch Pro WordPress Product Website Development"
+                data-preview-image={pipePatchPreview.src}
               >
                 <span>Preview website</span>
                 <span aria-hidden="true">↗</span>
@@ -715,6 +719,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 type="button"
                 data-preview-url="https://www.samueledmondstone.com/"
                 data-preview-title="Samuel Edmond Stone Author Website"
+                data-preview-image={samuelEdmondPreview.src}
               >
                 <span>Preview website</span>
                 <span aria-hidden="true">↗</span>
@@ -753,6 +758,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 type="button"
                 data-preview-url="https://einbruchschutz-baumgaertner.de/"
                 data-preview-title="Einbruchschutz Baumgaertner Security Website"
+                data-preview-image={baumgaertnerPreview.src}
               >
                 <span>Preview website</span>
                 <span aria-hidden="true">↗</span>
@@ -788,16 +794,13 @@ import Accordion from '../../components/content/Accordion.astro';
                 </div>
               </header>
               <div class="portfolio-preview-frame-shell">
-                <div class="portfolio-preview-loading" aria-hidden="true">
-                  Loading live preview…
-                </div>
-                <iframe
-                  class="portfolio-preview-frame"
-                  title="Live website preview"
-                  src="about:blank"
-                  loading="lazy"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                ></iframe>
+                <img
+                  class="portfolio-preview-image"
+                  src={pipePatchPreview.src}
+                  alt="Pipe Patch Pro website preview"
+                  width="1024"
+                  height="576"
+                />
               </div>
             </section>
           </div>
@@ -809,7 +812,7 @@ import Accordion from '../../components/content/Accordion.astro';
               <ButtonLink
                 wrapperClass="block button-wrap button-6-wrapper"
                 class="button-6 button tone-light block flex-block"
-                href="/case-studies/"
+                href="/portfolio/"
               >
                 Explore Full Portfolio
               </ButtonLink>
@@ -1174,7 +1177,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 <p>
                   The Case Studies page provides detailed project explanations, including
                   requirements, development approaches and results that can be verified. The{' '}
-                  <a href="/case-studies/">Portfolio page</a> offers a quicker visual overview of
+                  <a href="/portfolio/">Portfolio page</a> offers a quicker visual overview of
                   completed websites, with links to available live projects.
                 </p>
               </Accordion>
@@ -1360,7 +1363,7 @@ import Accordion from '../../components/content/Accordion.astro';
               <ButtonLink
                 wrapperClass="block button-wrap button-14-wrapper"
                 class="button-14 button tone-light block flex-block"
-                href="/case-studies/"
+                href="/portfolio/"
               >
                 View Portfolio
               </ButtonLink>
@@ -1378,7 +1381,7 @@ import Accordion from '../../components/content/Accordion.astro';
               <ButtonLink
                 wrapperClass="block button-wrap button-15-wrapper"
                 class="button-15 button tone-light block flex-block"
-                href="/case-studies/"
+                href="/portfolio/"
               >
                 Explore Portfolio
               </ButtonLink>
@@ -1431,7 +1434,7 @@ import Accordion from '../../components/content/Accordion.astro';
                 <p>
                   Explore more: <a href="/">Homepage</a> ·{' '}
                   <a href="/business-website-solutions/">Business Website Solutions</a> ·{' '}
-                  <a href="/case-studies/">Case Studies</a> · <a href="/case-studies/">Portfolio</a>
+                  <a href="/case-studies/">Case Studies</a> · <a href="/portfolio/">Portfolio</a>
                 </p>
               </TextBlock>
             </Column>
@@ -1444,7 +1447,7 @@ import Accordion from '../../components/content/Accordion.astro';
 
 <script>
   const portfolioModal = document.querySelector('[data-portfolio-modal]');
-  const portfolioFrame = portfolioModal?.querySelector('.portfolio-preview-frame');
+  const portfolioImage = portfolioModal?.querySelector('.portfolio-preview-image');
   const portfolioTitle = portfolioModal?.querySelector('#portfolio-preview-title');
   const portfolioLiveLink = portfolioModal?.querySelector('.portfolio-preview-live-link');
   const portfolioCloseButton = portfolioModal?.querySelector('.portfolio-preview-close');
@@ -1458,7 +1461,6 @@ import Accordion from '../../components/content/Accordion.astro';
     window.clearTimeout(portfolioCloseTimer);
     portfolioCloseTimer = window.setTimeout(() => {
       portfolioModal.hidden = true;
-      if (portfolioFrame instanceof HTMLIFrameElement) portfolioFrame.src = 'about:blank';
       if (portfolioPreviousFocus instanceof HTMLElement) portfolioPreviousFocus.focus();
     }, 220);
   };
@@ -1468,15 +1470,16 @@ import Accordion from '../../components/content/Accordion.astro';
       if (!(portfolioModal instanceof HTMLElement) || !(trigger instanceof HTMLElement)) return;
       const url = trigger.dataset.previewUrl;
       const title = trigger.dataset.previewTitle;
-      if (!url || !title) return;
+      const image = trigger.dataset.previewImage;
+      if (!url || !title || !image) return;
       window.clearTimeout(portfolioCloseTimer);
       portfolioPreviousFocus = trigger;
       portfolioModal.hidden = false;
       if (portfolioTitle) portfolioTitle.textContent = title;
       if (portfolioLiveLink instanceof HTMLAnchorElement) portfolioLiveLink.href = url;
-      if (portfolioFrame instanceof HTMLIFrameElement) {
-        portfolioFrame.title = `${title} live website preview`;
-        portfolioFrame.src = url;
+      if (portfolioImage instanceof HTMLImageElement) {
+        portfolioImage.src = image;
+        portfolioImage.alt = `${title} website preview`;
       }
       document.body.classList.add('portfolio-preview-open');
       requestAnimationFrame(() => portfolioModal.classList.add('is-open'));
