@@ -16,17 +16,24 @@
 }
 
 #page-entry .portfolio-hero {
-  padding-top: 7.5rem;
+  padding: 4.5rem max(1.5rem, calc((100% - 78rem) / 2));
   background: linear-gradient(120deg, #0c1239 0%, #000 35%, #0c1239 100%);
 }
 
 #page-entry .portfolio-hero-inner {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.95fr);
-  gap: clamp(2.5rem, 5vw, 5rem);
+  gap: 4.25rem;
   align-items: center;
   max-width: 78rem;
   margin: 0 auto;
+}
+
+#page-entry .portfolio-hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+  align-items: flex-start;
 }
 
 #page-entry .portfolio-eyebrow,
@@ -45,10 +52,14 @@
   margin: 0;
   color: var(--portfolio-text);
   font-family: Inter, sans-serif;
-  font-size: 3.1rem;
+  font-size: 3rem;
   font-weight: 800;
   letter-spacing: -0.035em;
-  line-height: 1.2;
+  line-height: 1.08;
+}
+
+#page-entry .portfolio-eyebrow {
+  margin-bottom: 0;
 }
 
 #page-entry .portfolio-hero h1 span,
@@ -59,11 +70,11 @@
 
 #page-entry .portfolio-intro {
   max-width: 44rem;
-  margin: 2rem 0 0;
+  margin: 0;
   color: var(--portfolio-muted);
   font-family: 'Work Sans', sans-serif;
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 #page-entry .portfolio-hero-actions,
@@ -75,13 +86,24 @@
 }
 
 #page-entry .portfolio-count-label {
-  margin: 1.5rem 0 0;
+  margin: 0;
   color: #b7c4da;
   font-family: 'Space Mono', monospace;
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.24em;
   line-height: 1.4;
+}
+
+#page-entry .portfolio-hero-actions {
+  margin-top: 0;
+}
+
+#page-entry .portfolio-hero-actions .portfolio-primary-button,
+#page-entry .portfolio-hero-actions .portfolio-secondary-button {
+  min-height: 2.875rem;
+  padding: 0.8rem 1.25rem;
+  font-size: 0.875rem;
 }
 
 #page-entry .portfolio-primary-button,
@@ -123,7 +145,7 @@
   display: flex;
   gap: 1.25rem;
   align-items: center;
-  margin-top: 1.75rem;
+  margin-top: 0;
 }
 
 #page-entry .portfolio-count strong {
@@ -171,8 +193,8 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   max-width: 78rem;
-  margin: 5rem auto 0;
-  padding: 1.75rem;
+  margin: 1.25rem auto 0;
+  padding: 1.375rem;
   background: rgba(7, 11, 21, 0.78);
   border: 0.0625rem solid rgba(59, 130, 246, 0.35);
   border-radius: 1.25rem;
