@@ -493,6 +493,14 @@ const categories = ['All projects', 'Featured', 'Business', 'E-commerce'];
           <h3 id="portfolio-preview-title">Website preview</h3>
         </div>
         <div class="portfolio-preview-actions">
+          <button
+            type="button"
+            class="portfolio-preview-mode"
+            data-preview-mode-toggle
+            aria-pressed="false"
+          >
+            Image preview
+          </button>
           <a class="portfolio-preview-live-link" href="#" target="_blank" rel="noopener noreferrer">
             Open live website <span aria-hidden="true">↗</span>
           </a>
@@ -514,6 +522,13 @@ const categories = ['All projects', 'Featured', 'Business', 'E-commerce'];
           width="1200"
           height="675"
         />
+        <iframe
+          class="portfolio-preview-frame"
+          title="Interactive website preview"
+          src="about:blank"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
       </div>
     </section>
   </div>
@@ -522,8 +537,10 @@ const categories = ['All projects', 'Featured', 'Business', 'E-commerce'];
 <script>
   const modal = document.querySelector('[data-portfolio-modal]');
   const modalImage = modal?.querySelector('.portfolio-preview-image');
+  const modalFrame = modal?.querySelector('.portfolio-preview-frame');
   const modalTitle = modal?.querySelector('#portfolio-preview-title');
   const modalLink = modal?.querySelector('.portfolio-preview-live-link');
+  const modeToggle = modal?.querySelector('[data-preview-mode-toggle]');
   const closeButton = modal?.querySelector('.portfolio-preview-close');
   let previousFocus: Element | null = null;
   let closeTimer: number;
@@ -535,9 +552,17 @@ const categories = ['All projects', 'Featured', 'Business', 'E-commerce'];
     window.clearTimeout(closeTimer);
     closeTimer = window.setTimeout(() => {
       modal.hidden = true;
+      if (modalFrame instanceof HTMLIFrameElement) modalFrame.src = 'about:blank';
       if (previousFocus instanceof HTMLElement) previousFocus.focus();
     }, 220);
   };
+
+  modeToggle?.addEventListener('click', () => {
+    if (!(modal instanceof HTMLElement) || !(modeToggle instanceof HTMLButtonElement)) return;
+    const imageMode = modal.classList.toggle('is-image-mode');
+    modeToggle.setAttribute('aria-pressed', String(imageMode));
+    modeToggle.textContent = imageMode ? 'Live preview' : 'Image preview';
+  });
 
   document.querySelectorAll('.portfolio-preview-trigger').forEach((trigger) => {
     trigger.addEventListener('click', () => {
@@ -546,8 +571,17 @@ const categories = ['All projects', 'Featured', 'Business', 'E-commerce'];
       if (!previewUrl || !previewTitle || !previewImage) return;
       previousFocus = trigger;
       modal.hidden = false;
+      modal.classList.remove('is-image-mode');
+      if (modeToggle instanceof HTMLButtonElement) {
+        modeToggle.setAttribute('aria-pressed', 'false');
+        modeToggle.textContent = 'Image preview';
+      }
       if (modalTitle) modalTitle.textContent = previewTitle;
       if (modalLink instanceof HTMLAnchorElement) modalLink.href = previewUrl;
+      if (modalFrame instanceof HTMLIFrameElement) {
+        modalFrame.src = previewUrl;
+        modalFrame.title = `${previewTitle} interactive website preview`;
+      }
       if (modalImage instanceof HTMLImageElement) {
         modalImage.src = previewImage;
         modalImage.alt = `${previewTitle} website preview`;
