@@ -82,7 +82,7 @@ npm run deploy:preview
 
 For a single publishing command, `npm run deploy:preview` runs the build/tests and validation before deploying. Cloudflare CLI authentication is required. It updates the existing review project at https://oderinde-stephen-preview.pages.dev and does not change `oderindestephen.com`.
 
-Source repository: https://github.com/pythonhero1/Oderinde-Stephen-Website. Commit and push source changes as well. This Direct Upload Cloudflare project currently deploys through the command above; a GitHub push alone does not publish it.
+Source repository: https://github.com/pythonhero1/Oderinde-Stephen-Website. The GitHub Actions workflow at `.github/workflows/deploy-cloudflare-pages.yml` builds, tests, validates and deploys each push to `main` to the existing Direct Upload preview project. It requires the repository secrets `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN`. The local `npm run deploy:preview` command remains available as a manual fallback.
 
 The review build remains excluded from indexing through `src/config/site.json`. Enable indexing only with the approved main-domain launch. Existing WordPress installations and private migration backups are separate from this source and are not used by the site. Traffic analytics are not configured yet.
 
