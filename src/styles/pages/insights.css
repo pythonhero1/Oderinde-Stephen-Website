@@ -1,6 +1,7 @@
 @import './article.css';
 
 :root {
+  /* Hero typography follows the homepage scale. */
   --insights-bg: #07090d;
   --insights-text: #f5f7fc;
   --insights-muted: #a4b1c8;
