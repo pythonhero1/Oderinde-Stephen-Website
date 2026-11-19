@@ -242,6 +242,11 @@ html[data-theme='light'] #site-root [data-theme-artwork] [data-theme-surface='pa
   font:
     12px/1.5 Inter,
     sans-serif;
+  pointer-events: none;
+  z-index: 30;
+}
+.translation-status[hidden] {
+  display: none !important;
 }
 html[data-theme='light'] .translation-status {
   background: #fff;
