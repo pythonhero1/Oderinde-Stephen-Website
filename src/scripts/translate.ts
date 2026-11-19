@@ -20,6 +20,41 @@ for (const element of document.querySelectorAll('[placeholder],[alt]')) {
 }
 let current: AbortController | undefined;
 const cache: Record<string, Record<string, string>> = {};
+let statusTimer: number | undefined;
+
+function showStatus(message: string) {
+  if (statusTimer) window.clearTimeout(statusTimer);
+  statusTimer = undefined;
+  status.textContent = message;
+  status.hidden = false;
+}
+
+function dismissStatus(delay = 0) {
+  if (statusTimer) window.clearTimeout(statusTimer);
+  statusTimer = window.setTimeout(() => {
+    status.hidden = true;
+    statusTimer = undefined;
+  }, delay);
+}
+
+function translationsFor(language: string) {
+  if (cache[language]) return cache[language];
+  try {
+    const stored = sessionStorage.getItem(`site-translations-v2-${language}`);
+    const parsed = stored ? JSON.parse(stored) : {};
+    cache[language] = parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+  } catch {
+    cache[language] = {};
+  }
+  return cache[language];
+}
+
+function rememberTranslations(language: string, translations: Record<string, string>) {
+  try {
+    sessionStorage.setItem(`site-translations-v2-${language}`, JSON.stringify(translations));
+  } catch {}
+}
+
 function apply(translations: Record<string, string> = {}) {
   for (const entry of entries) {
     const translated = translations[entry.key];
@@ -36,23 +71,23 @@ export async function changeLanguage(language: string) {
   current = controller;
   apply();
   document.documentElement.lang = 'en';
-  status.hidden = language === 'en';
   if (language === 'en') {
+    dismissStatus();
     try {
       localStorage.removeItem('site-language');
     } catch {}
     return;
   }
-  status.textContent = 'Automatically translating…';
-  const translations = (cache[language] ||= {});
+  showStatus('Automatically translating…');
+  const translations = translationsFor(language);
   const keys = [...new Set(entries.map((entry) => entry.key))].filter((key) => !translations[key]);
   try {
-    // Two bounded batches keep first-time translation moving without blocking the page.
+    // Three bounded workers reduce round trips while the server limits model concurrency.
     let offset = 0;
     let completed = 0;
     async function batch() {
       while (offset < keys.length) {
-        const selection = keys.slice(offset, (offset += 16));
+        const selection = keys.slice(offset, (offset += 24));
         const response = await fetch('/api/translate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -64,22 +99,30 @@ export async function changeLanguage(language: string) {
         if (controller.signal.aborted) return;
         Object.assign(translations, result.translations);
         completed += selection.length;
-        status.textContent = `Automatically translating… ${Math.round((completed / keys.length) * 100)}%`;
+        apply(translations);
+        rememberTranslations(language, translations);
+        showStatus(
+          `Automatically translating… ${Math.round((completed / keys.length) * 100)}%`,
+        );
       }
     }
-    await Promise.all([batch(), batch()]);
+    await Promise.all(
+      Array.from({ length: Math.min(3, Math.ceil(keys.length / 24)) }, () => batch()),
+    );
     if (controller.signal.aborted) return;
     apply(translations);
     document.documentElement.lang = language;
     try {
       localStorage.setItem('site-language', language);
     } catch {}
-    status.textContent = 'Automatically translated · English is the original';
+    showStatus('Automatically translated · English is the original');
+    dismissStatus(2500);
   } catch {
     if (controller.signal.aborted) return;
     controller.abort();
     apply();
     selector.value = 'en';
-    status.textContent = 'Translation unavailable. Showing English. Please try again later.';
+    showStatus('Translation unavailable. Showing English. Please try again later.');
+    dismissStatus(6000);
   }
 }
