@@ -64,6 +64,9 @@ function translateSelection(language: string) {
       if (status) {
         status.hidden = false;
         status.textContent = 'Translation unavailable. Showing English. Please try again later.';
+        window.setTimeout(() => {
+          status.hidden = true;
+        }, 6000);
       }
     });
 }
