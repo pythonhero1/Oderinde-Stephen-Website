@@ -62,10 +62,11 @@ function translateSelection(language: string) {
       if (languageSelector) languageSelector.value = 'en';
       const status = document.querySelector<HTMLElement>('[data-translation-status]');
       if (status) {
+        const message = 'Translation unavailable. Showing English. Please try again later.';
         status.hidden = false;
-        status.textContent = 'Translation unavailable. Showing English. Please try again later.';
+        status.textContent = message;
         window.setTimeout(() => {
-          status.hidden = true;
+          if (status.textContent === message) status.hidden = true;
         }, 6000);
       }
     });
