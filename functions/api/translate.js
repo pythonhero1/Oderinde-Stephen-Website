@@ -2,6 +2,9 @@ import strings from '../../.generated/translation-strings.json' with { type: 'js
 import { languages } from '../../src/lib/translation.mjs';
 import { translatedLabel } from '../../src/lib/translation-labels.mjs';
 
+const MAX_KEYS = 24;
+const MAX_BODY_BYTES = 4096;
+
 const json = (body, status = 200) =>
   Response.json(body, {
     status,
@@ -12,12 +15,12 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const origin = request.headers.get('Origin');
   if (origin && origin !== new URL(request.url).origin)
     return json({ error: 'Invalid origin' }, 403);
-  if (Number(request.headers.get('Content-Length')) > 2048)
+  if (Number(request.headers.get('Content-Length')) > MAX_BODY_BYTES)
     return json({ error: 'Request too large' }, 413);
   let body;
   try {
     const raw = await request.text();
-    if (raw.length > 2048) return json({ error: 'Request too large' }, 413);
+    if (raw.length > MAX_BODY_BYTES) return json({ error: 'Request too large' }, 413);
     body = JSON.parse(raw);
   } catch {
     return json({ error: 'Invalid request' }, 400);
@@ -27,7 +30,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
     !Object.hasOwn(languages, language) ||
     !Array.isArray(keys) ||
     !keys.length ||
-    keys.length > 16 ||
+    keys.length > MAX_KEYS ||
     keys.some((key) => typeof key !== 'string' || !Object.hasOwn(strings, key))
   )
     return json({ error: 'Invalid translation selection' }, 400);
@@ -71,7 +74,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
     }
   }
   try {
-    await Promise.all(Array.from({ length: Math.min(4, pending.length) }, translate));
+    await Promise.all(Array.from({ length: Math.min(5, pending.length) }, translate));
   } catch {
     return json({ error: 'Translation temporarily unavailable. Please try again later.' }, 503);
   }
